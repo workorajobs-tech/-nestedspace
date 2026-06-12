@@ -1,0 +1,38 @@
+/* App specific styles */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  padding: 0.5rem;
+}
+
+.main-container {
+  flex: 1;
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 520px) {
+  .App {
+    padding: 0;
+  }
+
+  .main-container {
+    border-radius: 0;
+    border: none;
+  }
+}

@@ -1,0 +1,121 @@
+import React from "react";
+import "./hero.css"; // ensure this path matches your project
+import phoneMockupImage from "../assets/laptop-image.png";
+import Features from "./Features";
+import ContactPage from "./ContactPage";
+import { FaCheckCircle, FaComments, FaPalette, FaRocket } from "react-icons/fa";
+
+const processSteps = [
+  { icon: <FaComments />, title: "Share the idea", text: "Send your business name, products, colors, and WhatsApp number." },
+  { icon: <FaPalette />, title: "Approve the design", text: "We prepare a focused landing page layout for your offer and audience." },
+  { icon: <FaRocket />, title: "Go live", text: "After approval, we connect links, polish mobile views, and hand over the files." },
+];
+
+const samples = [
+  "Local shop landing page",
+  "Instagram seller catalogue",
+  "Startup service website",
+];
+
+export default function HeroComponent({ phoneMockup = phoneMockupImage }) {
+  const scrollToContact = () => document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToPortfolio = () => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" });
+
+  return (
+    <div className="hero-page" id="home">
+      <div className="hero-card">
+        <div className="hero-decor"></div>
+
+        <div className="hero-grid">
+          <div className="hero-left">
+           
+
+            <h1 className="hero-heading">
+              Get Your Website in
+              <span className="accent-block">
+                <span className="gradient-text">48 Hours</span> — ₹2000
+              </span>
+              <span className="accent-block"> Pay After Work</span>
+            </h1>
+
+            <p className="hero-sub">
+              Fast, AI-powered websites for shops, Instagram sellers &amp; startups.
+            </p>
+
+            <div className="hero-ctas">
+              <button className="btn-primary" onClick={scrollToContact}>
+                Start My Website
+                <svg xmlns="http://www.w3.org/2000/svg" className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+
+              <button className="btn-outline" onClick={scrollToPortfolio}>See Samples</button>
+            </div>
+
+            <p className="hero-note">No upfront payment • Mobile-friendly • UPI &amp; WhatsApp ready</p>
+
+            <div className="hero-proof">
+              <span><strong>48h</strong> first delivery</span>
+              <span><strong>₹2000</strong> starter site</span>
+              <span><strong>0%</strong> advance</span>
+            </div>
+          </div>
+
+          <div className="hero-right">
+            <img src={phoneMockup} alt="phone mockup" className="mockup-image" />
+          </div>
+        </div>
+        
+        {/* Features Section - Bottom of glass container */}
+        <Features />
+
+        <section className="process-section" aria-labelledby="process-title">
+          <div className="section-heading">
+            <span className="section-kicker">How it works</span>
+            <h2 id="process-title">Simple enough to finish this week</h2>
+          </div>
+          <div className="process-grid">
+            {processSteps.map((step) => (
+              <article className="process-card" key={step.title}>
+                <div className="process-icon">{step.icon}</div>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="portfolio-section" id="portfolio" aria-labelledby="portfolio-title">
+          <div className="portfolio-copy">
+            <span className="section-kicker">Portfolio-ready formats</span>
+            <h2 id="portfolio-title">Built for small businesses that sell on WhatsApp, Instagram, and UPI</h2>
+            <p>
+              Each page is designed to make the offer clear, collect leads fast, and look credible on mobile first.
+            </p>
+          </div>
+          <div className="sample-list">
+            {samples.map((sample) => (
+              <div className="sample-item" key={sample}>
+                <FaCheckCircle />
+                <span>{sample}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="pricing-section" id="pricing" aria-labelledby="pricing-title">
+          <div>
+            <span className="section-kicker">Starter package</span>
+            <h2 id="pricing-title">₹2000 after you approve the work</h2>
+            <p>Includes a responsive one-page website, contact form flow, WhatsApp CTA, basic SEO copy, and deployment support.</p>
+          </div>
+          <button className="btn-primary" onClick={scrollToContact}>Book My Slot</button>
+        </section>
+        
+        {/* Contact Section - Bottom of features */}
+        <ContactPage />
+      </div>
+    </div>
+  );
+}
