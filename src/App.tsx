@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SplashScreen from "./components/SplashScreen";
 import HeroComponent from "./components/HeroComponent";
+import WebsiteDevelopmentKeralaPage from "./components/WebsiteDevelopmentKeralaPage";
 import SamplesPage from "./components/SamplesPage";
 import "./App.css";
 
@@ -43,6 +44,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HeroComponent />} />
           <Route path="/samples" element={<SamplesPage />} />
+          <Route path="/website-development-kerala" element={<WebsiteDevelopmentKeralaPage />} />
         </Routes>
         <Footer />
       </div>

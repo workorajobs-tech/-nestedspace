@@ -1,0 +1,382 @@
+.kerala-page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 32px 16px 48px;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 10% 5%, rgba(255, 255, 255, 0.82), transparent 28%),
+    linear-gradient(135deg, #eed2ff 0%, #ffb6c1 30%, #ffe4c4 58%, #ffffff 92%);
+}
+
+.kerala-page *,
+.kerala-page *::before,
+.kerala-page *::after {
+  box-sizing: border-box;
+}
+
+.kerala-hero,
+.kerala-section,
+.kerala-final-cta {
+  width: 100%;
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.kerala-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 28px;
+  align-items: center;
+  padding: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.36);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.kerala-hero-copy,
+.kerala-hero-panel {
+  min-width: 0;
+}
+
+.kerala-hero-copy h1 {
+  max-width: 760px;
+  margin: 0;
+  color: #101828;
+  font-size: clamp(2.45rem, 5vw, 4.4rem);
+  line-height: 1.03;
+  letter-spacing: 0;
+  overflow-wrap: break-word;
+}
+
+.kerala-hero-copy p {
+  max-width: 680px;
+  margin: 18px 0 0;
+  color: #4b5563;
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.kerala-hero-actions,
+.kerala-final-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+  width: 100%;
+}
+
+.kerala-hero-actions .btn-primary,
+.kerala-hero-actions .btn-outline,
+.kerala-final-actions .btn-primary,
+.kerala-final-actions .btn-outline {
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal;
+  text-align: center;
+}
+
+.kerala-hero-panel {
+  display: grid;
+  gap: 14px;
+}
+
+.kerala-hero-panel div {
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.kerala-hero-panel strong,
+.kerala-hero-panel span {
+  display: block;
+}
+
+.kerala-hero-panel strong {
+  color: #101828;
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.kerala-hero-panel span {
+  margin-top: 6px;
+  color: #64748b;
+}
+
+.kerala-section {
+  margin-top: 24px;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.64);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.08);
+}
+
+.kerala-section-heading {
+  max-width: 760px;
+  margin-bottom: 22px;
+}
+
+.kerala-section h2,
+.kerala-final-cta h2 {
+  margin: 0;
+  color: #101828;
+  font-size: clamp(1.65rem, 3vw, 2.55rem);
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.kerala-section-heading p,
+.kerala-section > p,
+.kerala-intro p,
+.kerala-audience p,
+.kerala-final-cta p {
+  color: #5b6472;
+  line-height: 1.65;
+}
+
+.kerala-intro {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1fr);
+  gap: 20px 28px;
+}
+
+.kerala-intro p,
+.kerala-audience p {
+  margin: 0;
+}
+
+.kerala-text-link {
+  color: #7c3aed;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.kerala-text-link:hover {
+  color: #f97316;
+}
+
+.kerala-card-grid,
+.kerala-process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.kerala-card,
+.kerala-process-card,
+.kerala-faq-item {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 18px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.kerala-card h3,
+.kerala-process-card h3,
+.kerala-faq-item h3 {
+  margin: 0 0 8px;
+  color: #101828;
+  font-size: 1.08rem;
+}
+
+.kerala-card p,
+.kerala-process-card p,
+.kerala-faq-item p {
+  margin: 0;
+  color: #5b6472;
+  line-height: 1.58;
+}
+
+.kerala-check-grid,
+.kerala-value-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.kerala-check-item,
+.kerala-value-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 58px;
+  padding: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #101828;
+  font-weight: 800;
+}
+
+.kerala-check-item svg {
+  flex: 0 0 auto;
+  color: #16a34a;
+}
+
+.kerala-value-item svg {
+  flex: 0 0 auto;
+  color: #7c3aed;
+}
+
+.kerala-process-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #7c3aed, #ff6b35);
+  color: white;
+}
+
+.kerala-audience {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(280px, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.kerala-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.kerala-pill-list span {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: #ffffff;
+  color: #475467;
+  font-weight: 800;
+}
+
+.kerala-faq-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.kerala-final-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 24px;
+  padding: 28px;
+  border-radius: 22px;
+  background: #101828;
+  color: white;
+}
+
+.kerala-final-cta h2,
+.kerala-final-cta p,
+.kerala-final-cta .section-kicker {
+  color: white;
+}
+
+.kerala-final-cta p {
+  max-width: 680px;
+  margin: 10px 0 0;
+  opacity: 0.82;
+}
+
+.kerala-final-cta .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+@media (max-width: 940px) {
+  .kerala-hero,
+  .kerala-intro,
+  .kerala-audience,
+  .kerala-final-cta {
+    grid-template-columns: 1fr;
+  }
+
+  .kerala-card-grid,
+  .kerala-process-grid,
+  .kerala-check-grid,
+  .kerala-value-grid,
+  .kerala-faq-list {
+    grid-template-columns: 1fr;
+  }
+
+  .kerala-final-cta {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .kerala-page {
+    padding: 12px;
+  }
+
+  .kerala-hero,
+  .kerala-section,
+  .kerala-final-cta {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .kerala-hero {
+    gap: 18px;
+  }
+
+  .kerala-hero-copy h1 {
+    font-size: clamp(2rem, 10.8vw, 2.65rem);
+    line-height: 1.06;
+  }
+
+  .kerala-hero-copy p {
+    margin-top: 14px;
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .kerala-hero-actions,
+  .kerala-final-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .kerala-hero-actions .btn-primary,
+  .kerala-hero-actions .btn-outline,
+  .kerala-final-actions .btn-primary,
+  .kerala-final-actions .btn-outline {
+    width: 100%;
+  }
+
+  .kerala-hero-panel div,
+  .kerala-card,
+  .kerala-process-card,
+  .kerala-faq-item {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 380px) {
+  .kerala-page {
+    padding: 10px;
+  }
+
+  .kerala-hero,
+  .kerala-section,
+  .kerala-final-cta {
+    padding: 16px;
+  }
+
+  .kerala-hero-copy h1 {
+    font-size: clamp(1.85rem, 10.2vw, 2.25rem);
+  }
+}
