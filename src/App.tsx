@@ -14,13 +14,13 @@ function App() {
       return true;
     }
 
-    const hasSeenSplash = window.sessionStorage.getItem("nestedloop-splash-seen") === "true";
+    const hasSeenSplash = window.sessionStorage.getItem("nested-space-splash-seen") === "true";
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     return !hasSeenSplash && !prefersReducedMotion;
   });
 
   const finishSplash = () => {
-    window.sessionStorage.setItem("nestedloop-splash-seen", "true");
+    window.sessionStorage.setItem("nested-space-splash-seen", "true");
     setShowSplash(false);
   };
 

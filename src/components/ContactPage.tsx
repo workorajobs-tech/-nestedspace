@@ -53,8 +53,8 @@ export default function ContactPage() {
       <div className="contact-card">
         {/* Left: Form */}
         <div className="form-section">
-          <h2>Start your website request</h2>
-          <p>Tell us what you sell and where customers should contact you. The form opens WhatsApp with your details ready to send.</p>
+          <h2>Start your business website request</h2>
+          <p>Tell us what you sell and where customers should contact you. The form opens WhatsApp with your website creation details ready to send.</p>
 
           <form onSubmit={submitForm}>
             <input type="text" name="name" placeholder="Name" aria-label="Name" autoComplete="name" value={form.name} onChange={updateField} required />
@@ -97,7 +97,7 @@ export default function ContactPage() {
             <h3>Salmanul Faris</h3>
             <span className="role">Design & Development</span>
             <p>
-              We plan the page around one clear offer, write the core sections, and build a responsive website for your product or service.
+              We plan the business website around one clear offer, write the core sections, and build a responsive page for your product or service.
             </p>
             <div className="socials">
               <a href="https://www.linkedin.com/company/nestedloop-space" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
@@ -109,7 +109,7 @@ export default function ContactPage() {
             <h3>Nithun</h3>
             <span className="role">Launch & Handover</span>
             <p>
-              We help with final checks, contact links, deployment, and small launch edits so the page is ready to share.
+              We help with final website checks, contact links, deployment, and small launch edits so the page is ready to share.
             </p>
             <div className="socials">
               <a href="https://www.linkedin.com/company/nestedloop-space" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>

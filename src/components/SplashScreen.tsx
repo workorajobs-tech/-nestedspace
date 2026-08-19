@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import nestedloopLogo from "../assets/nestedloop-logo.png";
+import nestedSpaceLogo from "../assets/nested-space-logo.png";
 import "./SplashScreen.css";
 
 interface SplashScreenProps {
@@ -23,9 +23,11 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
     <div className={`splash-screen ${isVisible ? 'visible' : 'hidden'}`}>
       <div className="logo-container">
         <img
-          src={nestedloopLogo}
-          alt="Nested Space Logo"
+          src={nestedSpaceLogo}
+          alt="Nested Space logo"
           className="splash-logo"
+          width="512"
+          height="341"
         />
       </div>
     </div>

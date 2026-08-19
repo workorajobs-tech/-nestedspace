@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { FaInstagram, FaLinkedinIn, FaBars, FaTimes } from "react-icons/fa";
-import nestedloopLogo from "../assets/nestedloop-logo.png";
+import nestedSpaceLogo from "../assets/nested-space-logo.png";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -40,7 +40,7 @@ export default function Header() {
       <div className="header-content">
         {/* Left: Logo + Title */}
         <div className="header-left">
-          <img src={nestedloopLogo} alt="Nested Space Logo" className="logo-image" />
+          <img src={nestedSpaceLogo} alt="Nested Space logo" className="logo-image" width="75" height="50" />
           <div className="brand-name">Nested Space</div>
         </div>
 

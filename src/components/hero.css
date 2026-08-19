@@ -53,7 +53,7 @@
   color: #101828;
   font-weight: 800;
   line-height: 1.04;
-  font-size: clamp(2.15rem, 5vw, 3.8rem);
+  font-size: clamp(2.15rem, 4.45vw, 3.35rem);
   margin: 0;
   letter-spacing: 0;
 }
@@ -61,6 +61,10 @@
 .accent-block {
   display: block;
   margin-top: 6px;
+}
+
+.price-line {
+  white-space: nowrap;
 }
 
 .gradient-text {
@@ -306,10 +310,11 @@
   text-transform: uppercase;
 }
 
-.preview-hero h2 {
+.preview-title {
   margin: 0;
   font-size: clamp(1.45rem, 3vw, 2rem);
   line-height: 1.12;
+  font-weight: 800;
 }
 
 .preview-hero p {
@@ -548,6 +553,10 @@
   .hero-card {
     border-radius: 24px;
     padding: 20px 16px;
+  }
+
+  .price-line {
+    white-space: normal;
   }
 
   .hero-proof,

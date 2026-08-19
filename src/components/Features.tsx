@@ -22,15 +22,15 @@ export default function Features() {
   return (
     <section className="features-container" id="services" aria-labelledby="services-title">
       <div className="features-header">
-        <h2 className="features-title" id="services-title">Why Nested Space?</h2>
-        <p className="features-subtitle">A lean website service for founders and sellers who need a credible page quickly.</p>
+        <h2 className="features-title" id="services-title">Why choose Nested Space for website development?</h2>
+        <p className="features-subtitle">A lean website development service for businesses, founders, and sellers who need a credible page quickly.</p>
       </div>
       
       <div className="features-cards">
         <FeatureCard
           icon={<FaTruck />}
-          title="Fast Delivery — 48 hours"
-          description="Get the first working version quickly, with mobile layout and core sections already in place."
+          title="Fast website delivery — 48 hours"
+          description="Get the first working version quickly, with mobile layout and core business sections already in place."
         />
         <FeatureCard
           icon={<FaShieldAlt />}
@@ -39,8 +39,8 @@ export default function Features() {
         />
         <FeatureCard
           icon={<FaChartLine />}
-          title="AI-powered designs & custom code"
-          description="Use practical AI workflows for faster copy, layout options, and clean custom implementation."
+          title="AI-assisted design & custom code"
+          description="Use practical AI workflows for faster website copy, layout options, and clean custom implementation."
         />
       </div>
     </section>

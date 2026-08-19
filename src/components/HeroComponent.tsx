@@ -34,15 +34,15 @@ export default function HeroComponent() {
            
 
             <h1 className="hero-heading">
-              Get Your Website in
-              <span className="accent-block">
-                <span className="gradient-text">48 Hours</span> — ₹2000
+              Business Website Development{" "}
+              <span className="accent-block price-line">
+                in <span className="gradient-text">48 Hours</span> — ₹2000
               </span>
               <span className="accent-block"> Pay After Work</span>
             </h1>
 
             <p className="hero-sub">
-              Fast, AI-powered websites for shops, Instagram sellers &amp; startups.
+              Nested Space creates mobile-friendly websites for shops, Instagram sellers, startups, and small businesses in Kerala and across India.
             </p>
 
             <div className="hero-ctas">
@@ -81,7 +81,7 @@ export default function HeroComponent() {
               </div>
               <div className="preview-hero">
                 <span className="preview-kicker">Starter site</span>
-                <h2>Sell from a page that is ready in 48 hours.</h2>
+                <div className="preview-title">Sell from a page that is ready in 48 hours.</div>
                 <p>Clear offer, mobile layout, payment and chat links included.</p>
                 <span className="preview-hero-cta">Chat on WhatsApp</span>
               </div>
@@ -110,7 +110,7 @@ export default function HeroComponent() {
         <section className="process-section" aria-labelledby="process-title">
           <div className="section-heading">
             <span className="section-kicker">How it works</span>
-            <h2 id="process-title">Simple enough to finish this week</h2>
+            <h2 id="process-title">How our website creation process works</h2>
           </div>
           <div className="process-grid">
             {processSteps.map((step) => (
@@ -126,9 +126,9 @@ export default function HeroComponent() {
         <section className="portfolio-section" id="portfolio" aria-labelledby="portfolio-title">
           <div className="portfolio-copy">
             <span className="section-kicker">Portfolio-ready formats</span>
-            <h2 id="portfolio-title">Built for small businesses that sell on WhatsApp, Instagram, and UPI</h2>
+            <h2 id="portfolio-title">Business website formats for WhatsApp, Instagram, and UPI sellers</h2>
             <p>
-              Each page is designed to make the offer clear, collect leads fast, and look credible on mobile first.
+              Each business website is designed to make the offer clear, collect leads fast, and look credible on mobile first.
             </p>
             <button className="text-link-button" onClick={openSamples}>View finished work samples</button>
           </div>
@@ -146,7 +146,7 @@ export default function HeroComponent() {
           <div>
             <span className="section-kicker">Starter package</span>
             <h2 id="pricing-title">₹2000 after you approve the work</h2>
-            <p>Includes a responsive one-page website, contact form flow, WhatsApp CTA, basic SEO copy, and deployment support.</p>
+            <p>Includes responsive one-page website development, contact form flow, WhatsApp CTA, basic SEO copy, and deployment support.</p>
           </div>
           <button className="btn-primary" onClick={scrollToContact}>Book My Slot</button>
         </section>
