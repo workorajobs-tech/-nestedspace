@@ -4,14 +4,26 @@ import { existsSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { getHtmlFileName, locationPageConfigs } from './src/components/locationPageData.js'
+import { getServiceHtmlFileName, servicePageConfigs } from './src/components/servicePageData.js'
 
 const rootDir = fileURLToPath(new URL('.', import.meta.url))
+const seoPageConfigs = [
+  ...locationPageConfigs.map((page) => ({
+    ...page,
+    htmlFileName: getHtmlFileName(page),
+  })),
+  ...servicePageConfigs.map((page) => ({
+    ...page,
+    htmlFileName: getServiceHtmlFileName(page),
+  })),
+]
+
 const locationRoutes = new Map(
-  locationPageConfigs.map((page) => [
+  seoPageConfigs.map((page) => [
     page.path,
     {
-      sourceHtml: resolve(rootDir, getHtmlFileName(page)),
-      distHtml: resolve(rootDir, 'dist', getHtmlFileName(page)),
+      sourceHtml: resolve(rootDir, page.htmlFileName),
+      distHtml: resolve(rootDir, 'dist', page.htmlFileName),
     },
   ]),
 )
@@ -53,7 +65,7 @@ const websiteDevelopmentLocationRoutes = () => ({
 })
 
 const locationHtmlInputs = Object.fromEntries(
-  locationPageConfigs.map((page) => [page.slug, resolve(rootDir, getHtmlFileName(page))]),
+  seoPageConfigs.map((page) => [page.slug, resolve(rootDir, page.htmlFileName)]),
 )
 
 // https://vite.dev/config/
