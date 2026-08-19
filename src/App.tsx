@@ -4,8 +4,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SplashScreen from "./components/SplashScreen";
 import HeroComponent from "./components/HeroComponent";
-import WebsiteDevelopmentKeralaPage from "./components/WebsiteDevelopmentKeralaPage";
+import LocationWebsiteDevelopmentPage from "./components/LocationWebsiteDevelopmentPage";
 import SamplesPage from "./components/SamplesPage";
+import { locationPageConfigs } from "./components/locationPageData";
 import "./App.css";
 
 function App() {
@@ -44,7 +45,9 @@ function App() {
         <Routes>
           <Route path="/" element={<HeroComponent />} />
           <Route path="/samples" element={<SamplesPage />} />
-          <Route path="/website-development-kerala" element={<WebsiteDevelopmentKeralaPage />} />
+          {locationPageConfigs.map((page) => (
+            <Route key={page.path} path={page.path} element={<LocationWebsiteDevelopmentPage page={page} />} />
+          ))}
         </Routes>
         <Footer />
       </div>

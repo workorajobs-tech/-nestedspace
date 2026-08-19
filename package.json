@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "generate:location-html": "node scripts/generate-location-html.mjs",
+    "prebuild": "npm run generate:location-html",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
