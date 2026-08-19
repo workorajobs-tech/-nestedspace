@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
-import nestedloopLogo from "../assets/nestedloop.png";
+import nestedloopLogo from "../assets/nestedloop-logo.png";
 import "./SplashScreen.css";
 
-export default function SplashScreen({ onFinish }) {
+interface SplashScreenProps {
+  onFinish: () => void;
+}
+
+export default function SplashScreen({ onFinish }: SplashScreenProps) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {

@@ -1,19 +1,49 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SplashScreen from "./components/SplashScreen";
 import HeroComponent from "./components/HeroComponent";
+import SamplesPage from "./components/SamplesPage";
 import "./App.css";
 
 function App() {
-  const [showSplash, setShowSplash] = useState(true);
+  const location = useLocation();
+  const [showSplash, setShowSplash] = useState(() => {
+    if (typeof window === "undefined") {
+      return true;
+    }
+
+    const hasSeenSplash = window.sessionStorage.getItem("nestedloop-splash-seen") === "true";
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return !hasSeenSplash && !prefersReducedMotion;
+  });
+
+  const finishSplash = () => {
+    window.sessionStorage.setItem("nestedloop-splash-seen", "true");
+    setShowSplash(false);
+  };
+
+  useEffect(() => {
+    if (location.hash) {
+      window.setTimeout(() => {
+        document.querySelector(location.hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 80);
+      return;
+    }
+
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [location.pathname, location.hash]);
 
   return (
     <div className="App">
-      {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
+      {showSplash && <SplashScreen onFinish={finishSplash} />}
       <div className="main-container">
         <Header />
-        <HeroComponent />
+        <Routes>
+          <Route path="/" element={<HeroComponent />} />
+          <Route path="/samples" element={<SamplesPage />} />
+        </Routes>
         <Footer />
       </div>
     </div>
