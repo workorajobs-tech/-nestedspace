@@ -11,6 +11,7 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import Seo from "./Seo";
+import { getInternalLinkSection } from "../seo/internalLinkMap";
 import { getServiceStructuredData, serviceProcess, sharedServiceBenefits } from "./servicePageData";
 import "./WebsiteDevelopmentKeralaPage.css";
 
@@ -19,6 +20,7 @@ const processIcons = [<FaComments />, <FaPalette />, <FaMobileAlt />, <FaCheckCi
 export default function ServiceSeoLandingPage({ page }) {
   const navigate = useNavigate();
   const structuredData = getServiceStructuredData(page);
+  const relatedLinks = getInternalLinkSection(page.path);
 
   const goToContact = () => {
     navigate({ pathname: "/", hash: "#contact-section" });
@@ -178,6 +180,40 @@ export default function ServiceSeoLandingPage({ page }) {
           Pricing is kept to known Nested Space offers only. Sales, lead, and search ranking promises are not made.
         </p>
       </section>
+
+      {page.intentQuestions?.length > 0 && (
+        <section className="kerala-section" aria-labelledby={`${page.slug}-intent-title`}>
+          <div className="kerala-section-heading">
+            <span className="section-kicker">Helpful answers</span>
+            <h2 id={`${page.slug}-intent-title`}>Common questions before starting</h2>
+          </div>
+          <div className="kerala-card-grid">
+            {page.intentQuestions.map((item) => (
+              <article className="kerala-card" key={item.question}>
+                <h3>{item.question}</h3>
+                <p>{item.answer}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {relatedLinks?.links?.length > 0 && (
+        <section className="kerala-section kerala-related" aria-labelledby={`${page.slug}-related-title`}>
+          <div className="kerala-section-heading">
+            <span className="section-kicker">Related pages</span>
+            <h2 id={`${page.slug}-related-title`}>{relatedLinks.sectionTitle}</h2>
+            {relatedLinks.intro && <p>{relatedLinks.intro}</p>}
+          </div>
+          <div className="kerala-related-links">
+            {relatedLinks.links.map((link) => (
+              <Link className="kerala-related-link" to={link.path} key={link.path}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="kerala-section kerala-intro" aria-labelledby={`${page.slug}-contact-title`}>
         <div>

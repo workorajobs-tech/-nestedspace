@@ -38,7 +38,7 @@ export const servicePageConfigs = [
   {
     slug: "website-design",
     path: "/website-design",
-    title: "Website Design Services | Nested Space",
+    title: "Professional Website Design Services | Nested Space",
     description:
       "Nested Space creates professional, responsive and mobile-friendly website designs for businesses, shops, startups and online sellers.",
     eyebrow: "Website design",
@@ -98,6 +98,18 @@ export const servicePageConfigs = [
       "A good design should help customers take the next step. We can place WhatsApp or contact buttons near the offer, service details and final call to action.",
     pricingCopy:
       "Nested Space offers a starter website from ₹2000 with a Pay After Work approach. Final scope depends on page sections, content, integrations and launch needs.",
+    intentQuestions: [
+      {
+        question: "What makes a website design professional?",
+        answer:
+          "A professional website design uses clear content hierarchy, responsive spacing, readable typography, consistent buttons and a contact path that matches the business goal.",
+      },
+      {
+        question: "Is website design different from website development?",
+        answer:
+          "Website design focuses on layout, visual direction and user flow. Website development turns that structure into a working page with responsive sections and contact actions.",
+      },
+    ],
     faqs: [
       {
         question: "What is included in website design?",
@@ -129,7 +141,7 @@ export const servicePageConfigs = [
   {
     slug: "business-website-development",
     path: "/business-website-development",
-    title: "Business Website Development Company | Nested Space",
+    title: "Business Website Development Services | Nested Space",
     description:
       "Nested Space builds professional business websites with mobile-friendly design, clear service sections, contact actions and basic SEO setup.",
     eyebrow: "Business website development",
@@ -189,6 +201,18 @@ export const servicePageConfigs = [
       "Business websites can include WhatsApp and contact actions so visitors have a clear route from interest to enquiry.",
     pricingCopy:
       "Starter business websites begin from ₹2000 under the existing Pay After Work approach. Larger scopes can be discussed based on content and sections.",
+    intentQuestions: [
+      {
+        question: "What should a business website include?",
+        answer:
+          "A business website should explain services, audience, benefits, contact details, frequently asked questions and the next step a customer should take.",
+      },
+      {
+        question: "What affects business website pricing?",
+        answer:
+          "Pricing depends on the number of sections, content readiness, design complexity, contact flow, integrations, deployment needs and later update requirements.",
+      },
+    ],
     faqs: [
       {
         question: "What is business website development?",
@@ -280,6 +304,18 @@ export const servicePageConfigs = [
       "A small business website gives Instagram, WhatsApp and referral customers a clean page where they can understand your business before messaging.",
     pricingCopy:
       "Nested Space supports affordable starter websites from ₹2000 with Pay After Work. The final scope depends on content, sections and launch requirements.",
+    intentQuestions: [
+      {
+        question: "Do small businesses really need a website?",
+        answer:
+          "A small business website gives customers one stable place to understand products, services, location, contact details and trust signals outside social media.",
+      },
+      {
+        question: "What should a small business website include?",
+        answer:
+          "It should include a clear offer, product or service details, contact buttons, location or service area, pricing direction where useful and a mobile-friendly layout.",
+      },
+    ],
     faqs: [
       {
         question: "How much does a small business website cost?",
@@ -311,7 +347,7 @@ export const servicePageConfigs = [
   {
     slug: "ecommerce-website-development",
     path: "/ecommerce-website-development",
-    title: "Ecommerce Website Development | Nested Space",
+    title: "Ecommerce Website Development Services | Nested Space",
     description:
       "Nested Space creates mobile-friendly ecommerce and online store website pages for sellers, shops and online brands.",
     eyebrow: "Ecommerce website development",
@@ -371,6 +407,18 @@ export const servicePageConfigs = [
       "For small sellers, WhatsApp enquiries can help customers ask about size, price, delivery or availability before ordering.",
     pricingCopy:
       "A focused starter ecommerce landing page can begin from ₹2000. Larger online store requirements need separate scope discussion.",
+    intentQuestions: [
+      {
+        question: "What does an online store website include?",
+        answer:
+          "An online store website can include product categories, product highlights, ordering or enquiry direction, delivery notes, payment guidance and FAQ content.",
+      },
+      {
+        question: "How much does an ecommerce website cost?",
+        answer:
+          "A focused ecommerce landing page can start from ₹2000, while full cart, checkout, inventory and account features require a separate custom scope.",
+      },
+    ],
     faqs: [
       {
         question: "Can Nested Space build an ecommerce website?",
@@ -402,7 +450,7 @@ export const servicePageConfigs = [
   {
     slug: "landing-page-development",
     path: "/landing-page-development",
-    title: "Landing Page Development | Nested Space",
+    title: "Landing Page Design & Development | Nested Space",
     description:
       "Nested Space builds focused, mobile-friendly landing pages for business offers, campaigns, products, services and online sellers.",
     eyebrow: "Landing page development",
@@ -462,6 +510,18 @@ export const servicePageConfigs = [
       "Landing pages can guide visitors toward WhatsApp, a contact section or another simple enquiry action based on the campaign goal.",
     pricingCopy:
       "Starter landing pages can begin from ₹2000 using the Pay After Work approach. Additional sections, content or integrations can change scope.",
+    intentQuestions: [
+      {
+        question: "What is a landing page?",
+        answer:
+          "A landing page is a focused page built around one offer, service, product or campaign with a clear call to action.",
+      },
+      {
+        question: "When should a business use a landing page?",
+        answer:
+          "A business should use a landing page when it wants to promote one offer clearly, test a campaign, support ads or send social traffic to a focused destination.",
+      },
+    ],
     faqs: [
       {
         question: "What is landing page development?",
@@ -553,6 +613,18 @@ export const servicePageConfigs = [
       "The page structure can support WhatsApp enquiries, contact sections, service descriptions and clear next steps while keeping claims realistic.",
     pricingCopy:
       "Starter website development begins from ₹2000 with Pay After Work. Larger custom web development scopes can be discussed based on requirements.",
+    intentQuestions: [
+      {
+        question: "What is included in professional web development?",
+        answer:
+          "Professional web development can include responsive frontend sections, page structure, contact actions, metadata setup, deployment checks and maintainable page code.",
+      },
+      {
+        question: "When is custom website development useful?",
+        answer:
+          "Custom website development is useful when a business needs page sections, flows or integrations that cannot be handled well by a generic template.",
+      },
+    ],
     faqs: [
       {
         question: "What web development services does Nested Space provide?",

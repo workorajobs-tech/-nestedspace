@@ -516,46 +516,291 @@ export const getLocationPageByPath = (path) => locationPageConfigs.find((page) =
 
 export const getServiceCards = (page) => (page.services ? page.services(page) : defaultServices(page));
 
-export const getFaqs = (page) => [
+const locationIntentQuestions = {
+  kerala: [
+    {
+      question: "What type of website can a Kerala small business start with?",
+      answer:
+        "A small business can start with a focused website that explains the offer, shows services or products, includes WhatsApp contact actions and works well on mobile.",
+    },
+    {
+      question: "How long does website development take for a starter page?",
+      answer:
+        "For starter websites, Nested Space aims to deliver the first working version within 48 hours after receiving the required business details and references.",
+    },
+  ],
+  kozhikode: [
+    {
+      question: "What should a Kozhikode shop website include?",
+      answer:
+        "A shop website should include product or service highlights, location or service area, WhatsApp enquiry actions, opening or contact details and clear mobile sections.",
+    },
+    {
+      question: "Can a restaurant or service provider in Kozhikode use a starter website?",
+      answer:
+        "Yes. A starter website can present menu or service details, contact actions, location information and common customer questions in a mobile-friendly format.",
+    },
+  ],
+  malappuram: [
+    {
+      question: "How can a Malappuram business use a website with WhatsApp?",
+      answer:
+        "The website can explain products or services first, then guide visitors to WhatsApp for enquiries, booking details or purchase questions.",
+    },
+    {
+      question: "What makes a website useful for Malappuram online sellers?",
+      answer:
+        "Online sellers can use a website to organize products, explain delivery or payment direction, answer basic questions and give social media visitors a clearer destination.",
+    },
+  ],
+  wayanad: [
+    {
+      question: "What should a Wayanad tourism business website include?",
+      answer:
+        "A tourism-related website can include service details, location context, contact actions, photos or offer sections, FAQ content and mobile-friendly enquiry flow.",
+    },
+    {
+      question: "Can homestays or resorts start with a simple website?",
+      answer:
+        "Yes. A focused starter website can present stay details, facilities, contact actions and common questions without requiring a large booking system at the start.",
+    },
+  ],
+  kochi: [
+    {
+      question: "How is a Kochi business website different from a district-focused Ernakulam page?",
+      answer:
+        "A Kochi-focused website can emphasize city-facing commercial activity such as startups, restaurants, hospitality, ecommerce and professional services targeting Kochi customers.",
+    },
+    {
+      question: "Can a Kochi startup use a landing page first?",
+      answer:
+        "Yes. Startups can begin with a focused page that explains the product or service, captures enquiries and can be expanded after launch feedback.",
+    },
+  ],
+  ernakulam: [
+    {
+      question: "What should a website for Ernakulam district businesses include?",
+      answer:
+        "It should explain the business, service area, contact options, products or services and customer next steps for people across Ernakulam district.",
+    },
+    {
+      question: "Is this page only for central Kochi businesses?",
+      answer:
+        "No. The Ernakulam page is focused on businesses across the district, including shops, professionals and service providers outside central Kochi.",
+    },
+  ],
+  thrissur: [
+    {
+      question: "What can a Thrissur local business show on a website?",
+      answer:
+        "A Thrissur business can show services, products, location details, WhatsApp contact actions, pricing direction and frequently asked questions.",
+    },
+    {
+      question: "Can online sellers in Thrissur use a starter website?",
+      answer:
+        "Yes. Online sellers can use a starter website to organize offers, guide customers from social media and make enquiries easier on mobile.",
+    },
+  ],
+  bangalore: [
+    {
+      question: "What should a Bangalore startup website include?",
+      answer:
+        "A startup website can include a clear product or service message, target audience, benefits, contact action, FAQ content and launch-ready mobile layout.",
+    },
+    {
+      question: "Can Bengaluru SaaS or consultant pages start small?",
+      answer:
+        "Yes. A SaaS business or consultant can start with a focused website or landing page, then expand sections as the offer becomes clearer.",
+    },
+  ],
+  hyderabad: [
+    {
+      question: "What should a Hyderabad technology business website include?",
+      answer:
+        "A technology business website can include service or product positioning, contact actions, FAQ content, benefits, case-free proof points and mobile-friendly sections.",
+    },
+    {
+      question: "Can Hyderabad online sellers use a website with WhatsApp enquiries?",
+      answer:
+        "Yes. A website can present products or offers and guide customers to WhatsApp for questions, availability and order direction.",
+    },
+  ],
+};
+
+export const getLocationIntentQuestions = (page) => locationIntentQuestions[page.slug] || [];
+
+const baseLocationFaqs = (page) => [
   {
     question: `How much does website development cost in ${page.location}?`,
-    answer: `Nested Space offers a starter website from ₹2000 for businesses in ${page.location}. The final scope depends on the sections, content, contact flow, and launch requirements.`,
+    answer: `Nested Space offers a starter website from ₹2000 for businesses in ${page.location}. Final pricing depends on sections, content readiness, contact flow, launch requirements and later update needs.`,
   },
   {
-    question: "How quickly can you build my website?",
+    question: `How quickly can a ${page.location} business get the first website version?`,
     answer:
-      "For starter business websites, we aim to deliver the first working version within 48 hours after receiving the required business details and references.",
+      "For starter websites, we aim to deliver the first working version within 48 hours after receiving the required business details and references.",
   },
   {
-    question: "Do I need to pay before the website is built?",
+    question: `Can the website support WhatsApp enquiries for customers in ${page.location}?`,
     answer:
-      "No. The starter service follows a Pay After Work approach, so you review the agreed work before payment.",
+      "Yes. WhatsApp contact actions can be included near the offer, service details and final call to action where they fit the agreed scope.",
   },
   {
-    question: `Can you build websites for small businesses in ${page.location}?`,
-    answer: `Yes. We build websites for small businesses, shops, sellers, freelancers, service providers, and startups serving customers in ${page.location}.`,
-  },
-  {
-    question: "Can my website include WhatsApp and UPI?",
+    question: `Will the website be mobile-friendly for ${page.location} customers?`,
     answer:
-      "Yes. We can include WhatsApp contact actions and UPI-ready website copy or payment direction where it fits the agreed website scope.",
-  },
-  {
-    question: "Will the website work on mobile phones?",
-    answer:
-      "Yes. Mobile-friendly layout is part of the starter website approach because many customers open business websites from phones.",
-  },
-  {
-    question: "Can you help with basic SEO?",
-    answer:
-      "Yes. We include basic SEO setup such as clear page copy, useful headings, title and description guidance, and launch checks.",
-  },
-  {
-    question: "Can I update my website later?",
-    answer:
-      "Yes. You can request later edits or improvements after launch. The scope and timing can be discussed based on the changes needed.",
+      "Yes. Mobile-first layout is part of the starter website approach because many customers open business websites from phones.",
   },
 ];
+
+const faqBySlug = {
+  kerala: [
+    {
+      question: "Can you help with basic SEO for a Kerala business website?",
+      answer:
+        "Yes. Basic SEO setup can include clear crawlable copy, useful headings, page title and meta description guidance, and launch checks.",
+    },
+    {
+      question: "Can I update my Kerala business website later?",
+      answer:
+        "Yes. Later edits or improvements can be discussed after launch based on the change scope and timing.",
+    },
+  ],
+  kozhikode: [
+    {
+      question: "Can you build websites for Kozhikode restaurants and service providers?",
+      answer:
+        "Yes. The page can include services, menu or offer details, location context, contact actions and common customer questions.",
+    },
+    {
+      question: "Can my Kozhikode website include UPI-related payment direction?",
+      answer:
+        "UPI-ready copy or payment direction can be included where it fits the agreed website scope.",
+    },
+  ],
+  malappuram: [
+    {
+      question: "Can you build websites for Malappuram local shops?",
+      answer:
+        "Yes. Local shop websites can show products, contact details, location or service area, offers and WhatsApp enquiry actions.",
+    },
+    {
+      question: "Do I need all website content ready before starting?",
+      answer:
+        "No. You can start with your business name, offer, references, contact details and the main products or services to show.",
+    },
+  ],
+  wayanad: [
+    {
+      question: "Can a Wayanad homestay or resort website stay simple?",
+      answer:
+        "Yes. A starter page can focus on stay details, contact actions, location information and frequently asked questions without a complex booking system.",
+    },
+    {
+      question: "Can the website share location and contact information?",
+      answer:
+        "Yes. Location and contact details can be included clearly so mobile visitors know how to enquire or visit.",
+    },
+  ],
+  kochi: [
+    {
+      question: "Can you build websites for Kochi startups and online brands?",
+      answer:
+        "Yes. A Kochi-focused page can support startup offers, ecommerce direction, professional services, hospitality and growing online brands.",
+    },
+    {
+      question: "Can a Kochi business start with a landing page?",
+      answer:
+        "Yes. A landing page can be a practical first step for a product, service, restaurant offer, launch or campaign.",
+    },
+  ],
+  ernakulam: [
+    {
+      question: "Can you build websites for businesses across Ernakulam district?",
+      answer:
+        "Yes. The page can be structured around district-wide service areas, contact details, business information and customer enquiry actions.",
+    },
+    {
+      question: "Can businesses outside central Kochi use this service?",
+      answer:
+        "Yes. The Ernakulam page is intended for shops, professionals, service providers and startups across the district.",
+    },
+  ],
+  thrissur: [
+    {
+      question: "Can a Thrissur business website include product or service sections?",
+      answer:
+        "Yes. Product, service, pricing direction, FAQ and contact sections can be included based on the agreed scope.",
+    },
+    {
+      question: "Can you help with a starter website for Thrissur online sellers?",
+      answer:
+        "Yes. Starter websites can help online sellers present offers clearly and guide customers from social media to WhatsApp enquiries.",
+    },
+  ],
+  bangalore: [
+    {
+      question: "Can you build websites for Bangalore startups and SaaS businesses?",
+      answer:
+        "Yes. A focused website can present positioning, benefits, contact actions, FAQ content and a mobile-friendly launch page.",
+    },
+    {
+      question: "Can Bangalore businesses work with Nested Space remotely?",
+      answer:
+        "Yes. The service can be handled through online communication, shared references and clear review steps.",
+    },
+  ],
+  hyderabad: [
+    {
+      question: "Can you build websites for Hyderabad technology businesses?",
+      answer:
+        "Yes. The website can support service positioning, digital business offers, ecommerce direction and contact-led enquiries.",
+    },
+    {
+      question: "Can Hyderabad businesses start with a simple website before expanding?",
+      answer:
+        "Yes. A focused first version can be launched and later improved based on content, requirements and feedback.",
+    },
+  ],
+};
+
+export const getFaqs = (page) => [
+  ...baseLocationFaqs(page),
+  ...(faqBySlug[page.slug] || []),
+  {
+    question: `What happens after I enquire about website development in ${page.location}?`,
+    answer:
+      "You share the business details, references and contact requirements. We prepare the first version around the agreed scope, then you review it before payment.",
+  },
+];
+const getLocationBreadcrumbItems = (page) => {
+  const currentPage = {
+    "@type": "ListItem",
+    name: page.title.replace(" | Nested Space", ""),
+    item: `${siteUrl}${page.path}`,
+  };
+
+  const items = [
+    {
+      "@type": "ListItem",
+      name: "Home",
+      item: `${siteUrl}/`,
+    },
+  ];
+
+  if (page.path !== "/website-development-kerala") {
+    items.push({
+      "@type": "ListItem",
+      name: "Website Development Kerala",
+      item: `${siteUrl}/website-development-kerala`,
+    });
+  }
+
+  items.push(currentPage);
+
+  return items.map((item, index) => ({
+    ...item,
+    position: index + 1,
+  }));
+};
 
 export const getStructuredData = (page) => ({
   "@context": "https://schema.org",
@@ -579,20 +824,7 @@ export const getStructuredData = (page) => ({
     {
       "@type": "BreadcrumbList",
       "@id": `${siteUrl}${page.path}#breadcrumb`,
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: `${siteUrl}/`,
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: page.title.replace(" | Nested Space", ""),
-          item: `${siteUrl}${page.path}`,
-        },
-      ],
+      itemListElement: getLocationBreadcrumbItems(page),
     },
     {
       "@type": "FAQPage",

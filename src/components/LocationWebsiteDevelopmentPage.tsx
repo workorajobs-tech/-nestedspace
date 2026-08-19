@@ -11,9 +11,11 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import Seo from "./Seo";
+import { getInternalLinkSection } from "../seo/internalLinkMap";
 import {
   benefits,
   getFaqs,
+  getLocationIntentQuestions,
   getServiceCards,
   getStructuredData,
   processSteps,
@@ -27,7 +29,9 @@ export default function LocationWebsiteDevelopmentPage({ page }) {
   const navigate = useNavigate();
   const services = getServiceCards(page);
   const faqs = getFaqs(page);
+  const intentQuestions = getLocationIntentQuestions(page);
   const structuredData = getStructuredData(page);
+  const relatedLinks = getInternalLinkSection(page.path);
 
   const goToContact = () => {
     navigate({ pathname: "/", hash: "#contact-section" });
@@ -167,17 +171,35 @@ export default function LocationWebsiteDevelopmentPage({ page }) {
         </div>
       </section>
 
-      {page.localLinks?.length > 0 && (
+      {relatedLinks?.links?.length > 0 && (
         <section className="kerala-section kerala-related" aria-labelledby={`${page.slug}-related-title`}>
           <div className="kerala-section-heading">
-            <span className="section-kicker">Related location pages</span>
-            <h2 id={`${page.slug}-related-title`}>{page.localLinksIntro}</h2>
+            <span className="section-kicker">Related pages</span>
+            <h2 id={`${page.slug}-related-title`}>{relatedLinks.sectionTitle}</h2>
+            {relatedLinks.intro && <p>{relatedLinks.intro}</p>}
           </div>
           <div className="kerala-related-links">
-            {page.localLinks.map((link) => (
+            {relatedLinks.links.map((link) => (
               <Link className="kerala-related-link" to={link.path} key={link.path}>
                 {link.label}
               </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {intentQuestions.length > 0 && (
+        <section className="kerala-section" aria-labelledby={`${page.slug}-intent-title`}>
+          <div className="kerala-section-heading">
+            <span className="section-kicker">Helpful answers</span>
+            <h2 id={`${page.slug}-intent-title`}>Common questions before starting</h2>
+          </div>
+          <div className="kerala-card-grid">
+            {intentQuestions.map((item) => (
+              <article className="kerala-card" key={item.question}>
+                <h3>{item.question}</h3>
+                <p>{item.answer}</p>
+              </article>
             ))}
           </div>
         </section>
