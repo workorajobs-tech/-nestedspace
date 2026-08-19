@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import "./ContactPage.css";
-import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import { FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 
-const buildWhatsAppUrl = (message: string) => `https://wa.me/?text=${encodeURIComponent(message)}`;
+const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER?.replace(/\D/g, "") ?? "";
+const buildWhatsAppUrl = (message: string) => {
+  const encodedMessage = encodeURIComponent(message);
+  return whatsappNumber
+    ? `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+    : `https://wa.me/?text=${encodedMessage}`;
+};
 
 export default function ContactPage() {
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
@@ -37,7 +43,8 @@ export default function ContactPage() {
 
   const faqs = [
     { q: "What do I get for ₹2000?", a: "A one-page responsive website with hero section, service details, contact flow, WhatsApp CTA, and deployment support." },
-    { q: "Can you finish in 48 hours?", a: "Yes for starter landing pages when the content, logo, and basic business details are shared on time." },
+    { q: "When does the 48-hour timeline start?", a: "After we receive your business name, logo or brand colors, offer details, contact number, and sample references." },
+    { q: "How many edits are included?", a: "The starter package includes one focused revision round after the first delivery." },
     { q: "Do I need to pay first?", a: "No. You review the agreed work first and pay after approval." }
   ];
 
@@ -46,15 +53,15 @@ export default function ContactPage() {
       <div className="contact-card">
         {/* Left: Form */}
         <div className="form-section">
-          <h2>Get in Touch</h2>
+          <h2>Start your website request</h2>
           <p>Tell us what you sell and where customers should contact you. The form opens WhatsApp with your details ready to send.</p>
 
           <form onSubmit={submitForm}>
-            <input type="text" name="name" placeholder="Name" value={form.name} onChange={updateField} required />
-            <input type="text" name="business" placeholder="Business" value={form.business} onChange={updateField} required />
-            <input type="tel" name="whatsapp" placeholder="WhatsApp Number" value={form.whatsapp} onChange={updateField} required />
-            <input type="text" name="city" placeholder="City" value={form.city} onChange={updateField} />
-            <textarea name="message" placeholder="Message" rows={4} value={form.message} onChange={updateField}></textarea>
+            <input type="text" name="name" placeholder="Name" aria-label="Name" autoComplete="name" value={form.name} onChange={updateField} required />
+            <input type="text" name="business" placeholder="Business" aria-label="Business" autoComplete="organization" value={form.business} onChange={updateField} required />
+            <input type="tel" name="whatsapp" placeholder="WhatsApp Number" aria-label="WhatsApp Number" autoComplete="tel" value={form.whatsapp} onChange={updateField} required />
+            <input type="text" name="city" placeholder="City" aria-label="City" autoComplete="address-level2" value={form.city} onChange={updateField} />
+            <textarea name="message" placeholder="What should the page promote?" aria-label="What should the page promote?" rows={4} value={form.message} onChange={updateField}></textarea>
             <button type="submit">Send Message</button>
           </form>
         </div>
@@ -69,7 +76,7 @@ export default function ContactPage() {
             <h3>FAQ</h3>
             {faqs.map((item, i) => (
               <div key={i} className={`faq-item ${faqOpen === i ? "open" : ""}`}>
-                <button onClick={() => toggleFaq(i)}>
+                <button onClick={() => toggleFaq(i)} aria-expanded={faqOpen === i}>
                   {item.q}
                   <span className="arrow">{faqOpen === i ? "–" : "+"}</span>
                 </button>
@@ -83,31 +90,29 @@ export default function ContactPage() {
 
       {/* Owners */}
       <div className="owners">
-        <h2>About the Owners</h2>
+        <h2>What you can expect</h2>
         <div className="owners-grid">
           <div className="owner-card">
             <div className="avatar"></div>
-            <h3>NestedlooP Team</h3>
+            <h3>Salmanul Faris</h3>
             <span className="role">Design & Development</span>
             <p>
-              We plan the landing page, write the core sections, and build the responsive website around your product or service.
+              We plan the page around one clear offer, write the core sections, and build a responsive website for your product or service.
             </p>
             <div className="socials">
               <a href="https://www.linkedin.com/company/nestedloop-space" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
-              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub /></a>
             </div>
           </div>
 
           <div className="owner-card">
             <div className="avatar female"></div>
-            <h3>Delivery Support</h3>
+            <h3>Nithun</h3>
             <span className="role">Launch & Handover</span>
             <p>
               We help with final checks, contact links, deployment, and small launch edits so the page is ready to share.
             </p>
             <div className="socials">
               <a href="https://www.linkedin.com/company/nestedloop-space" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
-              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub /></a>
             </div>
           </div>
         </div>

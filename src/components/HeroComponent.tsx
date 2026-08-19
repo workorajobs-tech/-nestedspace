@@ -1,6 +1,6 @@
 import React from "react";
-import "./hero.css"; // ensure this path matches your project
-import phoneMockupImage from "../assets/laptop-image.png";
+import { useNavigate } from "react-router-dom";
+import "./hero.css";
 import Features from "./Features";
 import ContactPage from "./ContactPage";
 import { FaCheckCircle, FaComments, FaPalette, FaRocket } from "react-icons/fa";
@@ -17,9 +17,12 @@ const samples = [
   "Startup service website",
 ];
 
-export default function HeroComponent({ phoneMockup = phoneMockupImage }) {
+const previewFeatures = ["WhatsApp CTA", "UPI ready", "Mobile first"];
+
+export default function HeroComponent() {
+  const navigate = useNavigate();
   const scrollToContact = () => document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" });
-  const scrollToPortfolio = () => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" });
+  const openSamples = () => navigate("/samples");
 
   return (
     <div className="hero-page" id="home">
@@ -50,7 +53,7 @@ export default function HeroComponent({ phoneMockup = phoneMockupImage }) {
                 </svg>
               </button>
 
-              <button className="btn-outline" onClick={scrollToPortfolio}>See Samples</button>
+              <button className="btn-outline" onClick={openSamples}>See Samples</button>
             </div>
 
             <p className="hero-note">No upfront payment • Mobile-friendly • UPI &amp; WhatsApp ready</p>
@@ -63,7 +66,41 @@ export default function HeroComponent({ phoneMockup = phoneMockupImage }) {
           </div>
 
           <div className="hero-right">
-            <img src={phoneMockup} alt="phone mockup" className="mockup-image" />
+            <button className="site-preview" type="button" onClick={openSamples} aria-label="Open finished work samples">
+              <div className="preview-browser">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div className="preview-topbar">
+                <div className="preview-brand">
+                  <span className="preview-logo">N</span>
+                  <span>NestedlooP demo</span>
+                </div>
+                <span className="preview-menu"></span>
+              </div>
+              <div className="preview-hero">
+                <span className="preview-kicker">Starter site</span>
+                <h2>Sell from a page that is ready in 48 hours.</h2>
+                <p>Clear offer, mobile layout, payment and chat links included.</p>
+                <span className="preview-hero-cta">Chat on WhatsApp</span>
+              </div>
+              <div className="preview-feature-row">
+                {previewFeatures.map((feature) => (
+                  <span key={feature}>{feature}</span>
+                ))}
+              </div>
+              <div className="preview-section">
+                <div>
+                  <strong>₹2000</strong>
+                  <span>after approval</span>
+                </div>
+                <div>
+                  <strong>3 sections</strong>
+                  <span>offer, proof, contact</span>
+                </div>
+              </div>
+            </button>
           </div>
         </div>
         
@@ -93,6 +130,7 @@ export default function HeroComponent({ phoneMockup = phoneMockupImage }) {
             <p>
               Each page is designed to make the offer clear, collect leads fast, and look credible on mobile first.
             </p>
+            <button className="text-link-button" onClick={openSamples}>View finished work samples</button>
           </div>
           <div className="sample-list">
             {samples.map((sample) => (

@@ -70,7 +70,7 @@ form textarea {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid #111827;
   border-radius: 10px;
   font-size: 0.95rem;
   color: #333;
@@ -81,9 +81,9 @@ form textarea {
 form input:focus,
 form textarea:focus {
   outline: none;
-  border-color: rgba(123, 47, 247, 0.5);
+  border-color: #000;
   background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 0 3px rgba(123, 47, 247, 0.1);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.08);
 }
 
 form input::placeholder,

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { FaInstagram, FaLinkedinIn, FaBars, FaTimes } from "react-icons/fa";
-import nestedloopLogo from "../assets/nestedloop.png";
+import nestedloopLogo from "../assets/nestedloop-logo.png";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -12,6 +13,8 @@ const navItems = [
 ];
 
 export default function Header() {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -20,11 +23,16 @@ export default function Header() {
 
   const scrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     event.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    navigate({ pathname: "/", hash: href });
     setIsMobileMenuOpen(false);
+  };
+
+  const goToContact = () => {
+    if (location.pathname === "/") {
+      document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      navigate({ pathname: "/", hash: "#contact-section" });
+    }
   };
 
   return (
@@ -33,7 +41,7 @@ export default function Header() {
         {/* Left: Logo + Title */}
         <div className="header-left">
           <img src={nestedloopLogo} alt="NestedlooP.space Logo" className="logo-image" />
-          <h1 className="brand-name">NestedlooP.space</h1>
+          <div className="brand-name">NestedlooP.space</div>
         </div>
 
         {/* Desktop Navigation */}
@@ -53,7 +61,7 @@ export default function Header() {
           <a href="https://www.linkedin.com/company/nestedloop-space" target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="LinkedIn">
             <FaLinkedinIn />
           </a>
-          <button className="cta-btn" onClick={() => document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" })}>
+          <button className="cta-btn" onClick={goToContact}>
             Start My Website
             <span className="badge">Pay After Work</span>
           </button>
