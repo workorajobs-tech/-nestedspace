@@ -22,7 +22,7 @@ export default function Features() {
   return (
     <section className="features-container" id="services" aria-labelledby="services-title">
       <div className="features-header">
-        <h2 className="features-title" id="services-title">Why NestedlooP.space?</h2>
+        <h2 className="features-title" id="services-title">Why Nested Space?</h2>
         <p className="features-subtitle">A lean website service for founders and sellers who need a credible page quickly.</p>
       </div>
       

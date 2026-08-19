@@ -75,7 +75,7 @@ export default function HeroComponent() {
               <div className="preview-topbar">
                 <div className="preview-brand">
                   <span className="preview-logo">N</span>
-                  <span>NestedlooP demo</span>
+                  <span>Nested Space demo</span>
                 </div>
                 <span className="preview-menu"></span>
               </div>

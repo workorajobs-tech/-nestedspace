@@ -31,7 +31,7 @@ export default function ContactPage() {
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const message = [
-      "New website enquiry for NestedlooP.space",
+      "New website enquiry for Nested Space",
       `Name: ${form.name || "-"}`,
       `Business: ${form.business || "-"}`,
       `WhatsApp: ${form.whatsapp || "-"}`,
@@ -68,7 +68,7 @@ export default function ContactPage() {
 
         {/* Right: WhatsApp + FAQ */}
         <div className="faq-section">
-          <a href={buildWhatsAppUrl("Hi NestedlooP.space, I want a website in 48 hours.")} target="_blank" rel="noopener noreferrer" className="whatsapp-btn">
+          <a href={buildWhatsAppUrl("Hi Nested Space, I want a website in 48 hours.")} target="_blank" rel="noopener noreferrer" className="whatsapp-btn">
             <FaWhatsapp /> Chat with Us on WhatsApp
           </a>
 

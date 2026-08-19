@@ -40,8 +40,8 @@ export default function Header() {
       <div className="header-content">
         {/* Left: Logo + Title */}
         <div className="header-left">
-          <img src={nestedloopLogo} alt="NestedlooP.space Logo" className="logo-image" />
-          <div className="brand-name">NestedlooP.space</div>
+          <img src={nestedloopLogo} alt="Nested Space Logo" className="logo-image" />
+          <div className="brand-name">Nested Space</div>
         </div>
 
         {/* Desktop Navigation */}

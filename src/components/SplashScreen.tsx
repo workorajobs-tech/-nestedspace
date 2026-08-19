@@ -24,7 +24,7 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
       <div className="logo-container">
         <img
           src={nestedloopLogo}
-          alt="NestedlooP.space Logo"
+          alt="Nested Space Logo"
           className="splash-logo"
         />
       </div>
