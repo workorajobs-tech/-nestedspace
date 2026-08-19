@@ -18,7 +18,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen((current) => !current);
   };
 
   const scrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -75,14 +75,20 @@ export default function Header() {
           <a href="https://www.linkedin.com/company/nestedloop-space" target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="LinkedIn">
             <FaLinkedinIn />
           </a>
-          <button className="mobile-menu-btn" onClick={toggleMobileMenu} aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}>
+          <button
+            className="mobile-menu-btn"
+            onClick={toggleMobileMenu}
+            aria-controls="mobile-navigation"
+            aria-expanded={isMobileMenuOpen}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          >
             {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
 
       {/* Mobile Navigation Menu */}
-      <div className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
+      <div className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`} id="mobile-navigation">
         <nav className="mobile-nav-links">
           {navItems.map((item) => (
             <a key={item.href} href={item.href} onClick={(event) => scrollToSection(event, item.href)}>
