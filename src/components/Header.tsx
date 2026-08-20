@@ -9,7 +9,7 @@ const navItems = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
   { label: "Portfolio", href: "#portfolio" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Contact", href: "#contact-section" },
 ];
 
@@ -24,7 +24,11 @@ export default function Header() {
 
   const scrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     event.preventDefault();
-    navigate({ pathname: "/", hash: href });
+    if (href.startsWith("#")) {
+      navigate({ pathname: "/", hash: href });
+    } else {
+      navigate(href);
+    }
     setIsMobileMenuOpen(false);
   };
 

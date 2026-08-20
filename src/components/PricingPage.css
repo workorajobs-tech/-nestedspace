@@ -1,0 +1,113 @@
+.pricing-page .kerala-section-heading p {
+  max-width: 720px;
+  margin: 10px 0 0;
+}
+
+.pricing-service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.pricing-service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 100%;
+  padding: 22px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.pricing-service-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #7c3aed, #ff6b35);
+  color: white;
+}
+
+.pricing-service-card h3 {
+  margin: 0;
+  color: #101828;
+  font-size: 1.15rem;
+}
+
+.pricing-service-price {
+  color: #101828;
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.pricing-service-note {
+  color: #7c3aed;
+  font-size: 0.86rem;
+  font-weight: 900;
+}
+
+.pricing-service-card p {
+  margin: 0;
+  color: #5b6472;
+  line-height: 1.58;
+}
+
+.pricing-service-card ul {
+  display: grid;
+  gap: 10px;
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pricing-service-card li,
+.pricing-marketing-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: #344054;
+  line-height: 1.45;
+}
+
+.pricing-service-card li svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: #16a34a;
+}
+
+.pricing-marketing-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.pricing-marketing-item {
+  min-height: 58px;
+  padding: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  font-weight: 800;
+}
+
+.pricing-marketing-item svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: #7c3aed;
+}
+
+@media (max-width: 940px) {
+  .pricing-service-grid,
+  .pricing-marketing-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .pricing-service-card {
+    padding: 18px;
+  }
+}

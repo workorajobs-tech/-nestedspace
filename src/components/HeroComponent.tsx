@@ -25,6 +25,7 @@ export default function HeroComponent() {
   const navigate = useNavigate();
   const scrollToContact = () => document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" });
   const openSamples = () => navigate("/samples");
+  const openPricing = () => navigate("/pricing");
 
   return (
     <div className="hero-page" id="home">
@@ -158,7 +159,10 @@ export default function HeroComponent() {
             <h2 id="pricing-title">₹2000 after you approve the work</h2>
             <p>Includes responsive one-page website development, contact form flow, WhatsApp CTA, basic SEO copy, and deployment support.</p>
           </div>
-          <button className="btn-primary" onClick={scrollToContact}>Book My Slot</button>
+          <div className="pricing-actions">
+            <button className="btn-outline pricing-detail-button" onClick={openPricing}>See Pricing</button>
+            <button className="btn-primary" onClick={scrollToContact}>Book My Slot</button>
+          </div>
         </section>
         
         {/* Contact Section - Bottom of features */}

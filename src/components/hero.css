@@ -401,8 +401,7 @@
 }
 
 .section-heading h2,
-.portfolio-copy h2,
-.pricing-section h2 {
+.portfolio-copy h2 {
   color: #101828;
   font-size: clamp(1.7rem, 4vw, 2.6rem);
   line-height: 1.12;
@@ -499,7 +498,7 @@
 }
 
 .pricing-section {
-  margin-top: 20px;
+  margin-top: 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -516,10 +515,30 @@
   color: white;
 }
 
+.pricing-section h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  line-height: 1.12;
+}
+
 .pricing-section p {
   max-width: 680px;
+  margin-top: 12px;
   opacity: 0.82;
-  margin-top: 10px;
+}
+
+.pricing-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  flex: 0 0 auto;
+}
+
+.pricing-detail-button {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 @media (min-width: 900px) {
@@ -588,6 +607,10 @@
   .pricing-section {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .pricing-actions {
+    justify-content: flex-start;
   }
 }
 

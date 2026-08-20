@@ -9,6 +9,7 @@ import "./App.css";
 const LocationWebsiteDevelopmentPage = lazy(() => import("./components/LocationWebsiteDevelopmentPage"));
 const SamplesPage = lazy(() => import("./components/SamplesPage"));
 const ServiceSeoLandingPage = lazy(() => import("./components/ServiceSeoLandingPage"));
+const PricingPage = lazy(() => import("./components/PricingPage"));
 
 const locationPagePaths = [
   "/website-development-kerala",
@@ -68,6 +69,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HeroComponent />} />
             <Route path="/samples" element={<SamplesPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
             {locationPagePaths.map((path) => (
               <Route key={path} path={path} element={<LocationWebsiteDevelopmentPage pagePath={path} />} />
             ))}
