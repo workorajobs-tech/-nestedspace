@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FaCheckCircle,
   FaComments,
@@ -16,6 +16,7 @@ import { businessEntity } from "../seo/businessEntity";
 import {
   benefits,
   getFaqs,
+  getLocationPageByPath,
   getLocationIntentQuestions,
   getServiceCards,
   getStructuredData,
@@ -47,14 +48,21 @@ const getLocationPresenceCopy = (page) => {
   };
 };
 
-export default function LocationWebsiteDevelopmentPage({ page }) {
+export default function LocationWebsiteDevelopmentPage({ page, pagePath }) {
+  const location = useLocation();
+  const resolvedPage = page ?? getLocationPageByPath(pagePath ?? location.pathname);
   const navigate = useNavigate();
-  const services = getServiceCards(page);
-  const faqs = getFaqs(page);
-  const intentQuestions = getLocationIntentQuestions(page);
-  const structuredData = getStructuredData(page);
-  const relatedLinks = getInternalLinkSection(page.path);
-  const locationPresence = getLocationPresenceCopy(page);
+  if (!resolvedPage) {
+    return null;
+  }
+
+  const currentPage = resolvedPage;
+  const services = getServiceCards(currentPage);
+  const faqs = getFaqs(currentPage);
+  const intentQuestions = getLocationIntentQuestions(currentPage);
+  const structuredData = getStructuredData(currentPage);
+  const relatedLinks = getInternalLinkSection(currentPage.path);
+  const locationPresence = getLocationPresenceCopy(currentPage);
 
   const goToContact = () => {
     navigate({ pathname: "/", hash: "#contact-section" });
@@ -67,19 +75,19 @@ export default function LocationWebsiteDevelopmentPage({ page }) {
   return (
     <main className="kerala-page">
       <Seo
-        title={page.title}
-        description={page.description}
-        canonical={`https://nestedspace.in${page.path}`}
-        openGraphTitle={page.title}
-        openGraphDescription={page.description}
+        title={currentPage.title}
+        description={currentPage.description}
+        canonical={`https://nestedspace.in${currentPage.path}`}
+        openGraphTitle={currentPage.title}
+        openGraphDescription={currentPage.description}
         structuredData={structuredData}
       />
 
-      <section className="kerala-hero" aria-labelledby={`${page.slug}-title`}>
+      <section className="kerala-hero" aria-labelledby={`${currentPage.slug}-title`}>
         <div className="kerala-hero-copy">
-          <span className="section-kicker">{page.eyebrow}</span>
-          <h1 id={`${page.slug}-title`}>Website Development Company in {page.location}</h1>
-          <p>{page.heroCopy}</p>
+          <span className="section-kicker">{currentPage.eyebrow}</span>
+          <h1 id={`${currentPage.slug}-title`}>Website Development Company in {currentPage.location}</h1>
+          <p>{currentPage.heroCopy}</p>
           <div className="kerala-hero-actions">
             <button className="btn-primary" onClick={goToContact}>
               Start My Website
@@ -106,32 +114,32 @@ export default function LocationWebsiteDevelopmentPage({ page }) {
         </div>
       </section>
 
-      <section className="kerala-section kerala-intro" aria-labelledby={`${page.slug}-intro-title`}>
+      <section className="kerala-section kerala-intro" aria-labelledby={`${currentPage.slug}-intro-title`}>
         <div>
-          <span className="section-kicker">{page.introKicker}</span>
-          <h2 id={`${page.slug}-intro-title`}>{page.introTitle}</h2>
+          <span className="section-kicker">{currentPage.introKicker}</span>
+          <h2 id={`${currentPage.slug}-intro-title`}>{currentPage.introTitle}</h2>
         </div>
-        <p>{page.introBody}</p>
-        <p>{page.introSupport}</p>
+        <p>{currentPage.introBody}</p>
+        <p>{currentPage.introSupport}</p>
         <Link className="kerala-text-link" to="/">
           Visit the Nested Space homepage
         </Link>
       </section>
 
-      <section className="kerala-section kerala-intro" aria-labelledby={`${page.slug}-presence-title`}>
+      <section className="kerala-section kerala-intro" aria-labelledby={`${currentPage.slug}-presence-title`}>
         <div>
           <span className="section-kicker">Local presence</span>
-          <h2 id={`${page.slug}-presence-title`}>{locationPresence.title}</h2>
+          <h2 id={`${currentPage.slug}-presence-title`}>{locationPresence.title}</h2>
         </div>
         <p>{locationPresence.body}</p>
         <p>{businessEntity.serviceAreaSentence}</p>
       </section>
 
-      <section className="kerala-section" aria-labelledby={`${page.slug}-services-title`}>
+      <section className="kerala-section" aria-labelledby={`${currentPage.slug}-services-title`}>
         <div className="kerala-section-heading">
           <span className="section-kicker">Website development services</span>
-          <h2 id={`${page.slug}-services-title`}>{page.servicesTitle}</h2>
-          <p>{page.servicesIntro}</p>
+          <h2 id={`${currentPage.slug}-services-title`}>{currentPage.servicesTitle}</h2>
+          <p>{currentPage.servicesIntro}</p>
         </div>
         <div className="kerala-card-grid">
           {services.map((service) => (
@@ -143,11 +151,11 @@ export default function LocationWebsiteDevelopmentPage({ page }) {
         </div>
       </section>
 
-      <section className="kerala-section kerala-strengths" aria-labelledby={`${page.slug}-strengths-title`}>
+      <section className="kerala-section kerala-strengths" aria-labelledby={`${currentPage.slug}-strengths-title`}>
         <div className="kerala-section-heading">
           <span className="section-kicker">Why choose Nested Space</span>
-          <h2 id={`${page.slug}-strengths-title`}>{page.strengthsTitle}</h2>
-          <p>{page.strengthsIntro}</p>
+          <h2 id={`${currentPage.slug}-strengths-title`}>{currentPage.strengthsTitle}</h2>
+          <p>{currentPage.strengthsIntro}</p>
         </div>
         <div className="kerala-check-grid">
           {strengths.map((strength) => (
@@ -159,10 +167,10 @@ export default function LocationWebsiteDevelopmentPage({ page }) {
         </div>
       </section>
 
-      <section className="kerala-section" aria-labelledby={`${page.slug}-process-title`}>
+      <section className="kerala-section" aria-labelledby={`${currentPage.slug}-process-title`}>
         <div className="kerala-section-heading">
           <span className="section-kicker">How it works</span>
-          <h2 id={`${page.slug}-process-title`}>A simple website creation process</h2>
+          <h2 id={`${currentPage.slug}-process-title`}>A simple website creation process</h2>
         </div>
         <div className="kerala-process-grid">
           {processSteps.map((step, index) => (
@@ -175,23 +183,23 @@ export default function LocationWebsiteDevelopmentPage({ page }) {
         </div>
       </section>
 
-      <section className="kerala-section kerala-audience" aria-labelledby={`${page.slug}-audience-title`}>
+      <section className="kerala-section kerala-audience" aria-labelledby={`${currentPage.slug}-audience-title`}>
         <div>
           <span className="section-kicker">Who we serve</span>
-          <h2 id={`${page.slug}-audience-title`}>{page.audienceTitle}</h2>
-          <p>{page.audienceIntro}</p>
+          <h2 id={`${currentPage.slug}-audience-title`}>{currentPage.audienceTitle}</h2>
+          <p>{currentPage.audienceIntro}</p>
         </div>
         <div className="kerala-pill-list">
-          {page.audiences.map((audience) => (
+          {currentPage.audiences.map((audience) => (
             <span key={audience}>{audience}</span>
           ))}
         </div>
       </section>
 
-      <section className="kerala-section kerala-value" aria-labelledby={`${page.slug}-value-title`}>
+      <section className="kerala-section kerala-value" aria-labelledby={`${currentPage.slug}-value-title`}>
         <div>
-          <span className="section-kicker">{page.valueKicker}</span>
-          <h2 id={`${page.slug}-value-title`}>{page.valueTitle}</h2>
+          <span className="section-kicker">{currentPage.valueKicker}</span>
+          <h2 id={`${currentPage.slug}-value-title`}>{currentPage.valueTitle}</h2>
         </div>
         <div className="kerala-value-grid">
           {benefits.map((item) => (
@@ -204,10 +212,10 @@ export default function LocationWebsiteDevelopmentPage({ page }) {
       </section>
 
       {relatedLinks?.links?.length > 0 && (
-        <section className="kerala-section kerala-related" aria-labelledby={`${page.slug}-related-title`}>
+        <section className="kerala-section kerala-related" aria-labelledby={`${currentPage.slug}-related-title`}>
           <div className="kerala-section-heading">
             <span className="section-kicker">Related pages</span>
-            <h2 id={`${page.slug}-related-title`}>{relatedLinks.sectionTitle}</h2>
+            <h2 id={`${currentPage.slug}-related-title`}>{relatedLinks.sectionTitle}</h2>
             {relatedLinks.intro && <p>{relatedLinks.intro}</p>}
           </div>
           <div className="kerala-related-links">
@@ -221,10 +229,10 @@ export default function LocationWebsiteDevelopmentPage({ page }) {
       )}
 
       {intentQuestions.length > 0 && (
-        <section className="kerala-section" aria-labelledby={`${page.slug}-intent-title`}>
+        <section className="kerala-section" aria-labelledby={`${currentPage.slug}-intent-title`}>
           <div className="kerala-section-heading">
             <span className="section-kicker">Helpful answers</span>
-            <h2 id={`${page.slug}-intent-title`}>Common questions before starting</h2>
+            <h2 id={`${currentPage.slug}-intent-title`}>Common questions before starting</h2>
           </div>
           <div className="kerala-card-grid">
             {intentQuestions.map((item) => (
@@ -237,10 +245,10 @@ export default function LocationWebsiteDevelopmentPage({ page }) {
         </section>
       )}
 
-      <section className="kerala-section kerala-faq" aria-labelledby={`${page.slug}-faq-title`}>
+      <section className="kerala-section kerala-faq" aria-labelledby={`${currentPage.slug}-faq-title`}>
         <div className="kerala-section-heading">
           <span className="section-kicker">FAQ</span>
-          <h2 id={`${page.slug}-faq-title`}>Website development {page.location} questions</h2>
+          <h2 id={`${currentPage.slug}-faq-title`}>Website development {currentPage.location} questions</h2>
         </div>
         <div className="kerala-faq-list">
           {faqs.map((faq) => (
@@ -252,10 +260,10 @@ export default function LocationWebsiteDevelopmentPage({ page }) {
         </div>
       </section>
 
-      <section className="kerala-final-cta" aria-labelledby={`${page.slug}-final-title`}>
+      <section className="kerala-final-cta" aria-labelledby={`${currentPage.slug}-final-title`}>
         <div>
           <span className="section-kicker">Ready to build your business website?</span>
-          <h2 id={`${page.slug}-final-title`}>Get started with Nested Space.</h2>
+          <h2 id={`${currentPage.slug}-final-title`}>Get started with Nested Space.</h2>
           <p>Share your business details and we will prepare the first version around your offer, contact flow, and mobile layout.</p>
         </div>
         <div className="kerala-final-actions">

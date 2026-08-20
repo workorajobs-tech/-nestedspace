@@ -4,6 +4,7 @@ import {
   siteUrl,
   socialImage,
 } from "../seo/businessEntity.js";
+import { fontHeadLinks } from "../seo/performanceHead.js";
 
 const strengths = [
   "Fast 48-hour first delivery",
@@ -851,6 +852,7 @@ export const getLocationPageHtml = (page) => {
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    ${fontHeadLinks}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"

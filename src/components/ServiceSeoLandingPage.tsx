@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FaCheckCircle,
   FaComments,
@@ -12,15 +12,22 @@ import {
 } from "react-icons/fa";
 import Seo from "./Seo";
 import { getInternalLinkSection } from "../seo/internalLinkMap";
-import { getServiceStructuredData, serviceProcess, sharedServiceBenefits } from "./servicePageData";
+import { getServicePageByPath, getServiceStructuredData, serviceProcess, sharedServiceBenefits } from "./servicePageData";
 import "./WebsiteDevelopmentKeralaPage.css";
 
 const processIcons = [<FaComments />, <FaPalette />, <FaMobileAlt />, <FaCheckCircle />, <FaRocket />];
 
-export default function ServiceSeoLandingPage({ page }) {
+export default function ServiceSeoLandingPage({ page, pagePath }) {
+  const location = useLocation();
+  const resolvedPage = page ?? getServicePageByPath(pagePath ?? location.pathname);
   const navigate = useNavigate();
-  const structuredData = getServiceStructuredData(page);
-  const relatedLinks = getInternalLinkSection(page.path);
+  if (!resolvedPage) {
+    return null;
+  }
+
+  const currentPage = resolvedPage;
+  const structuredData = getServiceStructuredData(currentPage);
+  const relatedLinks = getInternalLinkSection(currentPage.path);
 
   const goToContact = () => {
     navigate({ pathname: "/", hash: "#contact-section" });
@@ -33,19 +40,19 @@ export default function ServiceSeoLandingPage({ page }) {
   return (
     <main className="kerala-page service-seo-page">
       <Seo
-        title={page.title}
-        description={page.description}
-        canonical={`https://nestedspace.in${page.path}`}
-        openGraphTitle={page.title}
-        openGraphDescription={page.description}
+        title={currentPage.title}
+        description={currentPage.description}
+        canonical={`https://nestedspace.in${currentPage.path}`}
+        openGraphTitle={currentPage.title}
+        openGraphDescription={currentPage.description}
         structuredData={structuredData}
       />
 
-      <section className="kerala-hero" aria-labelledby={`${page.slug}-title`}>
+      <section className="kerala-hero" aria-labelledby={`${currentPage.slug}-title`}>
         <div className="kerala-hero-copy">
-          <span className="section-kicker">{page.eyebrow}</span>
-          <h1 id={`${page.slug}-title`}>{page.h1}</h1>
-          <p>{page.heroCopy}</p>
+          <span className="section-kicker">{currentPage.eyebrow}</span>
+          <h1 id={`${currentPage.slug}-title`}>{currentPage.h1}</h1>
+          <p>{currentPage.heroCopy}</p>
           <div className="kerala-hero-actions">
             <button className="btn-primary" onClick={goToContact}>
               Start My Website
@@ -72,12 +79,12 @@ export default function ServiceSeoLandingPage({ page }) {
         </div>
       </section>
 
-      <section className="kerala-section kerala-intro" aria-labelledby={`${page.slug}-includes-title`}>
+      <section className="kerala-section kerala-intro" aria-labelledby={`${currentPage.slug}-includes-title`}>
         <div>
           <span className="section-kicker">Service details</span>
-          <h2 id={`${page.slug}-includes-title`}>{page.includeTitle}</h2>
+          <h2 id={`${currentPage.slug}-includes-title`}>{currentPage.includeTitle}</h2>
         </div>
-        <p>{page.includeIntro}</p>
+        <p>{currentPage.includeIntro}</p>
         <p>
           Nested Space keeps the page practical: clear content, mobile-friendly design, basic SEO setup and contact
           actions that match the agreed scope.
@@ -87,13 +94,13 @@ export default function ServiceSeoLandingPage({ page }) {
         </Link>
       </section>
 
-      <section className="kerala-section" aria-labelledby={`${page.slug}-includes-list-title`}>
+      <section className="kerala-section" aria-labelledby={`${currentPage.slug}-includes-list-title`}>
         <div className="kerala-section-heading">
           <span className="section-kicker">What is included</span>
-          <h2 id={`${page.slug}-includes-list-title`}>What this service can include</h2>
+          <h2 id={`${currentPage.slug}-includes-list-title`}>What this service can include</h2>
         </div>
         <div className="kerala-card-grid">
-          {page.includes.map((item) => (
+          {currentPage.includes.map((item) => (
             <article className="kerala-card" key={item.title}>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
@@ -102,23 +109,23 @@ export default function ServiceSeoLandingPage({ page }) {
         </div>
       </section>
 
-      <section className="kerala-section kerala-audience" aria-labelledby={`${page.slug}-audience-title`}>
+      <section className="kerala-section kerala-audience" aria-labelledby={`${currentPage.slug}-audience-title`}>
         <div>
           <span className="section-kicker">Who it is for</span>
-          <h2 id={`${page.slug}-audience-title`}>{page.audienceTitle}</h2>
-          <p>{page.audienceIntro}</p>
+          <h2 id={`${currentPage.slug}-audience-title`}>{currentPage.audienceTitle}</h2>
+          <p>{currentPage.audienceIntro}</p>
         </div>
         <div className="kerala-pill-list">
-          {page.audiences.map((audience) => (
+          {currentPage.audiences.map((audience) => (
             <span key={audience}>{audience}</span>
           ))}
         </div>
       </section>
 
-      <section className="kerala-section kerala-strengths" aria-labelledby={`${page.slug}-benefits-title`}>
+      <section className="kerala-section kerala-strengths" aria-labelledby={`${currentPage.slug}-benefits-title`}>
         <div className="kerala-section-heading">
           <span className="section-kicker">Key benefits</span>
-          <h2 id={`${page.slug}-benefits-title`}>Why businesses use this service</h2>
+          <h2 id={`${currentPage.slug}-benefits-title`}>Why businesses use this service</h2>
         </div>
         <div className="kerala-check-grid">
           {sharedServiceBenefits.map((benefit) => (
@@ -130,13 +137,13 @@ export default function ServiceSeoLandingPage({ page }) {
         </div>
       </section>
 
-      <section className="kerala-section" aria-labelledby={`${page.slug}-features-title`}>
+      <section className="kerala-section" aria-labelledby={`${currentPage.slug}-features-title`}>
         <div className="kerala-section-heading">
           <span className="section-kicker">Typical features</span>
-          <h2 id={`${page.slug}-features-title`}>{page.featureTitle}</h2>
+          <h2 id={`${currentPage.slug}-features-title`}>{currentPage.featureTitle}</h2>
         </div>
         <div className="kerala-value-grid">
-          {page.features.map((feature) => (
+          {currentPage.features.map((feature) => (
             <div className="kerala-value-item" key={feature}>
               <FaSearch />
               <span>{feature}</span>
@@ -145,10 +152,10 @@ export default function ServiceSeoLandingPage({ page }) {
         </div>
       </section>
 
-      <section className="kerala-section" aria-labelledby={`${page.slug}-process-title`}>
+      <section className="kerala-section" aria-labelledby={`${currentPage.slug}-process-title`}>
         <div className="kerala-section-heading">
           <span className="section-kicker">Our process</span>
-          <h2 id={`${page.slug}-process-title`}>A simple development process</h2>
+          <h2 id={`${currentPage.slug}-process-title`}>A simple development process</h2>
         </div>
         <div className="kerala-process-grid">
           {serviceProcess.map((step, index) => (
@@ -161,34 +168,34 @@ export default function ServiceSeoLandingPage({ page }) {
         </div>
       </section>
 
-      <section className="kerala-section kerala-intro" aria-labelledby={`${page.slug}-mobile-title`}>
+      <section className="kerala-section kerala-intro" aria-labelledby={`${currentPage.slug}-mobile-title`}>
         <div>
           <span className="section-kicker">Mobile and responsive design</span>
-          <h2 id={`${page.slug}-mobile-title`}>{page.mobileTitle}</h2>
+          <h2 id={`${currentPage.slug}-mobile-title`}>{currentPage.mobileTitle}</h2>
         </div>
-        <p>{page.mobileCopy}</p>
-        <p>{page.contactCopy}</p>
+        <p>{currentPage.mobileCopy}</p>
+        <p>{currentPage.contactCopy}</p>
       </section>
 
-      <section className="kerala-section kerala-intro" aria-labelledby={`${page.slug}-pricing-title`}>
+      <section className="kerala-section kerala-intro" aria-labelledby={`${currentPage.slug}-pricing-title`}>
         <div>
           <span className="section-kicker">Pricing guidance</span>
-          <h2 id={`${page.slug}-pricing-title`}>Starter website pricing</h2>
+          <h2 id={`${currentPage.slug}-pricing-title`}>Starter website pricing</h2>
         </div>
-        <p>{page.pricingCopy}</p>
+        <p>{currentPage.pricingCopy}</p>
         <p>
           Pricing is kept to known Nested Space offers only. Sales, lead, and search ranking promises are not made.
         </p>
       </section>
 
-      {page.intentQuestions?.length > 0 && (
-        <section className="kerala-section" aria-labelledby={`${page.slug}-intent-title`}>
+      {currentPage.intentQuestions?.length > 0 && (
+        <section className="kerala-section" aria-labelledby={`${currentPage.slug}-intent-title`}>
           <div className="kerala-section-heading">
             <span className="section-kicker">Helpful answers</span>
-            <h2 id={`${page.slug}-intent-title`}>Common questions before starting</h2>
+            <h2 id={`${currentPage.slug}-intent-title`}>Common questions before starting</h2>
           </div>
           <div className="kerala-card-grid">
-            {page.intentQuestions.map((item) => (
+            {currentPage.intentQuestions.map((item) => (
               <article className="kerala-card" key={item.question}>
                 <h3>{item.question}</h3>
                 <p>{item.answer}</p>
@@ -199,10 +206,10 @@ export default function ServiceSeoLandingPage({ page }) {
       )}
 
       {relatedLinks?.links?.length > 0 && (
-        <section className="kerala-section kerala-related" aria-labelledby={`${page.slug}-related-title`}>
+        <section className="kerala-section kerala-related" aria-labelledby={`${currentPage.slug}-related-title`}>
           <div className="kerala-section-heading">
             <span className="section-kicker">Related pages</span>
-            <h2 id={`${page.slug}-related-title`}>{relatedLinks.sectionTitle}</h2>
+            <h2 id={`${currentPage.slug}-related-title`}>{relatedLinks.sectionTitle}</h2>
             {relatedLinks.intro && <p>{relatedLinks.intro}</p>}
           </div>
           <div className="kerala-related-links">
@@ -215,25 +222,25 @@ export default function ServiceSeoLandingPage({ page }) {
         </section>
       )}
 
-      <section className="kerala-section kerala-intro" aria-labelledby={`${page.slug}-contact-title`}>
+      <section className="kerala-section kerala-intro" aria-labelledby={`${currentPage.slug}-contact-title`}>
         <div>
           <span className="section-kicker">Contact and WhatsApp enquiries</span>
-          <h2 id={`${page.slug}-contact-title`}>{page.contactTitle}</h2>
+          <h2 id={`${currentPage.slug}-contact-title`}>{currentPage.contactTitle}</h2>
         </div>
-        <p>{page.contactCopy}</p>
+        <p>{currentPage.contactCopy}</p>
         <p>
           Share your business details through the contact flow and we will shape the page around the agreed service
           scope.
         </p>
       </section>
 
-      <section className="kerala-section kerala-faq" aria-labelledby={`${page.slug}-faq-title`}>
+      <section className="kerala-section kerala-faq" aria-labelledby={`${currentPage.slug}-faq-title`}>
         <div className="kerala-section-heading">
           <span className="section-kicker">FAQ</span>
-          <h2 id={`${page.slug}-faq-title`}>Questions about {page.eyebrow.toLowerCase()}</h2>
+          <h2 id={`${currentPage.slug}-faq-title`}>Questions about {currentPage.eyebrow.toLowerCase()}</h2>
         </div>
         <div className="kerala-faq-list">
-          {page.faqs.map((faq) => (
+          {currentPage.faqs.map((faq) => (
             <article className="kerala-faq-item" key={faq.question}>
               <h3>{faq.question}</h3>
               <p>{faq.answer}</p>
@@ -242,10 +249,10 @@ export default function ServiceSeoLandingPage({ page }) {
         </div>
       </section>
 
-      <section className="kerala-final-cta" aria-labelledby={`${page.slug}-final-title`}>
+      <section className="kerala-final-cta" aria-labelledby={`${currentPage.slug}-final-title`}>
         <div>
           <span className="section-kicker">Ready to build your business website?</span>
-          <h2 id={`${page.slug}-final-title`}>Get started with Nested Space.</h2>
+          <h2 id={`${currentPage.slug}-final-title`}>Get started with Nested Space.</h2>
           <p>Send the business details, offer and references. We will prepare a focused first version for review.</p>
         </div>
         <div className="kerala-final-actions">

@@ -1,4 +1,5 @@
 import { getBusinessEntityGraph, socialImage } from "./businessEntity.js";
+import { fontHeadLinks } from "./performanceHead.js";
 
 export const homePageMetadata = Object.freeze({
   title: "Nested Space | Website Development Company in Kerala, India",
@@ -34,6 +35,7 @@ export const getHomePageHtml = () => {
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    ${fontHeadLinks}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"

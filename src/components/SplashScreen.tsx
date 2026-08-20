@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import nestedSpaceLogo from "../assets/nested-space-logo.png";
+import nestedSpaceLogo from "../assets/nested-space-logo.webp";
 import "./SplashScreen.css";
 
 interface SplashScreenProps {
@@ -14,8 +14,8 @@ export default function SplashScreen({ onFinish }: SplashScreenProps) {
       setIsVisible(false);
       setTimeout(() => {
         onFinish();
-      }, 500); // Wait for fade out animation
-    }, 2000); // splash duration (ms)
+      }, 250);
+    }, 900);
     return () => clearTimeout(timer);
   }, [onFinish]);
 

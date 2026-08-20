@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { FaInstagram, FaLinkedinIn, FaBars, FaTimes } from "react-icons/fa";
-import nestedSpaceLogo from "../assets/nested-space-logo.png";
+import nestedSpaceLogo from "../assets/nested-space-logo.webp";
 import { officialSocialProfiles } from "../seo/businessEntity";
 
 const navItems = [
