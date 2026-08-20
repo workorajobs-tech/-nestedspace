@@ -1,5 +1,10 @@
 const website = "https://nestedspace.in";
 
+export const officialSocialProfiles = Object.freeze({
+  instagram: "https://www.instagram.com/nested_space/",
+  linkedin: "https://www.linkedin.com/company/nested-space/",
+});
+
 export const businessEntity = Object.freeze({
   name: "Nested Space",
   legalName: "Nested Space",
@@ -22,7 +27,7 @@ export const businessEntity = Object.freeze({
   businessHours: null,
   googleMapsUrl: null,
   googleBusinessProfileUrl: null,
-  socialProfiles: Object.freeze([]),
+  socialProfiles: Object.freeze([officialSocialProfiles.linkedin, officialSocialProfiles.instagram]),
 });
 
 export const siteUrl = businessEntity.website;

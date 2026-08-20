@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { FaInstagram, FaLinkedinIn, FaBars, FaTimes } from "react-icons/fa";
 import nestedSpaceLogo from "../assets/nested-space-logo.png";
+import { officialSocialProfiles } from "../seo/businessEntity";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -55,10 +56,10 @@ export default function Header() {
 
         {/* Right: Social + Button */}
         <div className="header-right">
-          <a href="https://www.instagram.com/nestedloop.space" target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="Instagram">
+          <a href={officialSocialProfiles.instagram} target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="Instagram">
             <FaInstagram />
           </a>
-          <a href="https://www.linkedin.com/company/nestedloop-space" target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="LinkedIn">
+          <a href={officialSocialProfiles.linkedin} target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="LinkedIn">
             <FaLinkedinIn />
           </a>
           <button className="cta-btn" onClick={goToContact}>
@@ -69,10 +70,10 @@ export default function Header() {
 
         {/* Mobile Right Section: Social Icons + Menu Button */}
         <div className="mobile-header-right">
-          <a href="https://www.instagram.com/nestedloop.space" target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="Instagram">
+          <a href={officialSocialProfiles.instagram} target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="Instagram">
             <FaInstagram />
           </a>
-          <a href="https://www.linkedin.com/company/nestedloop-space" target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="LinkedIn">
+          <a href={officialSocialProfiles.linkedin} target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="LinkedIn">
             <FaLinkedinIn />
           </a>
           <button
