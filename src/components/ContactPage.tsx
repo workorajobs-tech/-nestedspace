@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ContactPage.css";
-import { FaBuilding, FaClock, FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
-import { businessEntity, getBusinessAddressText, getTelephoneHref } from "../seo/businessEntity";
+import { FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
+import { businessEntity, getTelephoneHref } from "../seo/businessEntity";
 
 const whatsappNumber =
   import.meta.env.VITE_WHATSAPP_NUMBER?.replace(/\D/g, "") ?? businessEntity.telephone.replace(/\D/g, "");
@@ -49,7 +49,6 @@ export default function ContactPage() {
     { q: "How many edits are included?", a: "The starter package includes one focused revision round after the first delivery." },
     { q: "Do I need to pay first?", a: "No. You review the agreed work first and pay after approval." }
   ];
-  const businessHoursLabel = businessEntity.businessHours ? "Business hours available" : "Business hours will be updated here when confirmed.";
 
   return (
     <div id="contact-section" className="contact-wrapper">
@@ -91,11 +90,6 @@ export default function ContactPage() {
               <span>Phone: {businessEntity.telephone}</span>
             </a>
             <p>{businessEntity.serviceAreaSentence}</p>
-            <p>Customers can visit the Kozhikode office for consultations and project discussions.</p>
-            <p className="business-hours">
-              <FaClock />
-              <span>{businessHoursLabel}</span>
-            </p>
           </div>
 
           <div className="faq">
@@ -117,20 +111,20 @@ export default function ContactPage() {
         <h2>What you can expect</h2>
         <div className="owners-grid">
           <div className="owner-card">
-            <div className="avatar"><FaBuilding /></div>
-            <h3>Office consultations</h3>
-            <span className="role">{getBusinessAddressText()}</span>
+            <div className="avatar"></div>
+            <h3>Salmanul Faris</h3>
+            <span className="role">Design & Development</span>
             <p>
-              Visit the Kozhikode office to discuss your business website, project scope, content, and launch requirements.
+              We plan the business website around one clear offer, write the core sections, and build a responsive page for your product or service.
             </p>
           </div>
 
           <div className="owner-card">
-            <div className="avatar female"><FaWhatsapp /></div>
-            <h3>Remote project discussions</h3>
-            <span className="role">Kerala and India</span>
+            <div className="avatar female"></div>
+            <h3>Nithun</h3>
+            <span className="role">Launch & Handover</span>
             <p>
-              Share your requirements through WhatsApp if you are outside Kozhikode or prefer an online discussion.
+              We help with final website checks, contact links, deployment, and small launch edits so the page is ready to share.
             </p>
           </div>
         </div>

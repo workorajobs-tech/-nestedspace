@@ -215,18 +215,6 @@ form button:hover {
   color: #7b2ff7;
 }
 
-.business-hours {
-  align-items: flex-start;
-  display: flex;
-  gap: 10px;
-}
-
-.business-hours svg {
-  color: #7b2ff7;
-  flex: 0 0 auto;
-  margin-top: 2px;
-}
-
 /* ===== OWNERS ===== */
 .owners {
   margin-top: 38px;
@@ -285,11 +273,6 @@ form button:hover {
   margin: 0 auto 12px auto;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  align-items: center;
-  color: #7b2ff7;
-  display: flex;
-  font-size: 1.4rem;
-  justify-content: center;
 }
 
 .owner-card h3 {
