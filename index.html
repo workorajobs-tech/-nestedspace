@@ -32,25 +32,85 @@
     <meta name="twitter:image:alt" content="Nested Space logo" />
     <script id="page-structured-data" type="application/ld+json">
       {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Organization",
-            "@id": "https://nestedspace.in/#organization",
-            "name": "Nested Space",
-            "url": "https://nestedspace.in/",
-            "logo": "https://nestedspace.in/og-image.png"
-          },
-          {
-            "@type": "WebSite",
-            "@id": "https://nestedspace.in/#website",
-            "url": "https://nestedspace.in/",
-            "name": "Nested Space",
-            "publisher": {
-              "@id": "https://nestedspace.in/#organization"
-            }
-          }
-        ]
+              "@context": "https://schema.org",
+              "@graph": [
+                      {
+                              "@type": "Organization",
+                              "@id": "https://nestedspace.in/#organization",
+                              "name": "Nested Space",
+                              "legalName": "Nested Space",
+                              "url": "https://nestedspace.in/",
+                              "logo": "https://nestedspace.in/og-image.png",
+                              "telephone": "+91 9656838767",
+                              "address": {
+                                      "@type": "PostalAddress",
+                                      "streetAddress": "Hilite Business Park",
+                                      "addressLocality": "Kozhikode",
+                                      "addressRegion": "Kerala",
+                                      "addressCountry": "India"
+                              },
+                              "areaServed": [
+                                      {
+                                              "@type": "AdministrativeArea",
+                                              "name": "Kerala"
+                                      },
+                                      {
+                                              "@type": "Country",
+                                              "name": "India"
+                                      }
+                              ],
+                              "contactPoint": [
+                                      {
+                                              "@type": "ContactPoint",
+                                              "telephone": "+91 9656838767",
+                                              "contactType": "customer enquiries",
+                                              "areaServed": "Kerala, India"
+                                      }
+                              ]
+                      },
+                      {
+                              "@type": [
+                                      "LocalBusiness",
+                                      "SoftwareCompany"
+                              ],
+                              "@id": "https://nestedspace.in/#local-business",
+                              "name": "Nested Space",
+                              "legalName": "Nested Space",
+                              "url": "https://nestedspace.in/",
+                              "image": "https://nestedspace.in/og-image.png",
+                              "telephone": "+91 9656838767",
+                              "address": {
+                                      "@type": "PostalAddress",
+                                      "streetAddress": "Hilite Business Park",
+                                      "addressLocality": "Kozhikode",
+                                      "addressRegion": "Kerala",
+                                      "addressCountry": "India"
+                              },
+                              "areaServed": [
+                                      {
+                                              "@type": "AdministrativeArea",
+                                              "name": "Kerala"
+                                      },
+                                      {
+                                              "@type": "Country",
+                                              "name": "India"
+                                      }
+                              ],
+                              "description": "Nested Space is a software company based in Kozhikode, Kerala, serving businesses across Kerala and throughout India.",
+                              "parentOrganization": {
+                                      "@id": "https://nestedspace.in/#organization"
+                              }
+                      },
+                      {
+                              "@type": "WebSite",
+                              "@id": "https://nestedspace.in/#website",
+                              "url": "https://nestedspace.in/",
+                              "name": "Nested Space",
+                              "publisher": {
+                                      "@id": "https://nestedspace.in/#organization"
+                              }
+                      }
+              ]
       }
     </script>
     <title>Nested Space | Website Development Company in Kerala, India</title>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Header.css";
-import { FaInstagram, FaLinkedinIn, FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import nestedSpaceLogo from "../assets/nested-space-logo.png";
 
 const navItems = [
@@ -53,28 +53,16 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Right: Social + Button */}
+        {/* Right: Button */}
         <div className="header-right">
-          <a href="https://www.instagram.com/nestedloop.space" target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="Instagram">
-            <FaInstagram />
-          </a>
-          <a href="https://www.linkedin.com/company/nestedloop-space" target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="LinkedIn">
-            <FaLinkedinIn />
-          </a>
           <button className="cta-btn" onClick={goToContact}>
             Start My Website
             <span className="badge">Pay After Work</span>
           </button>
         </div>
 
-        {/* Mobile Right Section: Social Icons + Menu Button */}
+        {/* Mobile Right Section: Menu Button */}
         <div className="mobile-header-right">
-          <a href="https://www.instagram.com/nestedloop.space" target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="Instagram">
-            <FaInstagram />
-          </a>
-          <a href="https://www.linkedin.com/company/nestedloop-space" target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="LinkedIn">
-            <FaLinkedinIn />
-          </a>
           <button
             className="mobile-menu-btn"
             onClick={toggleMobileMenu}

@@ -1,5 +1,9 @@
-const siteUrl = "https://nestedspace.in";
-const socialImage = `${siteUrl}/og-image.png`;
+import {
+  getBusinessEntityGraph,
+  getCanonicalUrl,
+  siteUrl,
+  socialImage,
+} from "../seo/businessEntity.js";
 
 const serviceProcess = [
   {
@@ -662,22 +666,7 @@ export const getServicePageByPath = (path) => servicePageConfigs.find((page) => 
 export const getServiceStructuredData = (page) => ({
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${siteUrl}/#organization`,
-      name: "Nested Space",
-      url: `${siteUrl}/`,
-      logo: socialImage,
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
-      url: `${siteUrl}/`,
-      name: "Nested Space",
-      publisher: {
-        "@id": `${siteUrl}/#organization`,
-      },
-    },
+    ...getBusinessEntityGraph(),
     {
       "@type": "BreadcrumbList",
       "@id": `${siteUrl}${page.path}#breadcrumb`,
@@ -721,7 +710,7 @@ const escapeHtml = (value) =>
     .replaceAll(">", "&gt;");
 
 export const getServicePageHtml = (page) => {
-  const canonical = `${siteUrl}${page.path}`;
+  const canonical = getCanonicalUrl(page.path);
   const structuredData = JSON.stringify(getServiceStructuredData(page), null, 8)
     .split("\n")
     .map((line) => `      ${line}`)

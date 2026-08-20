@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import Seo from "./Seo";
 import { getInternalLinkSection } from "../seo/internalLinkMap";
+import { businessEntity } from "../seo/businessEntity";
 import {
   benefits,
   getFaqs,
@@ -25,6 +26,27 @@ import "./WebsiteDevelopmentKeralaPage.css";
 
 const processIcons = [<FaComments />, <FaPalette />, <FaMobileAlt />, <FaCheckCircle />, <FaRocket />];
 
+const getLocationPresenceCopy = (page) => {
+  if (page.slug === "kozhikode") {
+    return {
+      title: "Kozhikode office consultations",
+      body: `Nested Space has its office at ${businessEntity.address.streetAddress}, ${businessEntity.address.addressLocality}. Customers can visit the office for website consultations and project discussions.`,
+    };
+  }
+
+  if (page.slug === "kerala") {
+    return {
+      title: "Kerala-wide website development support",
+      body: "Nested Space is based in Kozhikode and serves businesses across Kerala and throughout India through office consultations and remote project discussions.",
+    };
+  }
+
+  return {
+    title: `Website development services for ${page.location}`,
+    body: `Nested Space serves ${page.location} businesses from its Kozhikode office and through remote consultations. This page represents service availability, not a physical branch in ${page.location}.`,
+  };
+};
+
 export default function LocationWebsiteDevelopmentPage({ page }) {
   const navigate = useNavigate();
   const services = getServiceCards(page);
@@ -32,6 +54,7 @@ export default function LocationWebsiteDevelopmentPage({ page }) {
   const intentQuestions = getLocationIntentQuestions(page);
   const structuredData = getStructuredData(page);
   const relatedLinks = getInternalLinkSection(page.path);
+  const locationPresence = getLocationPresenceCopy(page);
 
   const goToContact = () => {
     navigate({ pathname: "/", hash: "#contact-section" });
@@ -93,6 +116,15 @@ export default function LocationWebsiteDevelopmentPage({ page }) {
         <Link className="kerala-text-link" to="/">
           Visit the Nested Space homepage
         </Link>
+      </section>
+
+      <section className="kerala-section kerala-intro" aria-labelledby={`${page.slug}-presence-title`}>
+        <div>
+          <span className="section-kicker">Local presence</span>
+          <h2 id={`${page.slug}-presence-title`}>{locationPresence.title}</h2>
+        </div>
+        <p>{locationPresence.body}</p>
+        <p>{businessEntity.serviceAreaSentence}</p>
       </section>
 
       <section className="kerala-section" aria-labelledby={`${page.slug}-services-title`}>

@@ -5,6 +5,7 @@ import Features from "./Features";
 import ContactPage from "./ContactPage";
 import Seo from "./Seo";
 import { FaCheckCircle, FaComments, FaPalette, FaRocket } from "react-icons/fa";
+import { getHomeStructuredData, homePageMetadata } from "../seo/homePageMetadata";
 
 const processSteps = [
   { icon: <FaComments />, title: "Share the idea", text: "Send your business name, products, colors, and WhatsApp number." },
@@ -20,28 +21,6 @@ const samples = [
 
 const previewFeatures = ["WhatsApp CTA", "UPI ready", "Mobile first"];
 
-const homeStructuredData = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://nestedspace.in/#organization",
-      name: "Nested Space",
-      url: "https://nestedspace.in/",
-      logo: "https://nestedspace.in/og-image.png",
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://nestedspace.in/#website",
-      url: "https://nestedspace.in/",
-      name: "Nested Space",
-      publisher: {
-        "@id": "https://nestedspace.in/#organization",
-      },
-    },
-  ],
-};
-
 export default function HeroComponent() {
   const navigate = useNavigate();
   const scrollToContact = () => document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" });
@@ -50,12 +29,12 @@ export default function HeroComponent() {
   return (
     <div className="hero-page" id="home">
       <Seo
-        title="Nested Space | Website Development Company in Kerala, India"
-        description="Nested Space is a website development and web development company in Kerala, India, creating mobile-friendly business websites for shops, Instagram sellers, startups, and small businesses."
-        canonical="https://nestedspace.in/"
-        openGraphTitle="Nested Space | Website Development Company in Kerala, India"
-        openGraphDescription="Nested Space creates mobile-friendly business websites and landing pages for shops, Instagram sellers, startups, and small businesses in Kerala and across India."
-        structuredData={homeStructuredData}
+        title={homePageMetadata.title}
+        description={homePageMetadata.description}
+        canonical={homePageMetadata.canonical}
+        openGraphTitle={homePageMetadata.title}
+        openGraphDescription={homePageMetadata.openGraphDescription}
+        structuredData={getHomeStructuredData()}
       />
       <div className="hero-card">
         <div className="hero-decor"></div>
@@ -73,7 +52,7 @@ export default function HeroComponent() {
             </h1>
 
             <p className="hero-sub">
-              Nested Space creates mobile-friendly websites for shops, Instagram sellers, startups, and small businesses in Kerala and across India.
+              Nested Space creates mobile-friendly websites for shops, Instagram sellers, startups, and small businesses. Serving businesses across Kerala and throughout India.
             </p>
 
             <div className="hero-ctas">

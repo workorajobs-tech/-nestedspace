@@ -11,8 +11,11 @@ import {
   getServicePageHtml,
   servicePageConfigs,
 } from "../src/components/servicePageData.js";
+import { getHomePageHtml } from "../src/seo/homePageMetadata.js";
 
 const rootDir = fileURLToPath(new URL("..", import.meta.url));
+
+writeFileSync(resolve(rootDir, "index.html"), getHomePageHtml());
 
 for (const page of locationPageConfigs) {
   writeFileSync(resolve(rootDir, getHtmlFileName(page)), getLocationPageHtml(page));

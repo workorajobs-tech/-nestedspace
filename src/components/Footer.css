@@ -11,10 +11,26 @@
   color: #6b7280;
   font-size: 0.875rem;
   padding: 0 1rem;
+  display: grid;
+  gap: 0.35rem;
 }
 
-.footer-content p {
+.footer-content p,
+.footer-content address {
   margin: 0;
+}
+
+.footer-content address {
+  font-style: normal;
+}
+
+.footer-content a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  color: #7b2ff7;
 }
 
 /* Mobile Responsive */
