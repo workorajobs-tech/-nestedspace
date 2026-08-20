@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "./ContactPage.css";
-import { FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
-import { businessEntity, getTelephoneHref } from "../seo/businessEntity";
+import { FaLinkedinIn, FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
+import { businessEntity, getTelephoneHref, officialSocialProfiles } from "../seo/businessEntity";
+import salmanulFarisPhoto from "../assets/owner-salmanul-faris.webp";
+import nithunPhoto from "../assets/owner-nithun.webp";
 
 const whatsappNumber =
   import.meta.env.VITE_WHATSAPP_NUMBER?.replace(/\D/g, "") ?? businessEntity.telephone.replace(/\D/g, "");
+const salmanulFarisLinkedIn =
+  "https://www.linkedin.com/in/salmanul-faris-292659170?utm_source=share_via&utm_content=profile&utm_medium=member_ios";
 const buildWhatsAppUrl = (message: string) => {
   const encodedMessage = encodeURIComponent(message);
   return whatsappNumber
@@ -111,8 +115,27 @@ export default function ContactPage() {
         <h2>What you can expect</h2>
         <div className="owners-grid">
           <div className="owner-card">
-            <div className="avatar"></div>
-            <h3>Salmanul Faris</h3>
+            <img
+              src={salmanulFarisPhoto}
+              alt="Salmanul Faris"
+              className="avatar"
+              width="360"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            />
+            <h3>
+              Salmanul Faris
+              <a
+                href={salmanulFarisLinkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="owner-social-link"
+                aria-label="Salmanul Faris LinkedIn"
+              >
+                <FaLinkedinIn />
+              </a>
+            </h3>
             <span className="role">Design & Development</span>
             <p>
               We plan the business website around one clear offer, write the core sections, and build a responsive page for your product or service.
@@ -120,8 +143,27 @@ export default function ContactPage() {
           </div>
 
           <div className="owner-card">
-            <div className="avatar female"></div>
-            <h3>Nithun</h3>
+            <img
+              src={nithunPhoto}
+              alt="Nithun"
+              className="avatar"
+              width="360"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            />
+            <h3>
+              Nithun
+              <a
+                href={officialSocialProfiles.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="owner-social-link"
+                aria-label="Nested Space LinkedIn"
+              >
+                <FaLinkedinIn />
+              </a>
+            </h3>
             <span className="role">Launch & Handover</span>
             <p>
               We help with final website checks, contact links, deployment, and small launch edits so the page is ready to share.

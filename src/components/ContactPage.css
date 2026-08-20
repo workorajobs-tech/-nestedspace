@@ -271,18 +271,42 @@ form button:hover {
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   margin: 0 auto 12px auto;
+  display: block;
+  object-fit: cover;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
 .owner-card h3 {
   margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .role {
+  display: block;
   font-size: 0.85rem;
   font-weight: 500;
   color: #7b2ff7;
+}
+
+.owner-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 6px;
+  color: #6b7280;
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.owner-social-link:hover {
+  color: #8a2be2;
+  transform: translateY(-2px) scale(1.1);
 }
 
 .owner-card p {
