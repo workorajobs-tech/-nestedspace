@@ -30,7 +30,7 @@ export default function Features() {
         <FeatureCard
           icon={<FaTruck />}
           title="Fast website delivery — 48 hours"
-          description="Get the first working version quickly, with mobile layout and core business sections already in place."
+          description="Get the first working version quickly, with responsive layout and core business sections already in place."
         />
         <FeatureCard
           icon={<FaShieldAlt />}
