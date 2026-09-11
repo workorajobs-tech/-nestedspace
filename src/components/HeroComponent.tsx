@@ -1,22 +1,16 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./hero.css";
 import Features from "./Features";
 import ContactPage from "./ContactPage";
 import Seo from "./Seo";
-import { FaCheckCircle, FaComments, FaPalette, FaRocket } from "react-icons/fa";
+import { FaComments, FaPalette, FaRocket } from "react-icons/fa";
+import BigBangsProject from "./BigBangsProject";
 import { getHomeStructuredData, homePageMetadata } from "../seo/homePageMetadata";
 
 const processSteps = [
   { icon: <FaComments />, title: "Share the idea", text: "Send your business name, products, colors, and WhatsApp number." },
   { icon: <FaPalette />, title: "Approve the design", text: "We prepare a focused landing page layout for your offer and audience." },
   { icon: <FaRocket />, title: "Go live", text: "After approval, we connect links, polish mobile views, and hand over the files." },
-];
-
-const samples = [
-  "Local shop landing page",
-  "Instagram seller catalogue",
-  "Startup service website",
 ];
 
 const previewFeatures = ["WhatsApp CTA", "UPI ready", "Mobile first"];
@@ -134,23 +128,16 @@ export default function HeroComponent() {
           </div>
         </section>
 
-        <section className="portfolio-section" id="portfolio" aria-labelledby="portfolio-title">
+        <section className="portfolio-section portfolio-section--featured" id="portfolio" aria-labelledby="portfolio-title">
           <div className="portfolio-copy">
-            <span className="section-kicker">Portfolio-ready formats</span>
-            <h2 id="portfolio-title">Business website formats for WhatsApp, Instagram, and UPI sellers</h2>
+            <span className="section-kicker">Our work</span>
+            <h2 id="portfolio-title">Built by Nested Space. Made to stand out.</h2>
             <p>
-              Each business website is designed to make the offer clear, collect leads fast, and look credible on mobile first.
+              Explore Big Bangs, a streetwear website we designed and developed with a bold visual identity and a mobile-friendly shopping catalogue.
             </p>
-            <button className="text-link-button" onClick={openSamples}>View finished work samples</button>
+            <button className="text-link-button" onClick={openSamples}>View projects &amp; samples</button>
           </div>
-          <div className="sample-list">
-            {samples.map((sample) => (
-              <div className="sample-item" key={sample}>
-                <FaCheckCircle />
-                <span>{sample}</span>
-              </div>
-            ))}
-          </div>
+          <BigBangsProject />
         </section>
 
         <section className="pricing-section" id="pricing" aria-labelledby="pricing-title">
