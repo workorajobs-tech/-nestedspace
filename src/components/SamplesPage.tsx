@@ -1,7 +1,7 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaCheckCircle, FaExternalLinkAlt, FaWhatsapp } from "react-icons/fa";
 import "./SamplesPage.css";
+import BigBangsProject from "./BigBangsProject";
 
 const finishedSamples = [
   {
@@ -52,16 +52,23 @@ export default function SamplesPage() {
         </button>
 
         <div className="samples-heading">
-          <span className="section-kicker">Finished work samples</span>
-          <h1 id="samples-title">Landing page formats ready for shops, sellers, and startups</h1>
+          <span className="section-kicker">Projects &amp; samples</span>
+          <h1 id="samples-title">Websites with a character of their own.</h1>
           <p>
-            These samples show the type of finished one-page websites we build: clear offer, mobile layout,
-            WhatsApp-ready contact flow, and fast launch handover.
+            Explore Big Bangs, our featured streetwear project, then browse sample formats for shops, sellers, and startups.
           </p>
         </div>
       </section>
 
-      <section className="samples-grid" aria-label="Finished website samples">
+      <section className="samples-featured" aria-label="Featured live project">
+        <BigBangsProject />
+      </section>
+
+      <div className="samples-concepts-heading">
+        <h2>More website formats</h2>
+        <p>Illustrative layouts to help you imagine your own website.</p>
+      </div>
+      <section className="samples-grid" aria-label="Illustrative website samples">
         {finishedSamples.map((sample) => (
           <article className="sample-card" key={sample.title}>
             <div className={`sample-preview ${sample.palette}`}>
@@ -88,7 +95,7 @@ export default function SamplesPage() {
               <div className="sample-card-topline">
                 <span className="sample-status">
                   <FaCheckCircle />
-                  Finished sample
+                  Sample layout
                 </span>
                 <span>{sample.metric}</span>
               </div>
