@@ -59,7 +59,7 @@ export default function ContactPage() {
       <div className="contact-card">
         {/* Left: Form */}
         <div className="form-section">
-          <h2>Start your business website request</h2>
+          <h2>Tell us what you have in mind.</h2>
           <p>Tell us what you sell and where customers should contact you. The form opens WhatsApp with your website creation details ready to send.</p>
 
           <form onSubmit={submitForm}>
@@ -68,7 +68,7 @@ export default function ContactPage() {
             <input type="tel" name="whatsapp" placeholder="WhatsApp Number" aria-label="WhatsApp Number" autoComplete="tel" value={form.whatsapp} onChange={updateField} required />
             <input type="text" name="city" placeholder="City" aria-label="City" autoComplete="address-level2" value={form.city} onChange={updateField} />
             <textarea name="message" placeholder="What should the page promote?" aria-label="What should the page promote?" rows={4} value={form.message} onChange={updateField}></textarea>
-            <button type="submit">Send Message</button>
+            <button type="submit">Continue on WhatsApp ↗</button>
           </form>
         </div>
 
@@ -97,7 +97,7 @@ export default function ContactPage() {
           </div>
 
           <div className="faq">
-            <h3>FAQ</h3>
+            <h3>A few things you might be wondering.</h3>
             {faqs.map((item, i) => (
               <div key={i} className={`faq-item ${faqOpen === i ? "open" : ""}`}>
                 <button onClick={() => toggleFaq(i)} aria-expanded={faqOpen === i}>
@@ -112,7 +112,7 @@ export default function ContactPage() {
       </div>
 
       <div className="owners">
-        <h2>What you can expect</h2>
+        <h2>Real people. Invested in your next step.</h2>
         <div className="owners-grid">
           <div className="owner-card">
             <img

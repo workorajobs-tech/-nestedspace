@@ -1,0 +1,154 @@
+/* Shared readable type sizes for the space-themed pages, including mobile. */
+.App {
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-action: 0.9375rem;
+}
+
+.App .studio-home :is(
+  .studio-hero-copy > p,
+  .proof-inner > p,
+  .studio-section-heading > p,
+  .studio-service p,
+  .studio-steps p,
+  .pricing-intro > p,
+  .studio-price-card > p,
+  .studio-price-card li,
+  .form-section > p,
+  .business-detail,
+  .business-info p,
+  .faq-item p,
+  .owner-card p
+) {
+  font-size: var(--text-body);
+  line-height: 1.7;
+}
+
+.App .studio-home :is(
+  .studio-eyebrow,
+  .hero-assurance,
+  .hero-bottom-note,
+  .hero-bottom-note a,
+  .proof-inner > div > span,
+  .service-top > span,
+  .service-label,
+  .service-link,
+  .studio-capabilities span,
+  .step-number,
+  .process-note,
+  .price-label,
+  .price-label > span,
+  .studio-price > span,
+  .price-footnote,
+  .role,
+  .work-caption,
+  .work-caption > span:last-child
+) {
+  font-size: var(--text-small);
+  line-height: 1.6;
+}
+
+.App .studio-home :is(.studio-eyebrow, .service-label, .price-label) {
+  letter-spacing: 0.06em;
+}
+
+.App .studio-home :is(
+  .studio-button,
+  .studio-text-link,
+  form button,
+  .whatsapp-btn,
+  .faq-item button
+) {
+  font-size: var(--text-action);
+  line-height: 1.5;
+}
+
+.App .studio-home :is(form input, form textarea) {
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+
+.App .studio-home :is(.business-info h3, .faq h3, .owner-card h3) {
+  font-size: 1.125rem;
+  line-height: 1.45;
+}
+
+.App .hero-bottom-note,
+.App .studio-capabilities,
+.App .price-label {
+  flex-wrap: wrap;
+}
+
+.App .proof-inner > div {
+  gap: 10px;
+}
+
+.App .studio-section-heading > p {
+  max-width: 420px;
+}
+
+.App .big-bangs-project :is(.big-bangs-project-label, .big-bangs-credit, .big-bangs-project-tags li) {
+  font-size: var(--text-small);
+  line-height: 1.6;
+}
+
+.App .big-bangs-project .big-bangs-project-copy p:not(.big-bangs-credit) {
+  font-size: var(--text-body);
+  line-height: 1.7;
+}
+
+.App .big-bangs-project :is(.big-bangs-visit, .big-bangs-enquire) {
+  font-size: var(--text-action);
+}
+
+.App .pricing-page :is(.section-kicker, .pricing-starter-badge, .pricing-service-note, .kerala-hero-panel span),
+.App .samples-page :is(.section-kicker, .samples-back, .sample-preview-kicker, .sample-preview-body button, .sample-preview-grid span, .sample-card-topline, .sample-section-list span) {
+  font-size: var(--text-small);
+  line-height: 1.6;
+}
+
+.App .pricing-page :is(.pricing-service-card p, .pricing-service-card li, .pricing-marketing-item, .kerala-value-item),
+.App .samples-page :is(.sample-card-copy p, .samples-heading p) {
+  font-size: var(--text-body);
+  line-height: 1.7;
+}
+
+.App .pricing-package-cta,
+.App .sample-action {
+  font-size: var(--text-action);
+  line-height: 1.5;
+}
+
+.App .header-nav a {
+  font-size: var(--text-action);
+}
+
+.App .header-cta {
+  font-size: var(--text-small);
+}
+
+.App .studio-footer :is(.footer-top > p, .footer-top-link, .footer-bottom, .footer-contact > span) {
+  font-size: var(--text-small);
+  line-height: 1.7;
+}
+
+.App .space-motion-toggle {
+  font-size: var(--text-small);
+}
+
+@media (max-width: 680px) {
+  .App .desktop-break { display: none; }
+  .App .hero-bottom-note { gap: 14px; }
+  .App .hero-bottom-note > span,
+  .App .hero-bottom-note > a { width: 100%; }
+  .App .studio-capabilities span { flex: 1 1 140px; }
+  .App .proof-inner { gap: 28px 16px; }
+  .App .proof-inner > div { padding-left: 16px; }
+  .App .proof-inner > div:nth-child(3) { padding-left: 0; }
+  .App .price-label { gap: 12px; }
+}
+
+@media (max-width: 400px) {
+  .App .header-content { padding-inline: 12px; gap: 6px; }
+  .App .header-cta { padding-inline: 9px; gap: 5px; }
+}

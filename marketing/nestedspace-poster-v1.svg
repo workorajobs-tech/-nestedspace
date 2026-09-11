@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="title desc">
+  <title id="title">Nested Space business website development poster</title>
+  <desc id="desc">A bright gradient poster advertising mobile-first business websites delivered in 48 hours for 2000 rupees, with payment after approval.</desc>
+
+  <defs>
+    <linearGradient id="pageGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3e8ff"/>
+      <stop offset="0.45" stop-color="#fff1f2"/>
+      <stop offset="1" stop-color="#ffedd5"/>
+    </linearGradient>
+    <linearGradient id="brandGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="0.5" stop-color="#ec4899"/>
+      <stop offset="1" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="previewGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5b21b6"/>
+      <stop offset="0.52" stop-color="#db2777"/>
+      <stop offset="1" stop-color="#f97316"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#6b21a8" flood-opacity="0.18"/>
+    </filter>
+    <filter id="smallShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#111827" flood-opacity="0.16"/>
+    </filter>
+    <clipPath id="browserClip">
+      <rect x="84" y="836" width="912" height="334" rx="28"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1080" height="1350" fill="url(#pageGradient)"/>
+  <path d="M760 0h320v440L902 548 740 412z" fill="url(#brandGradient)" opacity="0.95"/>
+  <path d="M0 1050l188-116 184 154-132 262H0z" fill="#ffffff" opacity="0.45"/>
+
+  <rect x="42" y="42" width="996" height="1266" rx="42" fill="#ffffff" fill-opacity="0.68" stroke="#ffffff" stroke-width="2" filter="url(#shadow)"/>
+  <path d="M84 198h912" stroke="#111827" stroke-opacity="0.08"/>
+
+  <image x="80" y="70" width="96" height="64" preserveAspectRatio="xMidYMid meet" xlink:href="../src/assets/nested-space-logo.png"/>
+  <text x="190" y="110" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800" fill="#101828">Nested Space</text>
+  <text x="190" y="139" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" letter-spacing="1.5" fill="#667085">WEBSITE DEVELOPMENT</text>
+
+  <text x="84" y="260" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="800" letter-spacing="2.8" fill="#7c3aed">YOUR BUSINESS, ONLINE</text>
+  <text x="84" y="344" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="800" fill="#101828">Your business</text>
+  <text x="84" y="424" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="800" fill="#101828">deserves a</text>
+  <text x="84" y="504" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="800" fill="url(#brandGradient)">better website.</text>
+
+  <text x="84" y="566" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="500" fill="#475467">Mobile-first websites for shops, creators,</text>
+  <text x="84" y="605" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="500" fill="#475467">startups, and small businesses.</text>
+
+  <rect x="84" y="662" width="540" height="104" rx="24" fill="#101828"/>
+  <text x="112" y="707" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="800" letter-spacing="1.5" fill="#f9fafb">LIVE IN 48 HOURS</text>
+  <text x="112" y="746" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800" fill="#ffffff">Starting at ₹2000</text>
+  <rect x="646" y="662" width="350" height="104" rx="24" fill="url(#brandGradient)"/>
+  <text x="821" y="713" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="800" fill="#ffffff">PAY AFTER</text>
+  <text x="821" y="747" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="800" fill="#ffffff">APPROVAL</text>
+
+  <rect x="84" y="836" width="912" height="334" rx="28" fill="#ffffff" filter="url(#smallShadow)"/>
+  <g clip-path="url(#browserClip)">
+    <rect x="84" y="836" width="912" height="46" fill="#f8fafc"/>
+    <circle cx="116" cy="859" r="7" fill="#fb7185"/>
+    <circle cx="140" cy="859" r="7" fill="#f59e0b"/>
+    <circle cx="164" cy="859" r="7" fill="#22c55e"/>
+    <rect x="86" y="882" width="908" height="288" fill="#ffffff"/>
+    <rect x="112" y="908" width="332" height="26" rx="13" fill="#101828" opacity="0.12"/>
+    <rect x="112" y="959" width="490" height="34" rx="17" fill="#101828"/>
+    <rect x="112" y="1007" width="400" height="34" rx="17" fill="#101828"/>
+    <rect x="112" y="1074" width="180" height="44" rx="22" fill="url(#brandGradient)"/>
+    <text x="202" y="1102" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="800" fill="#ffffff">START TODAY</text>
+    <rect x="663" y="919" width="278" height="196" rx="22" fill="url(#previewGradient)"/>
+    <path d="M702 1066c40-74 68-98 110-98 36 0 69 18 106 68v79H702z" fill="#ffffff" opacity="0.18"/>
+    <path d="M698 1018c38-49 71-66 100-66 38 0 65 27 113 83" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" opacity="0.76"/>
+    <circle cx="841" cy="976" r="18" fill="#ffffff" opacity="0.82"/>
+  </g>
+  <text x="84" y="1218" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#475467">Mobile-first  •  WhatsApp-ready  •  UPI-ready</text>
+  <text x="996" y="1218" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800" fill="#101828">nestedspace.in</text>
+</svg>

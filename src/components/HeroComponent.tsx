@@ -1,28 +1,105 @@
-import { useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  ArrowRight,
+  Check,
+  Monitor,
+  ShoppingBag,
+  Zap,
+  Globe2,
+  MousePointer2,
+  Smartphone,
+} from "lucide-react";
 import "./hero.css";
-import Features from "./Features";
 import ContactPage from "./ContactPage";
 import Seo from "./Seo";
-import { FaComments, FaPalette, FaRocket } from "react-icons/fa";
 import BigBangsProject from "./BigBangsProject";
-import { getHomeStructuredData, homePageMetadata } from "../seo/homePageMetadata";
+import WorkShowcase from "./WorkShowcase";
+import SpaceBackground from "./SpaceBackground";
+import {
+  getHomeStructuredData,
+  homePageMetadata,
+} from "../seo/homePageMetadata";
+import "./StudioHome.css";
 
-const processSteps = [
-  { icon: <FaComments />, title: "Share the idea", text: "Send your business name, products, colors, and WhatsApp number." },
-  { icon: <FaPalette />, title: "Approve the design", text: "We prepare a focused landing page layout for your offer and audience." },
-  { icon: <FaRocket />, title: "Go live", text: "After approval, we connect links, polish mobile views, and hand over the files." },
+const services = [
+  {
+    number: "01",
+    icon: Monitor,
+    title: "A home for your business.",
+    description:
+      "Turn a first impression into a real connection. Clear, custom websites that tell your story and make it easy to get in touch.",
+    label: "Business websites",
+    path: "/business-website-development",
+    className: "service-business",
+  },
+  {
+    number: "02",
+    icon: ShoppingBag,
+    title: "From scrolling to shopping.",
+    description:
+      "Put your products in the spotlight with an inviting catalogue, a smooth mobile experience, and simple enquiry flows.",
+    label: "E-commerce & catalogues",
+    path: "/ecommerce-website-development",
+    className: "service-commerce",
+  },
+  {
+    number: "03",
+    icon: Zap,
+    title: "One page. A clear purpose.",
+    description:
+      "Give your next launch, service, or campaign a focused landing page that guides visitors toward taking the next step.",
+    label: "Landing pages",
+    path: "/landing-page-development",
+    className: "service-landing",
+  },
+];
+const steps = [
+  {
+    title: "Tell us your idea.",
+    copy: "Your business, your audience, your ambition. Share your content and a little inspiration — we’ll take it from there.",
+  },
+  {
+    title: "Watch it take shape.",
+    copy: "We design and build your page. Review the first version, share your feedback, and let’s get the details right.",
+  },
+  {
+    title: "Make your entrance.",
+    copy: "Approve your website, pay for the agreed work, and go live. We help with the launch and hand over your files.",
+  },
 ];
 
-const previewFeatures = ["WhatsApp CTA", "UPI ready", "Mobile first"];
-
 export default function HeroComponent() {
-  const navigate = useNavigate();
-  const scrollToContact = () => document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" });
-  const openSamples = () => navigate("/samples");
-  const openPricing = () => navigate("/pricing");
+  const pageRef = useRef<HTMLElement>(null);
+  const [spaceMotionPaused, setSpaceMotionPaused] = useState(
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08 },
+    );
+    pageRef.current
+      ?.querySelectorAll("[data-reveal]")
+      .forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="hero-page" id="home">
+    <main className="studio-home" id="home" ref={pageRef}>
+      <SpaceBackground
+        paused={spaceMotionPaused}
+        onPausedChange={setSpaceMotionPaused}
+      />
       <Seo
         title={homePageMetadata.title}
         description={homePageMetadata.description}
@@ -31,130 +108,318 @@ export default function HeroComponent() {
         openGraphDescription={homePageMetadata.openGraphDescription}
         structuredData={getHomeStructuredData()}
       />
-      <div className="hero-card">
-        <div className="hero-decor"></div>
-
-        <div className="hero-grid">
-          <div className="hero-left">
-           
-
-            <h1 className="hero-heading">
-              Business Website Development{" "}
-              <span className="accent-block price-line">
-                in <span className="gradient-text">48 Hours</span> — ₹2000
-              </span>
-              <span className="accent-block"> Pay After Work</span>
-            </h1>
-
-            <p className="hero-sub">
-              Nested Space creates mobile-friendly websites for shops, Instagram sellers, startups, and small businesses. Serving businesses across Kerala and throughout India.
-            </p>
-
-            <div className="hero-ctas">
-              <button className="btn-primary" onClick={scrollToContact}>
-                Start My Website
-                <svg xmlns="http://www.w3.org/2000/svg" className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </button>
-
-              <button className="btn-outline" onClick={openSamples}>See Samples</button>
-            </div>
-
-            <p className="hero-note">No upfront payment • Mobile-friendly • UPI &amp; WhatsApp ready</p>
-
-            <div className="hero-proof">
-              <span><strong>48h</strong> first delivery</span>
-              <span><strong>₹2000</strong> starter site</span>
-              <span><strong>0%</strong> advance</span>
-            </div>
+      <section
+        className="studio-hero studio-container"
+        aria-labelledby="studio-title"
+      >
+        <div className="studio-hero-copy">
+          <span className="studio-eyebrow">
+            <span className="status-dot" /> INDEPENDENT DIGITAL STUDIO · KERALA,
+            INDIA
+          </span>
+          <h1 id="studio-title">
+            Small business.
+            <br />
+            <span>Big presence.</span>
+          </h1>
+          <p>
+            Your business deserves a space that feels like you.
+            <br className="desktop-break" /> We build beautiful, purposeful
+            websites that turn
+            <br className="desktop-break" /> curious visitors into your next
+            customers.
+          </p>
+          <div className="studio-actions">
+            <Link className="studio-button" to="/#contact-section">
+              Let’s build your website <ArrowUpRight size={19} />
+            </Link>
+            <a className="studio-text-link" href="#portfolio">
+              Explore our work <ArrowRight size={17} />
+            </a>
           </div>
-
-          <div className="hero-right">
-            <button className="site-preview" type="button" onClick={openSamples} aria-label="Open finished work samples">
-              <div className="preview-browser">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div className="preview-topbar">
-                <div className="preview-brand">
-                  <span className="preview-logo">N</span>
-                  <span>Nested Space demo</span>
-                </div>
-                <span className="preview-menu"></span>
-              </div>
-              <div className="preview-hero">
-                <span className="preview-kicker">Starter site</span>
-                <div className="preview-title">Sell from a page that is ready in 48 hours.</div>
-                <p>Clear offer, mobile layout, payment and chat links included.</p>
-                <span className="preview-hero-cta">Chat on WhatsApp</span>
-              </div>
-              <div className="preview-feature-row">
-                {previewFeatures.map((feature) => (
-                  <span key={feature}>{feature}</span>
-                ))}
-              </div>
-              <div className="preview-section">
-                <div>
-                  <strong>₹2000</strong>
-                  <span>after approval</span>
-                </div>
-                <div>
-                  <strong>3 sections</strong>
-                  <span>offer, proof, contact</span>
-                </div>
-              </div>
-            </button>
+          <div className="hero-assurance">
+            <span className="assurance-icon">
+              <Check size={13} />
+            </span>{" "}
+            Your vision first. Payment after approval.
           </div>
         </div>
-        
-        {/* Features Section - Bottom of glass container */}
-        <Features />
+        <WorkShowcase motionPaused={spaceMotionPaused} />
+        <div className="hero-bottom-note">
+          <span>GOOD DESIGN IS GOOD BUSINESS.</span>
+          <a href="#services">
+            A little further, a lot to discover <ArrowDown size={14} />
+          </a>
+        </div>
+      </section>
 
-        <section className="process-section" aria-labelledby="process-title">
-          <div className="section-heading">
-            <span className="section-kicker">How it works</span>
-            <h2 id="process-title">How our website creation process works</h2>
+      <section className="studio-proof" aria-label="Our starter website offer">
+        <div className="studio-container proof-inner">
+          <p>
+            Big possibilities.
+            <br />
+            <strong>Small-business friendly.</strong>
+          </p>
+          <div>
+            <strong>
+              48<span>hrs</span>
+            </strong>
+            <span>First delivery, after content is ready</span>
           </div>
-          <div className="process-grid">
-            {processSteps.map((step) => (
-              <article className="process-card" key={step.title}>
-                <div className="process-icon">{step.icon}</div>
+          <div>
+            <strong>₹2,000</strong>
+            <span>For your one-page starter website</span>
+          </div>
+          <div>
+            <strong>
+              0<span>%</span>
+            </strong>
+            <span>Upfront payment. Review it first.</span>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="services"
+        className="studio-container studio-section"
+        aria-labelledby="services-title"
+      >
+        <div className="studio-section-heading" data-reveal>
+          <div>
+            <span className="studio-eyebrow">01 / WHAT WE CREATE</span>
+            <h2 id="services-title">
+              A digital space.
+              <br />
+              <span>Made for your next move.</span>
+            </h2>
+          </div>
+          <p>
+            From your first website to your next big launch.
+            <br />
+            Thoughtful design. Clean development.
+            <br />A little personality in every pixel.
+          </p>
+        </div>
+        <div className="studio-services">
+          {services.map(
+            ({
+              number,
+              icon: Icon,
+              title,
+              description,
+              label,
+              path,
+              className,
+            }) => (
+              <Link
+                className={`studio-service ${className}`}
+                to={path}
+                key={number}
+                data-reveal
+              >
+                <div className="service-top">
+                  <Icon size={24} strokeWidth={1.5} />
+                  <span>{number}</span>
+                </div>
+                <div className="service-visual" aria-hidden="true">
+                  {number === "01" ? (
+                    <div className="mini-browser">
+                      <div>
+                        <i />
+                        <i />
+                        <i />
+                      </div>
+                      <strong>
+                        Made to
+                        <br />
+                        <em>stand out.</em>
+                      </strong>
+                      <span className="mini-browser-pill" />
+                      <span className="mini-browser-circle" />
+                    </div>
+                  ) : number === "02" ? (
+                    <div className="mini-shop">
+                      <div className="shop-bag">
+                        <ShoppingBag size={57} strokeWidth={1} />
+                      </div>
+                      <span className="shop-pill">
+                        Something worth discovering ↗
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="mini-launch">
+                      <span className="launch-orbit" />
+                      <MousePointer2 size={68} strokeWidth={1.1} />
+                      <span className="launch-pill">
+                        Your next big thing <ArrowUpRight size={14} />
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <span className="service-label">{label}</span>
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <span className="service-link">
+                  Let’s make it happen <ArrowUpRight size={19} />
+                </span>
+              </Link>
+            ),
+          )}
+        </div>
+        <div className="studio-capabilities">
+          <span>
+            <Smartphone size={16} /> Mobile-first, always
+          </span>
+          <span>
+            <Globe2 size={16} /> Search-friendly foundations
+          </span>
+          <span>
+            <MousePointer2 size={16} /> Easy ways to connect
+          </span>
+          <span>
+            <Check size={16} /> Built around your brand
+          </span>
+        </div>
+      </section>
+
+      <section
+        className="studio-work"
+        id="portfolio"
+        aria-labelledby="portfolio-title"
+      >
+        <div className="studio-container studio-section">
+          <div className="studio-section-heading" data-reveal>
+            <div>
+              <span className="studio-eyebrow">02 / SELECTED WORK</span>
+              <h2 id="portfolio-title">
+                Less talking.
+                <br />
+                <span>More showing.</span>
+              </h2>
+            </div>
+            <Link className="studio-text-link" to="/samples">
+              Explore projects & samples <ArrowUpRight size={19} />
+            </Link>
+          </div>
+          <div className="studio-featured-project" data-reveal>
+            <BigBangsProject />
+          </div>
+          <p className="work-caption">
+            <span>
+              A little bold. A little unexpected. Completely their own.
+            </span>
+            <span>DESIGN + DEVELOPMENT + PERSONALITY</span>
+          </p>
+        </div>
+      </section>
+
+      <section
+        className="studio-process"
+        id="process"
+        aria-labelledby="process-title"
+      >
+        <div className="studio-container studio-section">
+          <div className="studio-section-heading" data-reveal>
+            <div>
+              <span className="studio-eyebrow">03 / FROM HELLO TO LAUNCH</span>
+              <h2 id="process-title">
+                Your idea.
+                <br />
+                <span>Our next collaboration.</span>
+              </h2>
+            </div>
+            <p>
+              Building a website shouldn’t feel complicated.
+              <br />
+              Three simple steps. Real people.
+              <br />
+              Something you’re proud to share.
+            </p>
+          </div>
+          <div className="studio-steps">
+            {steps.map((step, index) => (
+              <article key={step.title} data-reveal>
+                <span className="step-number">
+                  0{index + 1}
+                  <ArrowRight size={22} />
+                </span>
                 <h3>{step.title}</h3>
-                <p>{step.text}</p>
+                <p>{step.copy}</p>
               </article>
             ))}
           </div>
-        </section>
+          <div className="process-note">
+            <span className="status-dot" /> You work directly with the people
+            who design and build your website.
+          </div>
+        </div>
+      </section>
 
-        <section className="portfolio-section portfolio-section--featured" id="portfolio" aria-labelledby="portfolio-title">
-          <div className="portfolio-copy">
-            <span className="section-kicker">Our work</span>
-            <h2 id="portfolio-title">Built by Nested Space. Made to stand out.</h2>
+      <section
+        className="studio-container studio-section"
+        id="pricing"
+        aria-labelledby="pricing-title"
+      >
+        <div className="studio-pricing" data-reveal>
+          <div className="pricing-intro">
+            <span className="studio-eyebrow">04 / A SIMPLE PLACE TO START</span>
+            <h2 id="pricing-title">
+              Big on possibilities.
+              <br />
+              <span>Easy on your budget.</span>
+            </h2>
             <p>
-              Explore Big Bangs, a streetwear website we designed and developed with a bold visual identity and a mobile-friendly shopping catalogue.
+              A polished one-page website to get your business out there. No
+              upfront payment. No complicated process.
             </p>
-            <button className="text-link-button" onClick={openSamples}>View projects &amp; samples</button>
+            <Link className="studio-text-link" to="/pricing">
+              See the full package <ArrowUpRight size={18} />
+            </Link>
           </div>
-          <BigBangsProject />
-        </section>
+          <div className="studio-price-card">
+            <span className="price-label">
+              THE STARTER WEBSITE <span>PAY AFTER WORK</span>
+            </span>
+            <div className="studio-price">
+              ₹2,000<span>one-time</span>
+            </div>
+            <p>One page. Everything you need to get started.</p>
+            <ul>
+              {[
+                "Custom, responsive one-page design",
+                "WhatsApp & contact form flow",
+                "Basic SEO & deployment support",
+                "One focused revision round",
+              ].map((item) => (
+                <li key={item}>
+                  <Check size={16} />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Link className="studio-button" to="/#contact-section">
+              Start something good <ArrowUpRight size={19} />
+            </Link>
+            <span className="price-footnote">
+              First delivery in 48 hours after we receive your content.
+            </span>
+          </div>
+        </div>
+      </section>
 
-        <section className="pricing-section" id="pricing" aria-labelledby="pricing-title">
+      <div className="studio-contact studio-container">
+        <div className="studio-section-heading" data-reveal>
           <div>
-            <span className="section-kicker">Starter package</span>
-            <h2 id="pricing-title">₹2000 after you approve the work</h2>
-            <p>Includes responsive one-page website development, contact form flow, WhatsApp CTA, basic SEO copy, and deployment support.</p>
+            <span className="studio-eyebrow">05 / LET’S MAKE IT REAL</span>
+            <h2>
+              A good website starts
+              <br />
+              with <span>a conversation.</span>
+            </h2>
           </div>
-          <div className="pricing-actions">
-            <button className="btn-outline pricing-detail-button" onClick={openPricing}>See Pricing</button>
-            <button className="btn-primary" onClick={scrollToContact}>Book My Slot</button>
-          </div>
-        </section>
-        
-        {/* Contact Section - Bottom of features */}
+        </div>
         <ContactPage />
       </div>
-    </div>
+    </main>
   );
 }

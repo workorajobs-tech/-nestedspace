@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   FaAndroid,
@@ -13,6 +13,7 @@ import {
   FaStore,
 } from "react-icons/fa";
 import Seo from "./Seo";
+import SpaceBackground from "./SpaceBackground";
 import "./WebsiteDevelopmentKeralaPage.css";
 import "./PricingPage.css";
 
@@ -20,10 +21,10 @@ const servicePackages = [
   {
     icon: <FaCode />,
     title: "Starter Website",
-    price: "₹2000",
+    price: "₹2,000",
     note: "Pay after approval",
     text: "A focused one-page business website for shops, sellers, creators, and service businesses.",
-    items: ["Responsive one-page website", "48-hour first working version", "WhatsApp contact action", "Basic SEO copy", "Deployment support"],
+    items: ["Responsive one-page website", "First version in 48 hours after content is ready", "WhatsApp contact action", "Basic SEO copy", "Deployment support"],
   },
   {
     icon: <FaStore />,
@@ -89,10 +90,14 @@ const pricingFactors = [
 
 export default function PricingPage() {
   const navigate = useNavigate();
+  const [spaceMotionPaused, setSpaceMotionPaused] = useState(
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
   const goToContact = () => navigate({ pathname: "/", hash: "#contact-section" });
 
   return (
     <main className="kerala-page pricing-page">
+      <SpaceBackground paused={spaceMotionPaused} onPausedChange={setSpaceMotionPaused} />
       <Seo
         title="Pricing and Services | Nested Space"
         description="Nested Space pricing and service options for starter websites, business websites, ecommerce websites, Android apps, iOS apps, mobile apps, and digital marketing services."
@@ -103,11 +108,11 @@ export default function PricingPage() {
 
       <section className="kerala-hero pricing-hero" aria-labelledby="pricing-page-title">
         <div className="kerala-hero-copy">
-          <span className="section-kicker">Pricing and services</span>
-          <h1 id="pricing-page-title">Website, app, ecommerce, and digital marketing services</h1>
+          <span className="section-kicker">A simple place to start</span>
+          <h1 id="pricing-page-title">Big possibilities.<br /><span>A plan for you.</span></h1>
           <p>
-            Start with the known ₹2000 starter website offer, then choose larger website, ecommerce, mobile app, or
-            marketing support based on the actual work needed.
+            Your next chapter starts here. From a ₹2,000 starter website to ecommerce,
+            mobile apps, and digital marketing — thoughtful work, priced around what you need.
           </p>
           <div className="kerala-hero-actions">
             <button className="btn-primary" onClick={goToContact}>Start My Website</button>
@@ -117,7 +122,7 @@ export default function PricingPage() {
 
         <div className="kerala-hero-panel" aria-label="Nested Space pricing summary">
           <div>
-            <strong>₹2000</strong>
+            <strong>₹2,000</strong>
             <span>starter website</span>
           </div>
           <div>
@@ -139,9 +144,12 @@ export default function PricingPage() {
         </div>
 
         <div className="pricing-service-grid">
-          {servicePackages.map((service) => (
-            <article className="pricing-service-card" key={service.title}>
-              <div className="pricing-service-icon">{service.icon}</div>
+          {servicePackages.map((service, index) => (
+            <article className={`pricing-service-card${index === 0 ? " pricing-service-card-featured" : ""}`} key={service.title}>
+              <div className="pricing-card-topline">
+                <div className="pricing-service-icon" aria-hidden="true">{service.icon}</div>
+                {index === 0 && <span className="pricing-starter-badge">Your first step</span>}
+              </div>
               <h3>{service.title}</h3>
               <div className="pricing-service-price">{service.price}</div>
               <span className="pricing-service-note">{service.note}</span>
@@ -149,11 +157,14 @@ export default function PricingPage() {
               <ul>
                 {service.items.map((item) => (
                   <li key={item}>
-                    <FaCheckCircle />
+                    <FaCheckCircle aria-hidden="true" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
+              <button className="pricing-package-cta" onClick={goToContact} aria-label={`Discuss ${service.title}`}>
+                {index === 0 ? "Start my website" : "Let’s talk about it"}<span aria-hidden="true">↗</span>
+              </button>
             </article>
           ))}
         </div>

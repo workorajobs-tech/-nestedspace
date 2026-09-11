@@ -1,7 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaCheckCircle, FaExternalLinkAlt, FaWhatsapp } from "react-icons/fa";
 import "./SamplesPage.css";
 import BigBangsProject from "./BigBangsProject";
+import SpaceBackground from "./SpaceBackground";
+import Seo from "./Seo";
 
 const finishedSamples = [
   {
@@ -24,7 +27,7 @@ const finishedSamples = [
     title: "FinEdge Studio",
     category: "Startup service website",
     result: "Clear service pitch, credibility section, pricing block, and lead capture.",
-    palette: "teal",
+    palette: "amber",
     sections: ["Value prop", "Services", "Pricing", "Lead form"],
     metric: "Lead ready",
   },
@@ -38,6 +41,9 @@ const previewRows = [
 
 export default function SamplesPage() {
   const navigate = useNavigate();
+  const [spaceMotionPaused, setSpaceMotionPaused] = useState(
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
 
   const goToContact = () => {
     navigate({ pathname: "/", hash: "#contact-section" });
@@ -45,15 +51,21 @@ export default function SamplesPage() {
 
   return (
     <main className="samples-page">
+      <SpaceBackground paused={spaceMotionPaused} onPausedChange={setSpaceMotionPaused} />
+      <Seo
+        title="Projects & Samples | Nested Space"
+        description="Explore Big Bangs, a website designed and developed by Nested Space, and discover sample website formats for shops, sellers, and startups."
+        canonical="https://nestedspace.in/samples"
+      />
       <section className="samples-hero" aria-labelledby="samples-title">
-        <button className="samples-back" onClick={() => navigate("/")}>
-          <FaArrowLeft />
+        <Link className="samples-back" to="/">
+          <FaArrowLeft aria-hidden="true" />
           Home
-        </button>
+        </Link>
 
         <div className="samples-heading">
           <span className="section-kicker">Projects &amp; samples</span>
-          <h1 id="samples-title">Websites with a character of their own.</h1>
+          <h1 id="samples-title">Websites with<br /><span>a character of their own.</span></h1>
           <p>
             Explore Big Bangs, our featured streetwear project, then browse sample formats for shops, sellers, and startups.
           </p>
@@ -82,7 +94,7 @@ export default function SamplesPage() {
                   <span className="sample-preview-kicker">{sample.category}</span>
                   <h2>{sample.title}</h2>
                 </div>
-                <button type="button">Enquire</button>
+                <button type="button" onClick={goToContact}>Enquire</button>
               </div>
               <div className="sample-preview-grid">
                 {previewRows.flat().map((label) => (

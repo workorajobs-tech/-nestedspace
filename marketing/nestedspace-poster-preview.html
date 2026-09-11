@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nested Space poster preview</title>
+    <style>
+      html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #ffffff; }
+      body { display: grid; place-items: start; }
+      .poster { position: relative; width: 1080px; height: 1350px; }
+      .art { display: block; width: 1080px; height: 1350px; }
+      .logo { position: absolute; left: 80px; top: 70px; width: 96px; height: 64px; object-fit: contain; }
+    </style>
+  </head>
+  <body>
+    <div class="poster">
+      <img class="art" src="nestedspace-poster-v1.svg" alt="Nested Space business website development poster" />
+      <img class="logo" src="../src/assets/nested-space-logo.png" alt="Nested Space logo" />
+    </div>
+  </body>
+</html>
