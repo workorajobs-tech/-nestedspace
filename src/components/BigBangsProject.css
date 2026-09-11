@@ -1,0 +1,58 @@
+.big-bangs-project {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid #e0e4ed;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 16px 42px #1018280d;
+}
+
+.big-bangs-preview { display: block; min-width: 0; color: #fff; text-decoration: none; background: #081831; }
+.big-bangs-preview-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; background: #080e1d; color: #b6c3d8; font-size: .7rem; }
+.big-bangs-dots { display: flex; gap: 5px; }
+.big-bangs-dots i { width: 6px; height: 6px; border-radius: 50%; background: #637088; }
+.big-bangs-artwork { padding: 28px 24px 22px; overflow: hidden; background: radial-gradient(ellipse at 80% 45%, #153b77, transparent 70%), #081831; }
+.big-bangs-artwork-brand { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: .8rem; font-weight: 900; letter-spacing: .06em; }
+.big-bangs-artwork-brand span { font-size: .55rem; color: #b6c3d8; }
+.big-bangs-artwork-title { margin-top: 26px; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 950; line-height: 1; letter-spacing: -.05em; }
+.big-bangs-artwork-title em { color: #baff56; font-style: normal; }
+.big-bangs-looks { display: flex; align-items: center; justify-content: center; padding: 24px 5px 20px; }
+.big-bangs-looks figure { position: relative; width: 34%; flex: 0 0 34%; margin: 0; padding: 6px; background: #f1f0e7; color: #10203b; box-shadow: 0 12px 24px #0004; }
+.big-bangs-looks figure:first-child { transform: rotate(-10deg) translateX(9%); }
+.big-bangs-looks figure:nth-child(2) { z-index: 1; transform: translateY(-7px) scale(1.08); }
+.big-bangs-looks figure:last-child { transform: rotate(10deg) translateX(-9%); }
+.big-bangs-looks img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.big-bangs-looks figcaption { margin-top: 7px; font-size: clamp(.35rem, .65vw, .5rem); font-weight: 800; }
+.big-bangs-preview-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 8px; color: #b6c3d8; font-size: .6rem; letter-spacing: .09em; }
+.big-bangs-preview-footer svg { color: #baff56; }
+.big-bangs-project-copy { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: clamp(24px, 3vw, 42px); }
+.big-bangs-project-label { color: #6d28d9; font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.big-bangs-project-copy h3 { margin: 14px 0 6px; color: #101828; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -.04em; }
+.big-bangs-project-copy p { margin: 16px 0 0; color: #526071; font-size: .96rem; line-height: 1.7; }
+.big-bangs-project-copy .big-bangs-credit { margin: 0; font-size: .8rem; font-weight: 600; }
+.big-bangs-project-tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 22px 0 0; }
+.big-bangs-project-tags li { padding: 7px 10px; border: 1px solid #e3e7ed; border-radius: 999px; background: #f8fafc; color: #475467; font-size: .72rem; font-weight: 700; }
+.big-bangs-project-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 26px; }
+.big-bangs-visit, .big-bangs-enquire { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; font-size: .8rem; font-weight: 800; text-decoration: none; }
+.big-bangs-visit { padding: 12px 18px; border-radius: 999px; background: #101828; color: white; }
+.big-bangs-visit:hover { background: #283a57; }
+.big-bangs-enquire { color: #6d28d9; }
+.big-bangs-enquire:hover { text-decoration: underline; }
+.big-bangs-project a:focus-visible { outline: 3px solid #7c3aed; outline-offset: -3px; }
+.big-bangs-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.portfolio-section.portfolio-section--featured { grid-template-columns: minmax(0, 1fr); }
+.portfolio-section--featured .portfolio-copy { max-width: 740px; }
+.samples-featured { width: min(100%, 1160px); margin: 34px auto 0; }
+.samples-concepts-heading { width: min(100%, 1160px); margin: 42px auto 0; }
+.samples-concepts-heading h2 { margin: 0 0 8px; color: #101828; font-size: 1.5rem; }
+.samples-concepts-heading p { margin: 0; color: #5b6472; line-height: 1.6; }
+
+@media (max-width: 760px) {
+  .big-bangs-project { grid-template-columns: minmax(0, 1fr); }
+  .big-bangs-artwork { padding: 24px 22px 20px; }
+  .big-bangs-artwork-title { font-size: clamp(1.7rem, 7vw, 3rem); }
+  .big-bangs-looks { max-width: 370px; margin: 0 auto; }
+  .big-bangs-project-copy { padding: 24px 20px; }
+  .big-bangs-looks figcaption { font-size: .4rem; }
+}
