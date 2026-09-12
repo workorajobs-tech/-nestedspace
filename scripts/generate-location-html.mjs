@@ -1,26 +1,14 @@
 import { writeFileSync } from "node:fs";
-import { resolve } from "node:path";
-import { fileURLToPath } from "node:url";
-import {
-  getHtmlFileName,
-  getLocationPageHtml,
-  locationPageConfigs,
-} from "../src/components/locationPageData.js";
-import {
-  getServiceHtmlFileName,
-  getServicePageHtml,
-  servicePageConfigs,
-} from "../src/components/servicePageData.js";
-import { getHomePageHtml } from "../src/seo/homePageMetadata.js";
+import { buildPages, pageCatalog } from "../src/seo/pageCatalog.js";
 
-const rootDir = fileURLToPath(new URL("..", import.meta.url));
-
-writeFileSync(resolve(rootDir, "index.html"), getHomePageHtml());
-
-for (const page of locationPageConfigs) {
-  writeFileSync(resolve(rootDir, getHtmlFileName(page)), getLocationPageHtml(page));
+for (const page of buildPages) {
+  writeFileSync(new URL(`../${page.htmlFileName}`, import.meta.url), page.html());
 }
 
-for (const page of servicePageConfigs) {
-  writeFileSync(resolve(rootDir, getServiceHtmlFileName(page)), getServicePageHtml(page));
-}
+// Omit lastmod until we can provide real per-page modification dates.
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${pageCatalog.map(page => `  <url><loc>https://nestedspace.in${page.path}</loc></url>`).join("\n")}
+</urlset>
+`;
+writeFileSync(new URL("../public/sitemap.xml", import.meta.url), sitemap);

@@ -1,4 +1,5 @@
 import { siteUrl } from "./businessEntity.js";
+import starter from "../data/starterWebsiteContent.json" with { type: "json" };
 
 const locationPageDoNotTarget = [
   "website design",
@@ -80,25 +81,25 @@ export const keywordMap = [
   page({
     path: "/",
     pageType: "homepage",
-    primaryTopic: "software development company",
+    primaryTopic: "Nested Space website development",
     secondaryTopics: [
-      "software development company in Kerala",
-      "software company Kerala",
+      "Nested Space websites",
+      "small business websites India",
       "web development company Kerala",
       "website development company Kerala",
     ],
     searchIntent:
-      "Brand and broad commercial discovery for businesses evaluating Nested Space as a software or web development company.",
+      "Brand discovery for businesses across India evaluating Nested Space as their website provider.",
     geographicIntent: "Kerala and India",
     conversionIntent: "Start a website request, view services, inspect sample formats, or contact Nested Space.",
     title: "Nested Space | Website Development Company in Kerala, India",
     metaDescription:
       "Nested Space is a website development and web development company in Kerala, India, creating mobile-friendly business websites for shops, Instagram sellers, startups, and small businesses.",
-    h1: "Business Website Development in 48 Hours - Rs 2000 Pay After Work",
+    h1: "Small business. Big presence.",
     internalLinkRole: "Primary brand and conversion page linking to core services, Kerala page, portfolio, pricing, and contact.",
     notes: [
       "Homepage is indexed. Wait for Search Console query data before changing the broad homepage title.",
-      "Can support software company topics naturally through entity/schema and business copy, without forcing all phrases into the H1.",
+      "The small-business service page owns the detailed starter offer; pricing and samples answer cost and proof questions.",
     ],
   }),
   locationPage({
@@ -227,19 +228,44 @@ export const keywordMap = [
     doNotTarget: servicePageDoNotTarget,
   }),
   page({
-    path: "/small-business-website-development",
+    path: starter.path,
     pageType: "service",
-    primaryTopic: "small business website development",
-    secondaryTopics: ["small business website", "affordable business website", "website for small businesses"],
-    searchIntent: "Service search from small businesses, shops, freelancers, and sellers needing a simple website.",
-    geographicIntent: "Non-location service intent",
-    conversionIntent: "Request an affordable starter website.",
-    title: "Small Business Website Development | Nested Space",
-    metaDescription:
-      "Nested Space creates affordable, mobile-friendly websites for small businesses, shops, service providers and online sellers.",
-    h1: "Small Business Website Development",
-    internalLinkRole: "Small-business service page connected to design and relevant Kerala/location pages.",
+    primaryTopic: "small business website development India",
+    secondaryTopics: ["small business website design India", "business website packages India", "affordable website for small business India"],
+    searchIntent: "Hire a provider for a business website with clear scope, hosting included and a contact path.",
+    geographicIntent: "India",
+    conversionIntent: "Review the starter package and begin a website discussion.",
+    title: starter.title,
+    metaDescription: starter.description,
+    h1: starter.h1,
+    internalLinkRole: "Starter service connected to package pricing, work examples, contact and larger project options.",
     doNotTarget: servicePageDoNotTarget,
+  }),
+  page({
+    path: "/pricing",
+    pageType: "pricing",
+    primaryTopic: "small business website cost India",
+    secondaryTopics: ["website hosting included packages India", "website packages for small business India"],
+    searchIntent: "Understand the build price, included hosting, separate domain costs, revisions and after-launch updates.",
+    geographicIntent: "India",
+    conversionIntent: "Compare scope and discuss the right package.",
+    title: "Website Pricing in India | ₹2,000 Starter | Nested Space",
+    metaDescription: "Explore the ₹2,000 starter website with hosting included. Only the domain costs extra. See the scope, payment terms and prices for later updates or larger projects.",
+    h1: "Big possibilities. A plan for you.",
+    internalLinkRole: "Cost details supporting the starter service and larger project enquiries.",
+  }),
+  page({
+    path: "/samples",
+    pageType: "portfolio",
+    primaryTopic: "Nested Space portfolio",
+    secondaryTopics: ["Nested Space website examples"],
+    searchIntent: "Inspect actual work and clearly labelled illustrative samples.",
+    geographicIntent: "India",
+    conversionIntent: "Evaluate design and discuss a website brief.",
+    title: "Projects & Samples | Nested Space",
+    metaDescription: "Explore the Big Bangs live demo and project case study by Nested Space, plus illustrative website concepts for small businesses, shops and sellers.",
+    h1: "Websites with a character of their own.",
+    internalLinkRole: "Proof destination supporting service and pricing decisions.",
   }),
   page({
     path: "/ecommerce-website-development",

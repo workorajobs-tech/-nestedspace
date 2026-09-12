@@ -1,3 +1,4 @@
+import starterWebsiteContent from "../data/starterWebsiteContent.json" with { type: "json" };
 import {
   getBusinessEntityGraph,
   getCanonicalUrl,
@@ -246,109 +247,7 @@ export const servicePageConfigs = [
       },
     ],
   },
-  {
-    slug: "small-business-website-development",
-    path: "/small-business-website-development",
-    title: "Small Business Website Development | Nested Space",
-    description:
-      "Nested Space creates affordable, mobile-friendly websites for small businesses, shops, service providers and online sellers.",
-    eyebrow: "Small business websites",
-    h1: "Small Business Website Development",
-    heroCopy:
-      "Affordable, mobile-friendly websites for small businesses that need a professional online presence without a heavy setup.",
-    includeTitle: "What small business website development includes",
-    includeIntro:
-      "Small business websites need to be simple, clear and useful for customers who want quick answers.",
-    includes: [
-      {
-        title: "Clear offer section",
-        text: "Show what you sell, where you serve customers and how people can contact you.",
-      },
-      {
-        title: "Product or service highlights",
-        text: "Display key products, services, packages or offers in simple sections customers can scan.",
-      },
-      {
-        title: "WhatsApp-ready contact flow",
-        text: "Make it easy for customers to message, ask questions or request details from the website.",
-      },
-      {
-        title: "Mobile-first page build",
-        text: "The page is built for phone users first, with readable content and clear buttons.",
-      },
-    ],
-    audienceTitle: "Who small business websites are for",
-    audienceIntro:
-      "This service fits owners who use referrals, Instagram, WhatsApp or local customers and need one stable business page.",
-    audiences: [
-      "Small shops",
-      "Restaurants",
-      "Service providers",
-      "Instagram sellers",
-      "Freelancers",
-      "Local businesses",
-      "Online sellers",
-      "Personal brands",
-    ],
-    featureTitle: "Typical small business website features",
-    features: [
-      "Business name and offer",
-      "Products or services",
-      "Location/contact details",
-      "WhatsApp CTA",
-      "Simple pricing direction",
-      "FAQ section",
-      "Mobile layout",
-      "Basic SEO setup",
-    ],
-    mobileTitle: "Designed for customers who visit from mobile",
-    mobileCopy:
-      "Small business customers often come from WhatsApp, Instagram or Google on phones. The page keeps information clear and actions easy to tap.",
-    contactTitle: "Turn social traffic into enquiries",
-    contactCopy:
-      "A small business website gives Instagram, WhatsApp and referral customers a clean page where they can understand your business before messaging.",
-    pricingCopy:
-      "Nested Space supports affordable starter websites from ₹2000 with Pay After Work. The final scope depends on content, sections and launch requirements.",
-    intentQuestions: [
-      {
-        question: "Do small businesses really need a website?",
-        answer:
-          "A small business website gives customers one stable place to understand products, services, location, contact details and trust signals outside social media.",
-      },
-      {
-        question: "What should a small business website include?",
-        answer:
-          "It should include a clear offer, product or service details, contact buttons, location or service area, pricing direction where useful and a mobile-friendly layout.",
-      },
-    ],
-    faqs: [
-      {
-        question: "How much does a small business website cost?",
-        answer:
-          "Nested Space offers starter websites from ₹2000. The final scope depends on the number of sections, content and launch needs.",
-      },
-      {
-        question: "Can you build a website for a local shop?",
-        answer:
-          "Yes. We build websites for local shops, restaurants, service providers, sellers and small businesses.",
-      },
-      {
-        question: "Can my small business website include WhatsApp?",
-        answer:
-          "Yes. WhatsApp contact actions can be included where they fit the agreed website scope.",
-      },
-      {
-        question: "Do I need a lot of content before starting?",
-        answer:
-          "No. You can start with your business name, offer, basic details, references and contact information.",
-      },
-      {
-        question: "Will the website be mobile-friendly?",
-        answer:
-          "Yes. Mobile-friendly layout is part of the starter website approach.",
-      },
-    ],
-  },
+  starterWebsiteContent,
   {
     slug: "ecommerce-website-development",
     path: "/ecommerce-website-development",

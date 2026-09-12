@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FaCheckCircle,
@@ -11,6 +10,7 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import Seo from "./Seo";
+import SeoPageLayout, { StarterWebsiteOffer } from "./SeoPageLayout";
 import { getInternalLinkSection } from "../seo/internalLinkMap";
 import { businessEntity } from "../seo/businessEntity";
 import {
@@ -73,7 +73,7 @@ export default function LocationWebsiteDevelopmentPage({ page, pagePath }) {
   };
 
   return (
-    <main className="kerala-page">
+    <SeoPageLayout className="kerala-page location-seo-page" breadcrumb={currentPage.eyebrow}>
       <Seo
         title={currentPage.title}
         description={currentPage.description}
@@ -86,7 +86,7 @@ export default function LocationWebsiteDevelopmentPage({ page, pagePath }) {
       <section className="kerala-hero" aria-labelledby={`${currentPage.slug}-title`}>
         <div className="kerala-hero-copy">
           <span className="section-kicker">{currentPage.eyebrow}</span>
-          <h1 id={`${currentPage.slug}-title`}>Website Development Company in {currentPage.location}</h1>
+          <h1 id={`${currentPage.slug}-title`}>Website Development Company in <span>{currentPage.location}</span></h1>
           <p>{currentPage.heroCopy}</p>
           <div className="kerala-hero-actions">
             <button className="btn-primary" onClick={goToContact}>
@@ -98,20 +98,7 @@ export default function LocationWebsiteDevelopmentPage({ page, pagePath }) {
           </div>
         </div>
 
-        <div className="kerala-hero-panel" aria-label="Nested Space website development offer summary">
-          <div>
-            <strong>48h</strong>
-            <span>first delivery</span>
-          </div>
-          <div>
-            <strong>₹2000</strong>
-            <span>starter website</span>
-          </div>
-          <div>
-            <strong>Pay After Work</strong>
-            <span>review before payment</span>
-          </div>
-        </div>
+        <StarterWebsiteOffer />
       </section>
 
       <section className="kerala-section kerala-intro" aria-labelledby={`${currentPage.slug}-intro-title`}>
@@ -252,10 +239,10 @@ export default function LocationWebsiteDevelopmentPage({ page, pagePath }) {
         </div>
         <div className="kerala-faq-list">
           {faqs.map((faq) => (
-            <article className="kerala-faq-item" key={faq.question}>
-              <h3>{faq.question}</h3>
+            <details className="kerala-faq-item" key={faq.question}>
+              <summary>{faq.question}</summary>
               <p>{faq.answer}</p>
-            </article>
+            </details>
           ))}
         </div>
       </section>
@@ -277,6 +264,6 @@ export default function LocationWebsiteDevelopmentPage({ page, pagePath }) {
           </button>
         </div>
       </section>
-    </main>
+    </SeoPageLayout>
   );
 }

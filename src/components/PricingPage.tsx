@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { pricingPageMetadata } from "../seo/supportPageMetadata.js";
+import { useMotionPreference } from "../hooks/useMotionPreference";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaAndroid,
   FaApple,
@@ -16,15 +17,16 @@ import Seo from "./Seo";
 import SpaceBackground from "./SpaceBackground";
 import "./WebsiteDevelopmentKeralaPage.css";
 import "./PricingPage.css";
+import starter from "../data/starterWebsiteContent.json" with { type: "json" };
 
 const servicePackages = [
   {
     icon: <FaCode />,
     title: "Starter Website",
-    price: "₹2,000",
-    note: "Pay after approval",
-    text: "A focused one-page business website for shops, sellers, creators, and service businesses.",
-    items: ["Responsive one-page website", "First version in 48 hours after content is ready", "WhatsApp contact action", "Basic SEO copy", "Deployment support"],
+    price: starter.price,
+    note: starter.priceNote,
+    text: "A focused business website for shops, sellers, creators, and service businesses.",
+    items: ["Responsive business website", starter.deliveryNote, "WhatsApp contact action", "Basic SEO copy", "One focused revision round", "Pay after approval", "Hosting included", "Deployment support"],
   },
   {
     icon: <FaStore />,
@@ -90,21 +92,13 @@ const pricingFactors = [
 
 export default function PricingPage() {
   const navigate = useNavigate();
-  const [spaceMotionPaused, setSpaceMotionPaused] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-  );
+  const [spaceMotionPaused, setSpaceMotionPaused] = useMotionPreference();
   const goToContact = () => navigate({ pathname: "/", hash: "#contact-section" });
 
   return (
     <main className="kerala-page pricing-page">
       <SpaceBackground paused={spaceMotionPaused} onPausedChange={setSpaceMotionPaused} />
-      <Seo
-        title="Pricing and Services | Nested Space"
-        description="Nested Space pricing and service options for starter websites, business websites, ecommerce websites, Android apps, iOS apps, mobile apps, and digital marketing services."
-        canonical="https://nestedspace.in/pricing"
-        openGraphTitle="Nested Space Pricing and Services"
-        openGraphDescription="Detailed Nested Space service options for websites, ecommerce, mobile apps, and digital marketing."
-      />
+      <Seo {...pricingPageMetadata} />
 
       <section className="kerala-hero pricing-hero" aria-labelledby="pricing-page-title">
         <div className="kerala-hero-copy">
@@ -134,6 +128,23 @@ export default function PricingPage() {
             <span>for the starter website offer</span>
           </div>
         </div>
+      </section>
+
+      <section className="kerala-section pricing-starter-details" id="starter-package" aria-labelledby="starter-package-title">
+        <div className="kerala-section-heading">
+          <span className="section-kicker">The starter, explained</span>
+          <h2 id="starter-package-title">What does a ₹2,000 website include?</h2>
+          <p>A business website for shops and service providers across India. Here is how the build price and other costs work.</p>
+        </div>
+        <dl>
+          <div><dt>Website build</dt><dd>{starter.price} for a responsive business website, service or product highlights, contact and WhatsApp actions, basic SEO setup, hosting and deployment support. We agree the website content and scope before building.</dd></div>
+          <div><dt>Domain & hosting</dt><dd>{starter.priceNote} Domain registration and renewal charges depend on the domain you choose.</dd></div>
+          <div><dt>First version & revisions</dt><dd>{starter.deliveryNote} One focused revision round is included. The launch date also depends on review, approval and domain or hosting setup.</dd></div>
+          <div><dt>Payment</dt><dd>Review the agreed starter website before payment. Pay after approval, then we help with launch.</dd></div>
+          <div><dt>Updates after launch</dt><dd>{starter.updatesNote}</dd></div>
+          <div><dt>Larger requirements</dt><dd>Checkout, inventory, booking systems and other integrations need a separate scope and quote.</dd></div>
+        </dl>
+        <Link className="kerala-related-link" to={starter.path}>Explore the small-business website package →</Link>
       </section>
 
       <section className="kerala-section" aria-labelledby="services-pricing-title">

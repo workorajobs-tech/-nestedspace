@@ -1,0 +1,13 @@
+.analytics-settings-link { padding: 0 24px 24px; text-align: center; }
+.analytics-settings-link button { border: 0; background: transparent; color: inherit; font: inherit; font-size: .875rem; text-decoration: underline; cursor: pointer; }
+.analytics-choice { position: fixed; bottom: 20px; left: 20px; z-index: 200; width: min(530px, calc(100vw - 40px)); max-height: calc(100dvh - 40px); overflow-y: auto; padding: 22px; border: 1px solid #cdb6e8; border-radius: 18px; background: #fff; color: #20112f; box-shadow: 0 12px 45px #09041933; font: 14px/1.55 Inter, Arial, sans-serif; }
+.analytics-choice h2 { margin: 0 0 8px; font-size: 18px; color: #20112f; }
+.analytics-choice p { margin: 0 0 12px; color: #44364f; }
+.analytics-choice summary { cursor: pointer; font-weight: 600; padding: 4px 0; }
+.analytics-privacy { padding-top: 10px; }
+.analytics-choice a { color: #6423ac; text-decoration: underline; }
+.analytics-choice-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.analytics-choice-actions button { flex: 1 1 auto; padding: 10px 14px; border: 1px solid #7c3aed; border-radius: 9px; background: #f7f1ff; color: #50218a; font: inherit; font-weight: 600; cursor: pointer; min-height: 44px; }
+.analytics-choice button:hover { background: #ede0ff; }
+.analytics-choice button:focus-visible, .analytics-choice summary:focus-visible, .analytics-settings-link button:focus-visible { outline: 3px solid #9d63ed; outline-offset: 3px; }
+@media (max-width: 540px) { .analytics-choice { bottom: 12px; left: 12px; width: calc(100vw - 24px); padding: 18px; max-height: calc(100dvh - 24px); } }

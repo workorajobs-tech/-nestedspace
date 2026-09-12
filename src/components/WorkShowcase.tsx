@@ -19,7 +19,7 @@ function ProjectPreview({
   const frameRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [inView, setInView] = useState(false);
-  const [pageVisible, setPageVisible] = useState(!document.hidden);
+  const [pageVisible, setPageVisible] = useState(true);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
@@ -31,6 +31,7 @@ function ProjectPreview({
     );
     observer.observe(frame);
     const handleVisibility = () => setPageVisible(!document.hidden);
+    handleVisibility();
     document.addEventListener("visibilitychange", handleVisibility);
     return () => {
       observer.disconnect();

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { analytics } from "../analytics";
 
 type MetaDescriptor = {
   name?: string;
@@ -14,6 +15,7 @@ interface SeoProps {
   openGraphDescription?: string;
   openGraphImage?: string;
   structuredData?: object;
+  robots?: string;
 }
 
 const setMeta = ({ name, property, content }: MetaDescriptor) => {
@@ -42,12 +44,14 @@ export default function Seo({
   openGraphDescription = description,
   openGraphImage = "https://nestedspace.in/og-image.png",
   structuredData,
+  robots = "index, follow",
 }: SeoProps) {
   useEffect(() => {
     document.title = title;
+    analytics.page(title, canonical);
 
     setMeta({ name: "description", content: description });
-    setMeta({ name: "robots", content: "index, follow" });
+    setMeta({ name: "robots", content: robots });
     setMeta({ property: "og:title", content: openGraphTitle });
     setMeta({ property: "og:description", content: openGraphDescription });
     setMeta({ property: "og:url", content: canonical });
@@ -76,7 +80,7 @@ export default function Seo({
       script.textContent = JSON.stringify(structuredData);
       document.head.appendChild(script);
     }
-  }, [canonical, description, openGraphDescription, openGraphImage, openGraphTitle, structuredData, title]);
+  }, [canonical, description, openGraphDescription, openGraphImage, openGraphTitle, structuredData, title, robots]);
 
   return null;
 }

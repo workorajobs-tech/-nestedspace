@@ -7,6 +7,7 @@ import "./Header.css";
 const navItems = [
   { label: "Services", href: "/#services" },
   { label: "Our work", href: "/#portfolio" },
+  { label: "About us", href: "/about" },
   { label: "The process", href: "/#process" },
   { label: "Pricing", href: "/pricing" },
 ];
@@ -100,6 +101,7 @@ export default function Header() {
               key={item.href}
               to={item.href}
               onClick={() => setIsMobileMenuOpen(false)}
+              aria-current={location.pathname === item.href ? "page" : undefined}
             >
               {item.label}
               <ArrowUpRight size={18} />

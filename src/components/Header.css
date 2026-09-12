@@ -45,10 +45,11 @@
 }
 .header-nav {
   display: flex;
-  gap: 33px;
+  gap: 24px;
   align-items: center;
 }
 .header-nav a {
+  white-space: nowrap;
   color: #6b7280;
   font-size: 13px;
   text-decoration: none;
@@ -143,7 +144,7 @@
     padding: 0 28px;
   }
   .header-nav {
-    gap: 22px;
+    gap: 16px;
   }
 }
 @media (max-width: 980px) {

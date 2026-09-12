@@ -1,8 +1,9 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useLayoutEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HeroComponent from "./components/HeroComponent";
+import AnalyticsConsent from "./components/AnalyticsConsent";
 import "./App.css";
 import "./components/ReadableTypography.css";
 
@@ -14,6 +15,8 @@ const ServiceSeoLandingPage = lazy(
   () => import("./components/ServiceSeoLandingPage"),
 );
 const PricingPage = lazy(() => import("./components/PricingPage"));
+const AboutPage = lazy(() => import("./components/AboutPage"));
+const NotFoundPage = lazy(() => import("./components/NotFoundPage"));
 
 const locationPagePaths = [
   "/website-development-kerala",
@@ -36,11 +39,12 @@ const servicePagePaths = [
   "/web-development-services",
 ];
 
-function App() {
+function RouteScroll() {
   const location = useLocation();
-  useEffect(() => {
-    if (location.hash) {
-      const timer = window.setTimeout(() => {
+  useLayoutEffect(() => {
+    // Inside Suspense, this runs after the requested page is ready to render.
+    const frame = window.requestAnimationFrame(() => {
+      if (location.hash) {
         document.getElementById(location.hash.slice(1))?.scrollIntoView({
           behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
             .matches
@@ -48,15 +52,18 @@ function App() {
             : "smooth",
           block: "start",
         });
-      }, 80);
-      return () => window.clearTimeout(timer);
-    }
-
-    window.scrollTo({ top: 0, behavior: "instant" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "instant" });
+      }
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, [location.pathname, location.hash, location.key]);
+  return null;
+}
 
+function App() {
   return (
-    <div className={`App ${["/", "/pricing", "/samples"].includes(location.pathname) ? "has-starfield" : ""}`}>
+    <div className="App has-starfield">
       <div className="main-container">
         <Header />
         <div id="main-content" tabIndex={-1}>
@@ -68,9 +75,11 @@ function App() {
             }
           >
             <Routes>
+              <Route path="*" element={<NotFoundPage />} />
               <Route path="/" element={<HeroComponent />} />
               <Route path="/samples" element={<SamplesPage />} />
               <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/about" element={<AboutPage />} />
               {locationPagePaths.map((path) => (
                 <Route
                   key={path}
@@ -86,9 +95,11 @@ function App() {
                 />
               ))}
             </Routes>
+            <RouteScroll />
           </Suspense>
         </div>
         <Footer />
+        <AnalyticsConsent />
       </div>
     </div>
   );

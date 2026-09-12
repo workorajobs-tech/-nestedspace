@@ -331,3 +331,66 @@ form button:hover {
     padding: 18px;
   }
 }
+
+.studio-home .contact-field {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ink);
+  font-size: var(--text-action);
+  font-weight: 600;
+  line-height: 1.6;
+}
+.contact-field-hint {
+  margin-left: 6px;
+  color: var(--muted);
+  font-size: var(--text-small);
+  font-weight: 400;
+}
+.contact-field :is(input, textarea) { display: block; margin-top: 7px; }
+.studio-home .contact-field textarea { resize: vertical; min-height: 118px; }
+.App .studio-home .contact-form-divider {
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: var(--text-small);
+}
+.studio-home .form-section .whatsapp-btn { margin-bottom: 22px; }
+.studio-home .contact-handoff-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--text-small);
+  line-height: 1.6;
+}
+.contact-handoff-status {
+  margin-top: 22px;
+  border: 1px solid #d7adff60;
+  border-radius: 12px;
+  padding: 18px;
+  color: var(--ink);
+  background: #b889ff12;
+}
+.studio-home .contact-handoff-status p { color: var(--muted); margin: 8px 0 0; line-height: 1.7; }
+.contact-handoff-status a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.contact-offer { padding: 22px; border: 1px solid #d7adff40; border-radius: 16px; background: #b889ff0a; }
+.contact-offer > span { color: var(--muted); font-size: var(--text-small); }
+.contact-offer h3 { margin: 12px 0; color: var(--ink); font-size: 2rem; }
+.contact-offer h3 > span { color: var(--muted); font-size: var(--text-small); font-weight: 400; }
+.contact-offer p { color: var(--muted); font-size: var(--text-small); line-height: 1.7; }
+.contact-offer a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); font-size: var(--text-small); font-weight: 600; text-underline-offset: 4px; }
+.studio-home .faq-item summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--text-action);
+  font-weight: 600;
+  line-height: 1.6;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; flex-shrink: 0; color: var(--muted); }
+.faq-item[open] summary::after { content: "−"; }
+.contact-wrapper :is(a, summary):focus-visible { outline: 2px solid #d7adff; outline-offset: 4px; border-radius: 3px; }
+.studio-home form button:disabled { opacity: .6; cursor: default; transform: none; }
