@@ -1,62 +1,53 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FaArrowLeft, FaCheckCircle, FaExternalLinkAlt, FaWhatsapp } from "react-icons/fa";
+import { samplesPageMetadata } from "../seo/supportPageMetadata.js";
+import { useMotionPreference } from "../hooks/useMotionPreference";
+import { Link } from "react-router-dom";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "./SamplesPage.css";
 import BigBangsProject from "./BigBangsProject";
+import BigBangsCaseStudy from "./BigBangsCaseStudy";
 import SpaceBackground from "./SpaceBackground";
 import Seo from "./Seo";
 
-const finishedSamples = [
+const conceptSamples = [
   {
     title: "Sweet Crumbs Bakery",
     category: "Local shop landing page",
-    result: "Menu highlights, daily order CTA, and WhatsApp enquiry flow.",
+    description: "A layout for menu highlights, best sellers and a clear way to ask about an order.",
     palette: "coral",
-    sections: ["Hero offer", "Best sellers", "Order CTA", "Map-ready contact"],
-    metric: "48h delivery",
+    sections: ["Menu", "Best sellers", "Order enquiries", "Contact details"],
+    focus: "Menus & enquiries",
   },
   {
     title: "Urban Threads",
     category: "Instagram seller catalogue",
-    result: "Mobile catalogue layout for new drops, sizes, pricing, and DM-to-buy flow.",
+    description: "A catalogue concept for new drops, sizes, pricing and product enquiries.",
     palette: "violet",
-    sections: ["Drop preview", "Product cards", "Size guide", "WhatsApp checkout"],
-    metric: "Mobile first",
+    sections: ["New arrivals", "Product cards", "Size guide", "Product enquiry"],
+    focus: "Product discovery",
   },
   {
     title: "FinEdge Studio",
     category: "Startup service website",
-    result: "Clear service pitch, credibility section, pricing block, and lead capture.",
+    description: "A service website concept that brings the offer, approach, prices and contact details together.",
     palette: "amber",
-    sections: ["Value prop", "Services", "Pricing", "Lead form"],
-    metric: "Lead ready",
+    sections: ["About the business", "Services", "Pricing", "Enquiry form"],
+    focus: "Service enquiries",
   },
 ];
 
 const previewRows = [
-  ["Offer", "CTA"],
-  ["Proof", "Price"],
-  ["Contact", "Launch"],
+  ["Welcome", "About"],
+  ["Services", "Prices"],
+  ["Details", "Contact"],
 ];
 
 export default function SamplesPage() {
-  const navigate = useNavigate();
-  const [spaceMotionPaused, setSpaceMotionPaused] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-  );
-
-  const goToContact = () => {
-    navigate({ pathname: "/", hash: "#contact-section" });
-  };
+  const [spaceMotionPaused, setSpaceMotionPaused] = useMotionPreference();
 
   return (
     <main className="samples-page">
       <SpaceBackground paused={spaceMotionPaused} onPausedChange={setSpaceMotionPaused} />
-      <Seo
-        title="Projects & Samples | Nested Space"
-        description="Explore Big Bangs, a website designed and developed by Nested Space, and discover sample website formats for shops, sellers, and startups."
-        canonical="https://nestedspace.in/samples"
-      />
+      <Seo {...samplesPageMetadata} />
       <section className="samples-hero" aria-labelledby="samples-title">
         <Link className="samples-back" to="/">
           <FaArrowLeft aria-hidden="true" />
@@ -67,23 +58,25 @@ export default function SamplesPage() {
           <span className="section-kicker">Projects &amp; samples</span>
           <h1 id="samples-title">Websites with<br /><span>a character of their own.</span></h1>
           <p>
-            Explore Big Bangs, our featured streetwear project, then browse sample formats for shops, sellers, and startups.
+            Explore the Big Bangs live demo and the thinking behind it, then browse illustrative website concepts for shops, sellers and startups.
           </p>
         </div>
       </section>
 
-      <section className="samples-featured" aria-label="Featured live project">
+      <section className="samples-featured" aria-label="Featured demonstration project">
         <BigBangsProject />
       </section>
 
+      <BigBangsCaseStudy />
+
       <div className="samples-concepts-heading">
         <h2>More website formats</h2>
-        <p>Illustrative layouts to help you imagine your own website.</p>
+        <p>Sample business names and layouts for inspiration. Each card below is an illustrative design concept.</p>
       </div>
       <section className="samples-grid" aria-label="Illustrative website samples">
-        {finishedSamples.map((sample) => (
+        {conceptSamples.map((sample) => (
           <article className="sample-card" key={sample.title}>
-            <div className={`sample-preview ${sample.palette}`}>
+            <div className={`sample-preview ${sample.palette}`} aria-hidden="true">
               <div className="sample-preview-bar">
                 <span></span>
                 <span></span>
@@ -92,9 +85,9 @@ export default function SamplesPage() {
               <div className="sample-preview-body">
                 <div>
                   <span className="sample-preview-kicker">{sample.category}</span>
-                  <h2>{sample.title}</h2>
+                  <p className="sample-preview-title">{sample.title}</p>
                 </div>
-                <button type="button" onClick={goToContact}>Enquire</button>
+                <span className="sample-preview-button">Enquire</span>
               </div>
               <div className="sample-preview-grid">
                 {previewRows.flat().map((label) => (
@@ -106,22 +99,21 @@ export default function SamplesPage() {
             <div className="sample-card-copy">
               <div className="sample-card-topline">
                 <span className="sample-status">
-                  <FaCheckCircle />
-                  Sample layout
+                  Illustrative concept
                 </span>
-                <span>{sample.metric}</span>
+                <span>{sample.focus}</span>
               </div>
               <h2>{sample.title}</h2>
-              <p>{sample.result}</p>
+              <p>{sample.description}</p>
               <div className="sample-section-list">
                 {sample.sections.map((section) => (
                   <span key={section}>{section}</span>
                 ))}
               </div>
-              <button className="sample-action" onClick={goToContact}>
-                Start similar site
-                <FaExternalLinkAlt />
-              </button>
+              <Link className="sample-action" to="/#contact-section">
+                Discuss a similar website
+                <FaArrowRight aria-hidden="true" />
+              </Link>
             </div>
           </article>
         ))}
@@ -130,13 +122,13 @@ export default function SamplesPage() {
       <section className="samples-cta" aria-labelledby="samples-cta-title">
         <div>
           <span className="section-kicker">Need one like this?</span>
-          <h2 id="samples-cta-title">Send your business details and we’ll prepare the first version.</h2>
-          <p>Share your logo, offer, colors, contact number, and references to start the 48-hour delivery timeline.</p>
+          <h2 id="samples-cta-title">Let’s find the right direction for your website.</h2>
+          <p>Tell us what your customers need to see and do. We’ll discuss your content, pages and features before agreeing the scope and timeline.</p>
         </div>
-        <button className="btn-primary" onClick={goToContact}>
-          <FaWhatsapp />
-          Start on WhatsApp
-        </button>
+        <Link className="btn-primary" to="/#contact-section">
+          Discuss your website
+          <FaArrowRight aria-hidden="true" />
+        </Link>
       </section>
     </main>
   );

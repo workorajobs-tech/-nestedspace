@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Instagram, Linkedin } from "lucide-react";
 import "./Footer.css";
+import { analytics } from "../analytics";
 import {
   businessEntity,
   getBusinessAddressText,
@@ -21,6 +22,7 @@ export default function Footer() {
             <br />
             Built for what’s next.
           </p>
+          <Link className="footer-about-link" to="/about">Meet the founders <ArrowUpRight size={17} aria-hidden="true" /></Link>
           <a className="footer-top-link" href="#main-content">
             Back to top <ArrowUpRight size={17} />
           </a>
@@ -31,7 +33,7 @@ export default function Footer() {
             <address>{getBusinessAddressText()}</address>
           </div>
           <div className="footer-contact">
-            <a href={getTelephoneHref()}>{businessEntity.telephone}</a>
+            <a href={getTelephoneHref()} onClick={() => analytics.contact("phone_click", "footer")}>{businessEntity.telephone}</a>
             <span>Made in Kerala. Open to possibilities everywhere.</span>
           </div>
           <div className="footer-socials">

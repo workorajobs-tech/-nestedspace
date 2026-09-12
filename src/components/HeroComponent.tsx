@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useMotionPreference } from "../hooks/useMotionPreference";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowDown,
@@ -18,6 +19,7 @@ import Seo from "./Seo";
 import BigBangsProject from "./BigBangsProject";
 import WorkShowcase from "./WorkShowcase";
 import SpaceBackground from "./SpaceBackground";
+import starter from "../data/starterWebsiteContent.json" with { type: "json" };
 import {
   getHomeStructuredData,
   homePageMetadata,
@@ -73,9 +75,7 @@ const steps = [
 
 export default function HeroComponent() {
   const pageRef = useRef<HTMLElement>(null);
-  const [spaceMotionPaused, setSpaceMotionPaused] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-  );
+  const [spaceMotionPaused, setSpaceMotionPaused] = useMotionPreference();
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -114,8 +114,7 @@ export default function HeroComponent() {
       >
         <div className="studio-hero-copy">
           <span className="studio-eyebrow">
-            <span className="status-dot" /> INDEPENDENT DIGITAL STUDIO · KERALA,
-            INDIA
+            <span className="status-dot" /> WEBSITES FOR SMALL BUSINESSES · ACROSS INDIA
           </span>
           <h1 id="studio-title">
             Small business.
@@ -123,15 +122,16 @@ export default function HeroComponent() {
             <span>Big presence.</span>
           </h1>
           <p>
-            Your business deserves a space that feels like you.
-            <br className="desktop-break" /> We build beautiful, purposeful
-            websites that turn
-            <br className="desktop-break" /> curious visitors into your next
-            customers.
+            A mobile-friendly website to show what you do and help customers
+            get in touch. Built around your shop, service or new business.
           </p>
+          <div className="hero-starter-offer">
+            <Link to="/pricing#starter-package">Starter website · {starter.price} build <ArrowUpRight size={16} aria-hidden="true" /></Link>
+            <span>{starter.priceNote}</span>
+          </div>
           <div className="studio-actions">
             <Link className="studio-button" to="/#contact-section">
-              Let’s build your website <ArrowUpRight size={19} />
+              Discuss my website <ArrowUpRight size={19} />
             </Link>
             <a className="studio-text-link" href="#portfolio">
               Explore our work <ArrowRight size={17} />
@@ -168,7 +168,7 @@ export default function HeroComponent() {
           </div>
           <div>
             <strong>₹2,000</strong>
-            <span>For your one-page starter website</span>
+            <span>For your starter website</span>
           </div>
           <div>
             <strong>
@@ -369,11 +369,11 @@ export default function HeroComponent() {
               <span>Easy on your budget.</span>
             </h2>
             <p>
-              A polished one-page website to get your business out there. No
+              A polished website to get your business out there. No
               upfront payment. No complicated process.
             </p>
-            <Link className="studio-text-link" to="/pricing">
-              See the full package <ArrowUpRight size={18} />
+            <Link className="studio-text-link" to="/small-business-website-development">
+              Explore the starter website <ArrowUpRight size={18} />
             </Link>
           </div>
           <div className="studio-price-card">
@@ -383,12 +383,12 @@ export default function HeroComponent() {
             <div className="studio-price">
               ₹2,000<span>one-time</span>
             </div>
-            <p>One page. Everything you need to get started.</p>
+            <p>A website built around your business.</p>
             <ul>
               {[
-                "Custom, responsive one-page design",
+                "Custom, responsive website design",
                 "WhatsApp & contact form flow",
-                "Basic SEO & deployment support",
+                "Hosting, basic SEO & deployment support",
                 "One focused revision round",
               ].map((item) => (
                 <li key={item}>
@@ -401,7 +401,7 @@ export default function HeroComponent() {
               Start something good <ArrowUpRight size={19} />
             </Link>
             <span className="price-footnote">
-              First delivery in 48 hours after we receive your content.
+              {starter.deliveryNote} {starter.priceNote}
             </span>
           </div>
         </div>

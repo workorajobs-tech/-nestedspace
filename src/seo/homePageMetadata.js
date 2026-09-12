@@ -24,8 +24,8 @@ const escapeHtml = (value) =>
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;");
 
-export const getHomePageHtml = () => {
-  const structuredData = JSON.stringify(getHomeStructuredData(), null, 8)
+export const getHomePageHtml = (metadata = homePageMetadata, schema = getHomeStructuredData()) => {
+  const structuredData = JSON.stringify(schema, null, 8)
     .split("\n")
     .map((line) => `      ${line}`)
     .join("\n");
@@ -39,34 +39,34 @@ export const getHomePageHtml = () => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="${escapeHtml(homePageMetadata.description)}"
+      content="${escapeHtml(metadata.description)}"
     />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="${homePageMetadata.canonical}" />
+    <meta name="robots" content="${metadata.robots || "index, follow"}" />
+    <link rel="canonical" href="${metadata.canonical}" />
     <meta name="theme-color" content="#7c3aed" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="${homePageMetadata.canonical}" />
-    <meta property="og:title" content="${escapeHtml(homePageMetadata.title)}" />
+    <meta property="og:url" content="${metadata.canonical}" />
+    <meta property="og:title" content="${escapeHtml(metadata.openGraphTitle || metadata.title)}" />
     <meta
       property="og:description"
-      content="${escapeHtml(homePageMetadata.openGraphDescription)}"
+      content="${escapeHtml(metadata.openGraphDescription || metadata.description)}"
     />
     <meta property="og:image" content="${socialImage}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="800" />
     <meta property="og:image:alt" content="Nested Space logo" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${escapeHtml(homePageMetadata.title)}" />
+    <meta name="twitter:title" content="${escapeHtml(metadata.openGraphTitle || metadata.title)}" />
     <meta
       name="twitter:description"
-      content="${escapeHtml(homePageMetadata.twitterDescription)}"
+      content="${escapeHtml(metadata.twitterDescription || metadata.openGraphDescription || metadata.description)}"
     />
     <meta name="twitter:image" content="${socialImage}" />
     <meta name="twitter:image:alt" content="Nested Space logo" />
-    <script id="page-structured-data" type="application/ld+json">
+    ${schema ? `<script id="page-structured-data" type="application/ld+json">
 ${structuredData}
-    </script>
-    <title>${escapeHtml(homePageMetadata.title)}</title>
+    </script>` : ""}
+    <title>${escapeHtml(metadata.title)}</title>
   </head>
   <body>
     <div id="root"></div>

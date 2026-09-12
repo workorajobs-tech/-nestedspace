@@ -119,13 +119,13 @@ export const internalLinkMap = {
     ],
   },
   "/small-business-website-development": {
-    sectionTitle: "Related small business website pages",
-    intro: "Small businesses may need design guidance or a location-focused website development page.",
+    sectionTitle: "Plan your small-business website",
+    intro: "Review package costs, explore our work or discuss a larger website.",
     links: [
-      { label: "website design services", path: "/website-design" },
-      { label: "website development in Kerala", path: "/website-development-kerala" },
-      { label: "website development in Kozhikode", path: "/website-development-kozhikode" },
-      { label: "website development in Malappuram", path: "/website-development-malappuram" },
+      { label: "starter package pricing", path: "/pricing#starter-package" },
+      { label: "projects and samples", path: "/samples" },
+      { label: "larger business websites", path: "/business-website-development" },
+      { label: "ecommerce options", path: "/ecommerce-website-development" },
     ],
   },
   "/ecommerce-website-development": {

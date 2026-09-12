@@ -29,7 +29,7 @@ export default function BigBangsProject() {
         </div>
       </a>
       <div className="big-bangs-project-copy">
-        <span className="big-bangs-project-label">Featured project · Live demo</span>
+        <span className="big-bangs-project-label">Demonstration project · Live demo</span>
         <h3>Big Bangs</h3>
         <p className="big-bangs-credit">Designed &amp; developed by Nested Space</p>
         <p>A bold streetwear catalogue that brings the collection to life. Navy-and-lime visuals, a scroll-driven 3D showcase, and product pages built for exploring every detail.</p>
@@ -44,7 +44,7 @@ export default function BigBangsProject() {
             Visit live site <FaExternalLinkAlt aria-hidden="true" />
             <span className="big-bangs-sr-only"> (opens in a new tab)</span>
           </a>
-          <Link className="big-bangs-enquire" to="/#contact-section">Want a site like this? <FaArrowRight aria-hidden="true" /></Link>
+          <Link className="big-bangs-enquire" to="/samples#big-bangs-case-study">Read the project story <FaArrowRight aria-hidden="true" /></Link>
         </div>
       </div>
     </article>

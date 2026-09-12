@@ -4,6 +4,13 @@
   color: #101828;
   font-family: "Inter", Arial, sans-serif;
 }
+.App.has-starfield {
+  background: #090419;
+  color: #faf5ff;
+}
+.has-starfield .route-loading {
+  color: #d3c8e2;
+}
 .main-container {
   min-height: 100vh;
 }

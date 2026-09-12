@@ -227,7 +227,7 @@
   text-transform: uppercase;
 }
 
-.sample-preview-body h2 {
+.sample-preview-title {
   margin: 0;
   max-width: 260px;
   font-size: 1.8rem;
@@ -236,7 +236,7 @@
   letter-spacing: -0.025em;
 }
 
-.sample-preview-body button {
+.sample-preview-button {
   width: fit-content;
   min-height: 44px;
   border: 1px solid #f4d7ec66;
@@ -246,11 +246,6 @@
   background: #15092159;
   font-size: 0.75rem;
   font-weight: 600;
-  cursor: pointer;
-}
-
-.sample-preview-body button:hover {
-  background: #15092199;
 }
 
 .sample-preview-grid {
@@ -341,7 +336,11 @@
   font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
+  text-decoration: none;
 }
+
+.sample-action:focus-visible,
+.samples-cta a:focus-visible { outline: 3px solid #f9a8d4; outline-offset: 4px; }
 
 .samples-cta {
   display: flex;

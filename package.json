@@ -7,9 +7,10 @@
     "dev": "vite",
     "generate:location-html": "node scripts/generate-location-html.mjs",
     "prebuild": "npm run generate:location-html",
-    "build": "vite build",
+    "build": "vite build && vite build --config vite.ssr.config.js && node scripts/prerender.mjs && node scripts/verify-static-build.mjs",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:analytics": "node --experimental-strip-types --test scripts/analytics.test.mts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@eslint/js": "^9.33.0",
     "@tailwindcss/postcss": "^4.1.13",
+    "@types/node": "^22.20.2",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react": "^5.0.0",

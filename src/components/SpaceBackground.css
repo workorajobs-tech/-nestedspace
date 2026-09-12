@@ -83,6 +83,12 @@
 .has-starfield .header-nav a:hover {
   color: #f9a8d4;
 }
+.has-starfield .header-nav a[aria-current="page"],
+.has-starfield .mobile-nav a[aria-current="page"] {
+  color: #f9a8d4;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
 .has-starfield .mobile-menu-btn {
   color: #f3e8ff;
   border-color: #c4b5fd4d;

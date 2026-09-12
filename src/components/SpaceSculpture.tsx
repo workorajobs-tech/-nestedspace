@@ -1,3 +1,4 @@
+import { useMotionPreference } from "../hooks/useMotionPreference";
 import { useEffect, useRef, useState } from "react";
 import { Pause, Play, Rotate3D } from "lucide-react";
 
@@ -85,9 +86,7 @@ export default function SpaceSculpture({
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sceneRef = useRef<HTMLDivElement>(null);
-  const [localPaused, setPaused] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-  );
+  const [localPaused, setPaused] = useMotionPreference();
   const paused = motionPaused ?? localPaused;
   const [available, setAvailable] = useState(false);
   const pausedRef = useRef(paused);

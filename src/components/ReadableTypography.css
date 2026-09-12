@@ -102,7 +102,7 @@
 }
 
 .App .pricing-page :is(.section-kicker, .pricing-starter-badge, .pricing-service-note, .kerala-hero-panel span),
-.App .samples-page :is(.section-kicker, .samples-back, .sample-preview-kicker, .sample-preview-body button, .sample-preview-grid span, .sample-card-topline, .sample-section-list span) {
+.App .samples-page :is(.section-kicker, .samples-back, .sample-preview-kicker, .sample-preview-button, .sample-preview-grid span, .sample-card-topline, .sample-section-list span) {
   font-size: var(--text-small);
   line-height: 1.6;
 }

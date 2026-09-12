@@ -357,3 +357,9 @@
     padding: 26px;
   }
 }
+.pricing-starter-details { scroll-margin-top: 110px; }
+.pricing-starter-details dl { margin: 0 0 24px; }
+.pricing-starter-details dl > div { display: grid; grid-template-columns: minmax(160px, .6fr) minmax(0, 1.6fr); gap: 24px; padding: 20px 0; border-top: 1px solid #ffffff26; }
+.pricing-starter-details dt { font-weight: 700; color: #faf5ff; }
+.pricing-starter-details dd { margin: 0; line-height: 1.7; color: #d2c8df; }
+@media (max-width: 640px) { .pricing-starter-details dl > div { grid-template-columns: 1fr; gap: 8px; } }

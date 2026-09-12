@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FaCheckCircle,
@@ -11,6 +10,8 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import Seo from "./Seo";
+import SeoPageLayout, { StarterWebsiteOffer } from "./SeoPageLayout";
+import SmallBusinessWebsitePage from "./SmallBusinessWebsitePage";
 import { getInternalLinkSection } from "../seo/internalLinkMap";
 import { getServicePageByPath, getServiceStructuredData, serviceProcess, sharedServiceBenefits } from "./servicePageData";
 import "./WebsiteDevelopmentKeralaPage.css";
@@ -37,8 +38,12 @@ export default function ServiceSeoLandingPage({ page, pagePath }) {
     navigate("/samples");
   };
 
+  if (currentPage.slug === "small-business-website-development") {
+    return <SmallBusinessWebsitePage structuredData={structuredData} />;
+  }
+
   return (
-    <main className="kerala-page service-seo-page">
+    <SeoPageLayout className="kerala-page service-seo-page" breadcrumb={currentPage.eyebrow}>
       <Seo
         title={currentPage.title}
         description={currentPage.description}
@@ -63,20 +68,7 @@ export default function ServiceSeoLandingPage({ page, pagePath }) {
           </div>
         </div>
 
-        <div className="kerala-hero-panel" aria-label="Nested Space service offer summary">
-          <div>
-            <strong>48h</strong>
-            <span>first delivery</span>
-          </div>
-          <div>
-            <strong>₹2000</strong>
-            <span>starter website</span>
-          </div>
-          <div>
-            <strong>Pay After Work</strong>
-            <span>review before payment</span>
-          </div>
-        </div>
+        <StarterWebsiteOffer />
       </section>
 
       <section className="kerala-section kerala-intro" aria-labelledby={`${currentPage.slug}-includes-title`}>
@@ -241,10 +233,10 @@ export default function ServiceSeoLandingPage({ page, pagePath }) {
         </div>
         <div className="kerala-faq-list">
           {currentPage.faqs.map((faq) => (
-            <article className="kerala-faq-item" key={faq.question}>
-              <h3>{faq.question}</h3>
+            <details className="kerala-faq-item" key={faq.question}>
+              <summary>{faq.question}</summary>
               <p>{faq.answer}</p>
-            </article>
+            </details>
           ))}
         </div>
       </section>
@@ -266,6 +258,6 @@ export default function ServiceSeoLandingPage({ page, pagePath }) {
           </button>
         </div>
       </section>
-    </main>
+    </SeoPageLayout>
   );
 }

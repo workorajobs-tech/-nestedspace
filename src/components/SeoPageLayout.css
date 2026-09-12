@@ -1,0 +1,120 @@
+.seo-page {
+  --seo-ink: #faf5ff;
+  --seo-muted: #d3c8e2;
+  --seo-accent: #d7adff;
+  --seo-line: #ddafff2b;
+  --seo-surface: linear-gradient(145deg, #29133ce6, #160b29e0);
+  --seo-gradient: linear-gradient(90deg, #ff9b55, #f97fbb 48%, #b889ff);
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  color: var(--seo-ink);
+  background: #090419;
+}
+
+.seo-page-content {
+  position: relative;
+  z-index: 1;
+}
+
+.seo-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  max-width: 1160px;
+  margin: 0 auto 36px;
+  color: #c6b4d6;
+  font-size: var(--text-small);
+  line-height: 1.6;
+}
+
+.seo-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #e6c9ff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.seo-page :is(a, button, summary):focus-visible {
+  outline: 2px solid #f9a8d4;
+  outline-offset: 5px;
+}
+
+.seo-page h1 > span {
+  color: #f7a1ca;
+  background: var(--seo-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.seo-offer {
+  min-width: 0;
+  padding: 32px;
+  border: 1px solid #e0b3ff4d;
+  border-radius: 26px;
+  background: linear-gradient(145deg, #422050db, #1c0c2ce8 65%);
+  box-shadow: 0 24px 60px #06001033, inset 0 1px 0 #ffffff1f;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.seo-offer-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  color: #e4c6f7;
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+
+.seo-page .seo-offer-price {
+  margin: 24px 0 28px;
+  color: #faf5ff;
+  font-size: clamp(3rem, 4.5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -.045em;
+}
+
+.seo-offer-price > span {
+  display: block;
+  margin-top: 10px;
+  color: var(--seo-muted);
+  font-size: var(--text-small);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+.seo-offer ul {
+  display: grid;
+  gap: 14px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.seo-offer li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #f0e4fb;
+  font-size: var(--text-action);
+  line-height: 1.5;
+}
+
+.seo-offer li svg { flex-shrink: 0; margin-top: 2px; color: #d7adff; }
+.seo-offer-details { margin: 26px 0 10px; padding-top: 12px; border-top: 1px solid var(--seo-line); }
+.seo-page .seo-offer-details p { margin: 12px 0; color: var(--seo-muted); font-size: var(--text-small); line-height: 1.7; }
+.seo-offer-link { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: #e4baff; font-size: var(--text-action); font-weight: 650; text-decoration: none; }
+.seo-offer-link:hover { color: #ffb8dc; text-decoration: underline; text-underline-offset: 4px; }
+
+@media (max-width: 640px) {
+  .seo-breadcrumb { margin-bottom: 24px; }
+  .seo-offer { padding: 26px; border-radius: 22px; }
+}
