@@ -84,6 +84,8 @@
 }
 
 .samples-page .samples-featured {
+  display: grid;
+  gap: 28px;
   margin-top: 44px;
 }
 

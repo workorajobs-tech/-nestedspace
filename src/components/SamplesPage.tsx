@@ -3,6 +3,7 @@ import { useMotionPreference } from "../hooks/useMotionPreference";
 import { Link } from "react-router-dom";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "./SamplesPage.css";
+import AetherFormProject from "./AetherFormProject";
 import BigBangsProject from "./BigBangsProject";
 import BigBangsCaseStudy from "./BigBangsCaseStudy";
 import SpaceBackground from "./SpaceBackground";
@@ -58,12 +59,13 @@ export default function SamplesPage() {
           <span className="section-kicker">Projects &amp; samples</span>
           <h1 id="samples-title">Websites with<br /><span>a character of their own.</span></h1>
           <p>
-            Explore the Big Bangs live demo and the thinking behind it, then browse illustrative website concepts for shops, sellers and startups.
+            Explore Aether Form and Big Bangs, two live websites designed and developed by Nested Space, then browse illustrative website concepts for shops, sellers and startups.
           </p>
         </div>
       </section>
 
-      <section className="samples-featured" aria-label="Featured demonstration project">
+      <section className="samples-featured" aria-label="Featured demonstration projects">
+        <AetherFormProject />
         <BigBangsProject />
       </section>
 
