@@ -688,6 +688,9 @@
   box-shadow: none;
   grid-template-columns: 1.2fr 1fr;
 }
+.studio-featured-project + .studio-featured-project {
+  margin-top: 28px;
+}
 .studio-home .big-bangs-artwork {
   padding: 29px 32px;
 }

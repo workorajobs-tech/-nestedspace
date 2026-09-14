@@ -16,7 +16,7 @@ export const pricingPageMetadata = {
 
 export const samplesPageMetadata = {
   title: "Projects & Samples | Nested Space",
-  description: "Explore the Big Bangs live demo and project case study by Nested Space, plus illustrative website concepts for small businesses, shops and sellers.",
+  description: "Explore Aether Form and Big Bangs live demos by Nested Space, plus a project case study and website concepts for small businesses, shops and sellers.",
   canonical: "https://nestedspace.in/samples",
 };
 

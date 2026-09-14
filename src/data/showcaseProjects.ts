@@ -7,9 +7,19 @@ export type ShowcaseProject = {
   poster: string;
 };
 
-// Add the next project's recording here; the showcase enables slide navigation
-// automatically and advances when each video finishes.
+export const aetherFormProject: ShowcaseProject = {
+  id: "aether-form",
+  name: "Aether Form",
+  category: "Architecture studio · Design & development",
+  url: "https://aether-form.pages.dev/",
+  video: "/showcase/aether-form-scroll.mp4",
+  poster: "/showcase/aether-form-poster.webp",
+};
+
+// The showcase enables slide navigation automatically and advances when each
+// project's video finishes.
 export const showcaseProjects: ShowcaseProject[] = [
+  aetherFormProject,
   {
     id: "big-bangs",
     name: "Big Bangs",

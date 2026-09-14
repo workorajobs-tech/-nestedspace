@@ -16,6 +16,7 @@ import {
 import "./hero.css";
 import ContactPage from "./ContactPage";
 import Seo from "./Seo";
+import AetherFormProject from "./AetherFormProject";
 import BigBangsProject from "./BigBangsProject";
 import WorkShowcase from "./WorkShowcase";
 import SpaceBackground from "./SpaceBackground";
@@ -300,6 +301,9 @@ export default function HeroComponent() {
             <Link className="studio-text-link" to="/samples">
               Explore projects & samples <ArrowUpRight size={19} />
             </Link>
+          </div>
+          <div className="studio-featured-project" data-reveal>
+            <AetherFormProject />
           </div>
           <div className="studio-featured-project" data-reveal>
             <BigBangsProject />
